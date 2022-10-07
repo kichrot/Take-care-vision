@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+   "minimum_chrome_version": "88",
+   "name": "Take care vision",
+   "options_ui": {
+      "open_in_tab": true,
+      "page": "options.html"
+   },
+   "permissions": [ "tabs", "storage", "activeTab", "scripting" ], 
+   "version": "0.1",
+
+
+    "action": {
+      "default_icon": {
+         "48": "icons/icon.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "Take care vision"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "zoom.js" ],
+      "match_about_blank": true,
+      "matches": [ "http://*/*", "https://*/*", "file:///*" ], 
+      "run_at": "document_start"
+   } ],
+   "description": "Take care vision",
+   "icons": {
+     "48": "icons/icon.png"
+   }
+}
