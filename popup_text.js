@@ -185,9 +185,12 @@ function save_domain_list() {
 }
 
 function doZoom_size_font(dif) {
-    font_size = font_size + dif;
-    font_size = font_size.toFixed(2);
-    document.getElementById('text_size').textContent = String(font_size) + 'vw';
+    if (Number.isFinite(font_size)) { 
+        font_size = font_size + dif;
+        font_size = font_size.toFixed(2);
+        document.getElementById('text_size').textContent = String(font_size) + 'vw';
+        save_domain_list();
+    }
 }
 
 function doZoom_Texe_Default() {
@@ -202,6 +205,7 @@ function doZoom_Texe_Default() {
     line_height_on_off = line_height_on_off_def;
     text_param_on_off = text_param_on_off_def;
     filling_out_form();
+    save_domain_list();
 }
 
 function doZoom_h(Id, title_coeff, dif) {
@@ -220,98 +224,121 @@ function doZoom_lh(Id, line_h, dif) {
 
 function doZoomIn_001() {
     doZoom_size_font(0.01);
-    save_domain_list();
 }
 
 function doZoomOut_001() {
     doZoom_size_font(-0.01);
-    save_domain_list();
 }
 
 function doZoomIn_01() {
     doZoom_size_font(0.1);
-    save_domain_list();
 }
 
 function doZoomOut_01() {
     doZoom_size_font(-0.1);
-    save_domain_list();
 }
 
 function doZoomTextDefault() {
     doZoom_Texe_Default();
-    save_domain_list();
     chrome.tabs.reload();
 }
 
 function doZoomIn_h1() {
-    title_coeff_h1 = doZoom_h("def_h1", title_coeff_h1, 0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h1)) { 
+        title_coeff_h1 = doZoom_h("def_h1", title_coeff_h1, 0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomOut_h1() {
-    title_coeff_h1 = doZoom_h("def_h1", title_coeff_h1, -0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h1)) { 
+        title_coeff_h1 = doZoom_h("def_h1", title_coeff_h1, -0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomIn_h2() {
-    title_coeff_h2 = doZoom_h("def_h2", title_coeff_h2, 0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h2)) { 
+        title_coeff_h2 = doZoom_h("def_h2", title_coeff_h2, 0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomOut_h2() {
-    title_coeff_h2 = doZoom_h("def_h2", title_coeff_h2, -0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h2)) { 
+        title_coeff_h2 = doZoom_h("def_h2", title_coeff_h2, -0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomIn_h3() {
-    title_coeff_h3 = doZoom_h("def_h3", title_coeff_h3, 0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h3)) {
+        title_coeff_h3 = doZoom_h("def_h3", title_coeff_h3, 0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomOut_h3() {
-    title_coeff_h3 = doZoom_h("def_h3", title_coeff_h3, -0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h3)) {
+        title_coeff_h3 = doZoom_h("def_h3", title_coeff_h3, -0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomIn_h4() {
-    title_coeff_h4 = doZoom_h("def_h4", title_coeff_h4, 0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h4)) {
+        title_coeff_h4 = doZoom_h("def_h4", title_coeff_h4, 0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomOut_h4() {
-    title_coeff_h4 = doZoom_h("def_h4", title_coeff_h4, -0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h4)) {
+        title_coeff_h4 = doZoom_h("def_h4", title_coeff_h4, -0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomIn_h5() {
-    title_coeff_h5 = doZoom_h("def_h5", title_coeff_h5, 0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h5)) {
+         title_coeff_h5 = doZoom_h("def_h5", title_coeff_h5, 0.1);
+         save_domain_list();
+    }
 }
 
 function doZoomOut_h5() {
-    title_coeff_h5 = doZoom_h("def_h5", title_coeff_h5, -0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h5)) {
+         title_coeff_h5 = doZoom_h("def_h5", title_coeff_h5, -0.1);
+         save_domain_list();
+    }
 }
 
 function doZoomIn_h6() {
-    title_coeff_h6 = doZoom_h("def_h6", title_coeff_h6, 0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h6)) {
+        title_coeff_h6 = doZoom_h("def_h6", title_coeff_h6, 0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomOut_h6() {
-    title_coeff_h6 = doZoom_h("def_h6", title_coeff_h6, -0.1);
-    save_domain_list();
+    if (Number.isFinite(title_coeff_h6)) {
+        title_coeff_h6 = doZoom_h("def_h6", title_coeff_h6, -0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomIn_line_height() {
-    line_height = doZoom_lh("line_height", line_height, 0.1);
-    save_domain_list();
+    if (Number.isFinite(line_height)) {
+        line_height = doZoom_lh("line_height", line_height, 0.1);
+        save_domain_list();
+    }
 }
 
 function doZoomOut_line_height() {
-    line_height = doZoom_lh("line_height", line_height, -0.1);
-    save_domain_list();
+    if (Number.isFinite(line_height)) {
+        line_height = doZoom_lh("line_height", line_height, -0.1);
+        save_domain_list();
+    }
 }
 
 function checkLineHeight() {
