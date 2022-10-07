@@ -23,14 +23,11 @@ var line_height_def;
 var line_height_on_off_def;
 var text_param_on_off_def;
 
-//from chrome 42 onward, per Xan on http://stackoverflow.com/questions/6782391/programmatically-open-a-chrome-plugins-options-html-page
-//chrome.runtime.openOptionsPage();
-
 function openOptions() {
     chrome.runtime.openOptionsPage();
+    setTimeout(() => window.close(), 300);
 }
 
-/*������� ���������� ����� ������� �������� ������� ��������*/
 function url_domain(data) {
     var a = document.createElement('a');
     a.href = data;
