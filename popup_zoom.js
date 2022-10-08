@@ -1,4 +1,4 @@
-tabId = -1;
+﻿tabId = -1;
 
 function displayZoomLevel(level) {
     var percentZoom = parseFloat(level) * 100;

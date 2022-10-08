@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 var domain_list;
 var domain_current;
