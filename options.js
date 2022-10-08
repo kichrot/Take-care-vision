@@ -68,8 +68,10 @@ function load_data() {
         }
         else {
                      text_param_def  = String(fsd) + ";" + text_param_start;
-                     chrome.storage.local.set({ "def_text_param": text_param_def  });
-                     setTimeout(location.href=location.href, 300);
+                     chrome.storage.local.set({ "def_text_param": text_param_def  });               
+                     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                                   chrome.tabs.reload(tabs[0].id);
+                     });
         }
         display_options("defaultLabel_browser_Font size", "In the browser: " + String(fsd) + "vw" + "(" + brauzer_font_size_def + "px" + ")");
         display_options("def_text_size", size_font_def);
