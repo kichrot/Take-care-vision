@@ -47,7 +47,7 @@ function clean_domain_list() {
 }
 
 function load_data() {
-     
+
     chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
         var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
         fsd = Number(fsd.toFixed(2))
@@ -65,13 +65,12 @@ function load_data() {
             line_height = Number(arr[7]);
             line_height_on_off = Number(arr[8]);
             text_param_on_off = Number(arr[9]);
-        }
-        else {
-                     text_param_def  = String(fsd) + ";" + text_param_start;
-                     chrome.storage.local.set({ "def_text_param": text_param_def  });               
-                     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                                   chrome.tabs.reload(tabs[0].id);
-                     });
+        } else {
+            text_param_def = String(fsd) + ";" + text_param_start;
+            chrome.storage.local.set({ "def_text_param": text_param_def });
+            chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+                chrome.tabs.reload(tabs[0].id);
+            });
         }
         display_options("defaultLabel_browser_Font size", "In the browser: " + String(fsd) + "vw" + "(" + brauzer_font_size_def + "px" + ")");
         display_options("def_text_size", size_font_def);
@@ -90,34 +89,38 @@ function load_data() {
 }
 
 function Save() {
-    size_font_def = Number(document.getElementById("def_text_size").textContent);
-    title_coeff_h1 = Number(document.getElementById("def_h1").textContent);
-    title_coeff_h2 = Number(document.getElementById("def_h2").textContent);
-    title_coeff_h3 = Number(document.getElementById("def_h3").textContent);
-    title_coeff_h4 = Number(document.getElementById("def_h4").textContent);
-    title_coeff_h5 = Number(document.getElementById("def_h5").textContent);
-    title_coeff_h6 = Number(document.getElementById("def_h6").textContent);
-    line_height = Number(document.getElementById("line_height").textContent);
-    var tpd = size_font_def + ";" + title_coeff_h1 + ";" + title_coeff_h2 + ";" + title_coeff_h3 + ";" + title_coeff_h4 + ";" + title_coeff_h5 + ";" + title_coeff_h6 + ";" + line_height + ";" + line_height_on_off + ";" + text_param_on_off + ";";
-    chrome.storage.local.set({ "def_text_param": tpd });
-    if (tpd !== text_param_def) {
-        domain_list = "";
-        chrome.storage.local.set({ "list_domain": domain_list });
+    if (confirm("Attention! \nYour individual settings, for specific domains, will be reset to the default new settings. \nYou agree?")) {
+        size_font_def = Number(document.getElementById("def_text_size").textContent);
+        title_coeff_h1 = Number(document.getElementById("def_h1").textContent);
+        title_coeff_h2 = Number(document.getElementById("def_h2").textContent);
+        title_coeff_h3 = Number(document.getElementById("def_h3").textContent);
+        title_coeff_h4 = Number(document.getElementById("def_h4").textContent);
+        title_coeff_h5 = Number(document.getElementById("def_h5").textContent);
+        title_coeff_h6 = Number(document.getElementById("def_h6").textContent);
+        line_height = Number(document.getElementById("line_height").textContent);
+        var tpd = size_font_def + ";" + title_coeff_h1 + ";" + title_coeff_h2 + ";" + title_coeff_h3 + ";" + title_coeff_h4 + ";" + title_coeff_h5 + ";" + title_coeff_h6 + ";" + line_height + ";" + line_height_on_off + ";" + text_param_on_off + ";";
+        chrome.storage.local.set({ "def_text_param": tpd });
+        if (tpd !== text_param_def) {
+            domain_list = "";
+            chrome.storage.local.set({ "list_domain": domain_list });
+        }
     }
 }
 
 function StartDefaultData() {
-    var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
-    fsd = Number(fsd.toFixed(2))
-    text_param_def  = String(fsd) + ";" + text_param_start;
-    chrome.storage.local.set({ "def_text_param": text_param_def  });
-    chrome.storage.local.set({ "list_domain": ""});
-    setTimeout(load_data, 300);
+    if (confirm("Attention! \nAll extension settings will be reset to the initial settings. Your individual settings for certain domains will be reset to the new default settings. \nYou agree?")) {
+        var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
+        fsd = Number(fsd.toFixed(2))
+        text_param_def = String(fsd) + ";" + text_param_start;
+        chrome.storage.local.set({ "def_text_param": text_param_def });
+        chrome.storage.local.set({ "list_domain": "" });
+        setTimeout(load_data, 300);
+    }
 }
 
 function doZoom_size(dif, Id, discharge) {
-    document.getElementById(Id).textContent = 
-    String((Number(document.getElementById(Id).textContent) + dif).toFixed(discharge));
+    document.getElementById(Id).textContent =
+        String((Number(document.getElementById(Id).textContent) + dif).toFixed(discharge));
 }
 
 function doZoom_Default() {
