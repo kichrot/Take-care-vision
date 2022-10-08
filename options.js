@@ -1,4 +1,4 @@
-"use strict";
+п»ї"use strict";
 
 var domain_list;
 var text_param_start = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;1;";
@@ -24,7 +24,7 @@ var line_height_def;
 var line_height_on_off_def;
 var text_param_on_off_def;
 
-/* определяем размер шрифта браузера по умолчанию */
+/* РѕРїСЂРµРґРµР»СЏРµРј СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р° Р±СЂР°СѓР·РµСЂР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
 brauzer_font_size_def = Number(brauzer_font_size_def.replace("px", ""));
 
@@ -47,7 +47,10 @@ function clean_domain_list() {
 }
 
 function load_data() {
+     
     chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
+        var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
+        fsd = Number(fsd.toFixed(2))
         if (typeof result.def_text_param !== 'undefined') {
             domain_list = result.list_domain;
             text_param_def = result.def_text_param;
@@ -64,14 +67,11 @@ function load_data() {
             text_param_on_off = Number(arr[9]);
         }
         else {
-                     var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
-                     fsd = Number(fsd.toFixed(2))
                      text_param_def  = String(fsd) + ";" + text_param_start;
                      chrome.storage.local.set({ "def_text_param": text_param_def  });
                      setTimeout(location.href=location.href, 300);
         }
-
-
+        display_options("defaultLabel_browser_Font size", "In the browser: " + String(fsd) + "vw" + "(" + brauzer_font_size_def + "px" + ")");
         display_options("def_text_size", size_font_def);
         display_options("def_h1", title_coeff_h1);
         display_options("def_h2", title_coeff_h2);
