@@ -1,100 +1,43 @@
 ﻿<!doctype html>
 <html>
-  <head>
-    <title>Take care vision</title>
-  
-    <style>
-      body {
-        overflow-x: hidden;
-        color: #000000;
-        background-color: #3752776e;
-      }
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Take care vision</title>
+<script src="popup_text.js"></script>
+<script src="popup_zoom.js"></script>
+   
+<style>
+body {overflow-x: hidden; color: #000000; background-color: #3752776e;}
+
+button {border-radius: 5px; border-style: solid; border-width: 0.1px;}
 
 /* Box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-}
+.switch {position: relative; display: inline-block; width: 50px; height: 24px;}
 
-.switch input {
-    display: none;
-}
+.switch input {display: none;}
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: red;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
+.slider {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: red; -webkit-transition: .2s; transition: .2s;}
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
+.slider:before {position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; -webkit-transition: .2s; transition: .2s;}
 
-input:checked + .slider {
-    background-color: green;
-}
+input:checked + .slider {background-color: green;}
 
-input:focus + .slider {
-    box-shadow: 0 0 1px #B5E61D;
-}
+input:focus + .slider {box-shadow: 0 0 1px #B5E61D;}
 
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-button {
-  border-radius: 5px;
-  border-style: solid; 
-  border-width: 0.1px;
-}
+input:checked + .slider:before {-webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px);}
 
 /* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
+.slider.round {border-radius: 34px;}
 
-.slider.round:before {
-  border-radius: 50%;
-  background-color: black;
-}
+.slider.round:before {border-radius: 50%; background-color: black;}
 
-.switch label {
-    position: absolute;
-    left: 60px;
-    word-break: keep-all;
-}
+.switch label {position: absolute; left: 60px; word-break: keep-all;}
 
-label.switch {
-    zoom: 60%;
-    margin-top: 7px;
-}
+label.switch {zoom: 60%; margin-top: 7px;}
 
-label {
-    font-weight: normal;
-}
-    </style>
-    <script src="popup_text.js"></script>
-    <script src="popup_zoom.js"></script>
-
-
+label {font-weight: normal;}
+</style>
+ 
 <table style="margin-top: -17px; margin-bottom: -8px;">
 <tr>
 <td><div style="width: 47px;"></div></td>
