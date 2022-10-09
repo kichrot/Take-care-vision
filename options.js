@@ -123,20 +123,6 @@ function doZoom_size(dif, Id, discharge) {
         String((Number(document.getElementById(Id).textContent) + dif).toFixed(discharge));
 }
 
-function doZoom_Default() {
-    font_size = size_font_def;
-    title_coeff_h1 = title_coeff_h1_def;
-    title_coeff_h2 = title_coeff_h2_def;
-    title_coeff_h3 = title_coeff_h3_def;
-    title_coeff_h4 = title_coeff_h4_def;
-    title_coeff_h5 = title_coeff_h5_def;
-    title_coeff_h6 = title_coeff_h6_def;
-    line_height = line_height_def;
-    line_height_on_off = line_height_on_off_def;
-    text_param_on_off = text_param_on_off_def;
-    filling_out_form();
-}
-
 function doZoomIn_001() {
     doZoom_size(0.01, 'def_text_size', 2);
 }
@@ -151,10 +137,6 @@ function doZoomIn_01() {
 
 function doZoomOut_01() {
     doZoom_size(-0.1, 'def_text_size', 2);
-}
-
-function doZoomDefault() {
-    doZoom_Default();
 }
 
 function doZoomIn_h1() {
@@ -236,7 +218,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('decreaseButton_001').onclick = doZoomOut_001;
     document.getElementById('increaseButton_01').onclick = doZoomIn_01;
     document.getElementById('decreaseButton_01').onclick = doZoomOut_01;
-    document.getElementById('defaultButton').onclick = doZoomDefault;
     document.getElementById('increaseButton_def_h1').onclick = doZoomIn_h1;
     document.getElementById('decreaseButton_def_h1').onclick = doZoomOut_h1;
     document.getElementById('increaseButton_def_h2').onclick = doZoomIn_h2;
