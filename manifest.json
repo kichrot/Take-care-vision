@@ -11,7 +11,7 @@
 
 
     "icons": {
-        "48": "icons/icon.png"
+        "48": "icon.png"
     },
 
     "options_ui": {
@@ -21,7 +21,7 @@
 
     "action": {
         "default_icon": {
-            "48": "icons/icon.png"
+            "48": "icon.png"
         },
         "default_popup": "popup.html",
         "default_title": "Take care vision"
