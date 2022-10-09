@@ -1,171 +1,208 @@
 ﻿<!doctype html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Take care vision</title>
-<script src="options.js"></script>
-
-<style>
-body {overflow-x: hidden; color: #000000; background-color: #3752776e;}
-
-button {border-radius: 5px; border-style: solid; border-width: 0.1px;}
-
-/* Box around the slider */
-.switch {position: relative; display: inline-block; width: 50px; height: 24px;}
-
-.switch input {display: none;}
-
-.slider {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: red; -webkit-transition: .2s; transition: .2s;}
-
-.slider:before {position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; -webkit-transition: .2s; transition: .2s;}
-
-input:checked + .slider {background-color: green;}
-
-input:focus + .slider {box-shadow: 0 0 1px #B5E61D;}
-
-input:checked + .slider:before {-webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px);}
-
-/* Rounded sliders */
-.slider.round {border-radius: 34px;}
-
-.slider.round:before {border-radius: 50%; background-color: black;}
-
-.switch label {position: absolute; left: 60px; word-break: keep-all;}
-
-label.switch {zoom: 60%; margin-top: 7px;}
-
-label {font-weight: normal;}
-</style>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Take care vision</title>
+    <script src="options.js"></script>
+    <style>
+    body {overflow-x: hidden; color: #000000; background-color: #3752776e;}
+    
+    button {border-radius: 5px; border-style: solid; border-width: 0.1px;}
+    
+    /* Box around the slider */
+    .switch {position: relative; display: inline-block; width: 50px; height: 24px;}
+    
+    .switch input {display: none;}
+    
+    .slider {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: red; -webkit-transition: .2s; transition: .2s;}
+    
+    .slider:before {position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; -webkit-transition: .2s; transition: .2s;}
+    
+    input:checked + .slider {background-color: green;}
+    
+    input:focus + .slider {box-shadow: 0 0 1px #B5E61D;}
+    
+    input:checked + .slider:before {-webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px);}
+    
+    /* Rounded sliders */
+    .slider.round {border-radius: 34px;}
+    
+    .slider.round:before {border-radius: 50%; background-color: black;}
+    
+    .switch label {position: absolute; left: 60px; word-break: keep-all;}
+    
+    label.switch {zoom: 60%; margin-top: 7px;}
+    
+    label {font-weight: normal;}
+    </style>
 </head>
-<body >
-<form>
-	
-<div id="form_container">
-<h1 style="margin-top: -5px;"><a>Take care vision</a></h1>
-<form >
-<div class="form_description"></div>
- <table>
-    <tr>
-<td><label class="blacklist_label" for="blacklist_label">Use for all domains:</label></td>
-<td></td><td></td>
-<td><label style="font-weight: bold; color: red;">OFF</label></td>
-<td><label class="switch"><input type="checkbox" id="blacklist_checkbox"><span class="slider round"></span></td> 
-<td><label style="font-weight: bold; color: green;">ON</label></td>
-</tr>
-  </table>						
-	        <ul ><li id="li_0" ><label style="font-size:20px;height:30px;width:100px; font-weight: 700;" class="description" for="def_text_size">Default text size :  </label></ul >
 
-<table style="margin-top: -20px; margin-bottom: -20px;">
-        <tr>
-           <td><div style="font-size:30px; text-align: center; color: red; width: 77px; font-weight: 900; border: none; letter-spacing: -6px;" id="minusDiv">--</div></td>
-            <td><div style="width: 125px; font-size: 15px; line-height: 14px; text-align: center; border: none;" id="defaultLabel_browser_Font size" ></div></td>
-            <td><div style="font-size:30px; text-align: center; color: green; width: 60px; font-weight: 900; border: none;"  id="plusDiv">+</div></td>
-       </tr>
-</table>    
+<body>
+    <div id="form_container">
+        <h1 style="margin-top: -5px;"><a>Take care vision</a></h1>
+        <form>
+            <div class="form_description"></div>
+            <table>
+                <tr>
+                    <td><label class="blacklist_label" for="blacklist_label">Use for all domains:</label></td>
+                    <td></td>
+                    <td></td>
+                    <td><label style="font-weight: bold; color: red;">OFF</label></td>
+                    <td><label class="switch"><input type="checkbox" id="blacklist_checkbox"><span class="slider round"></span></td> 
+                    <td><label style="font-weight: bold; color: green;">ON</label></td>
+                </tr>
+            </table>
+            <ul>
+                <li id="li_0"><label style="font-size:20px;height:30px;width:100px; font-weight: 700;" class="description" for="def_text_size">Default text size:  </label></ul>
+            <table style="margin-top: -20px; margin-bottom: -20px;">
+                <tr>
+                    <td>
+                        <div style="font-size:30px; text-align: center; color: red; width: 77px; font-weight: 900; border: none; letter-spacing: -6px;" id="minusDiv">--</div>
+                    </td>
+                    <td>
+                        <div style="width: 125px; font-size: 15px; line-height: 14px; text-align: center; border: none;" id="defaultLabel_browser_Font size"></div>
+                    </td>
+                    <td>
+                        <div style="font-size:30px; text-align: center; color: green; width: 60px; font-weight: 900; border: none;" id="plusDiv">+</div>
+                    </td>
+                </tr>
+            </table>
+            <table style="margin-bottom: 40px;">
+                <tr>
+                    <td><button style="font-size:20px;height:30px;width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="decreaseButton_001" title="-0.01">0.01</button></td>
+                    <td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px; " type="button" id="decreaseButton_01" title="-0.1">0.1</button></td>
+                    <td>
+                        <div style="font-size:33px;width: 55px; height: 50px; font-weight: 600; font-stretch: extra-condensed; color: blue; text-align: center; text-align: right; border: none; line-height: 49px;" id="def_text_size"></div>
+                    </td>
+                    </td>
+                    <td>
+                        <div style="font-size:33px;width: 45px; height: 50px; font-weight: 600; font-stretch: extra-condensed; color: blue; text-align: right; border: none; line-height: 49px;">vw</div>
+                    </td>
+                    </td>
+                    <td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px; " type="button" id="increaseButton_01" title="+0.1">0.1</button></td>
+                    <td><button style="font-size:20px;height:30px;width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px; " type="button" id="increaseButton_001" title="+0.01">0.01</button></td>
+                </tr>
+            </table>
+            <div id="container">
+                <ul>
+                    <li id="li_0"><label style="font-size:20px;height:30px;width:100px; font-weight: 700;" class="description" for="def_text_size">Default coefficient of text headings:</label></ul>
+                <table style="margin-top: -20px; margin-bottom: 40px;">
+                    <tr>
+                        <td>
+                            <div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h1:</div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h2:</div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h3:</div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h4:</div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h5:</div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h6:</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h1" title="-0.1">--</button></td>
+                        <td>
+                            <div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h1"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;" type="button" id="increaseButton_def_h1" title="+0.1">+</button></td>
+                        <td>
+                            <div style="width: 40px; height: 50px; border-style: solid; border-width: 1px; border: none;"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h2" title="-0.1">--</button></td>
+                        <td>
+                            <div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h2"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;" type="button" id="increaseButton_def_h2" title="+0.1">+</button></td>
+                        <td>
+                            <div style="width: 40px; height: 50px; border-style: solid; border-width: 1px; border: none;"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h3" title="-0.1">--</button></td>
+                        <td>
+                            <div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h3"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;" type="button" id="increaseButton_def_h3" title="+0.1">+</button></td>
+                        <td>
+                            <div style="width: 40px; height: 50px; border-style: solid; border-width: 1px; border: none;"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h4" title="-0.1">--</button></td>
+                        <td>
+                            <div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h4"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;" type="button" id="increaseButton_def_h4" title="+0.1">+</button></td>
+                        <td>
+                            <div style="width: 40px; height: 50px; border-style: solid; border-width: 1px; border: none;"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h5" title="-0.1">--</button></td>
+                        <td>
+                            <div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h5"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;" type="button" id="increaseButton_def_h5" title="+0.1">+</button></td>
+                        <td>
+                            <div style="width: 40px; height: 50px; border-style: solid; border-width: 1px; border: none;"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h6" title="-0.1">--</button></td>
+                        <td>
+                            <div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h6"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;" type="button" id="increaseButton_def_h6" title="+0.1">+</button></td>
+                    </tr>
+                </table>
+                <ul>
+                    <li id="li_0"><label style="font-size:20px;height:30px;width:100px; font-weight: 700;" class="description" for="def_text_size">Default line height:</label></ul>
+                <table style="margin-top: -20px; margin-bottom: 40px;">
+                    <tr>
+                        <td><label class="line height_label" for="line height_label">Line height:</label></td>
+                        <td></td>
+                        <td></td>
+                        <td><label style="font-weight: bold; color: red;">OFF</label></td>
+                        <td><label class="switch"><input type="checkbox" id="line height_checkbox"><span class="slider round"></span></td>
+                        <td><label style="font-weight: bold; color: green;">ON</label></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_line_height" title="-0.1">--</button></td>
+                        <td>
+                            <div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="line_height"></div>
+                        </td>
+                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;" type="button" id="increaseButton_line_height" title="+0.1">+</button></td>
+                    </tr>
+                </table>
+                <ul></ul> <label style="font-size:16px; color: red; font-weight: 600;">Attention! When saving the changed default extension settings, previously made settings for individual domains will be reset to new default settings.</label>
+                <table class="table">
+                    <tr>
+                        <td><button style="font-size:20px;height:30px; font-weight: 700;" type="button" id="defaultButton" title="Reset and save settings to the default settings specified by the extension author">Reset to start default</button></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button style="font-size:20px;height:30px;width:100px; font-weight: 700;" type="button" id="saveForm" title="Save new default settings">Save</button></td>
+                    </tr>
+                </table>
+</body>
 
-<table style="margin-bottom: 40px;">
-    <tr>
-          <td><button style="font-size:20px;height:30px;width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="decreaseButton_001"title = "-0.01">0.01</button></td>
-         <td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px; " type="button" id="decreaseButton_01" title = "-0.1">0.1</button></td>
-          <td><div style="font-size:33px;width: 55px; height: 50px; font-weight: 600; font-stretch: extra-condensed; color: blue; text-align: center; text-align: right; border: none; line-height: 49px;" id="def_text_size"></div></td></td>
-          <td><div style="font-size:33px;width: 45px; height: 50px; font-weight: 600; font-stretch: extra-condensed; color: blue; text-align: right; border: none; line-height: 49px;">vw</div></td></td>
-          <td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px; " type="button" id="increaseButton_01" title = "+0.1">0.1</button></td>
-          <td><button style="font-size:20px;height:30px;width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px; " type="button" id="increaseButton_001"title = "+0.01">0.01</button></td> 
-</tr>
-  </table>
-
-		
-
-<div id="container">
-<ul ><li id="li_0" ><label style="font-size:20px;height:30px;width:100px; font-weight: 700;" class="description" for="def_text_size">Default coefficient of text headings:</label></ul >
- 
-  <table style="margin-top: -20px; margin-bottom: 40px;">
-    <tr>
-      <td><div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h1:</div></td>
-      <td></td><td></td><td></td>
-      <td><div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h2:</div></td>
-      <td></td><td></td><td></td>
-      <td><div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h3:</div></td>
-      <td></td><td></td><td></td>
-      <td><div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h4:</div></td>
-      <td></td><td></td><td></td>
-      <td><div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h5:</div></td>
-      <td></td><td></td><td></td>
-      <td><div style="font-size:20px;height:30px;width:45px; font-weight: 700; line-height: 50px;">h6:</div></td>
-    </tr>
-    <tr>
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h1" title = "-0.1">--</button></td>
-        <td><div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h1"></div></td>
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;"  type="button" id="increaseButton_def_h1" title = "+0.1">+</button></td>
-        <td><div style="width: 40px; height: 50px; border-style: solid; border-width: 1px; border: none;"></div></td>
-
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h2" title = "-0.1">--</button></td>
-       <td><div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h2"></div></td>
-       <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;" type="button" id="increaseButton_def_h2" title = "+0.1">+</button></td>
-        <td><div style="width: 40px; height: 50px; border-style: solid; border-width: 1px; border: none;"></div></td>
-
-
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;"   type="button" id="decreaseButton_def_h3" title = "-0.1">--</button></td>
-       <td><div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h3"></div></td>
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;" type="button" id="increaseButton_def_h3" title = "+0.1">+</button></td>
-        <td><div style="width: 40px; height: 50px; border-style: solid; border-width: 1px; border: none;"></div></td>
-
-
-
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h4" title = "-0.1">--</button></td>
-        <td><div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h4"></div></td>
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;"  type="button" id="increaseButton_def_h4" title = "+0.1">+</button></td>
-        <td><div style="width: 40px; height: 50px; border-style: solid; border-width: 1px; border: none;"></div></td>
-
-
-
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h5" title = "-0.1">--</button></td>
-        <td><div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h5"></div></td>
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;"  type="button" id="increaseButton_def_h5" title = "+0.1">+</button></td>
-        <td><div style="width: 40px; height: 50px; border-style: solid; border-width: 1px; border: none;"></div></td>
-
-
-
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h6" title = "-0.1">--</button></td>
-        <td><div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h6"></div></td>
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;"  type="button" id="increaseButton_def_h6" title = "+0.1">+</button></td>
-    </tr>
-  </table>
-       
- <ul ><li id="li_0" ><label style="font-size:20px;height:30px;width:100px; font-weight: 700;" class="description" for="def_text_size">Default line height :</label></ul > 
-
-<table style="margin-top: -20px; margin-bottom: 40px;">
-    <tr>  
-<td><label class="line height_label" for="line height_label">Line height:</label></td>
-<td></td><td></td>
-<td><label style="font-weight: bold; color: red;">OFF</label></td>
-<td><label class="switch"><input type="checkbox" id="line height_checkbox"><span class="slider round"></span></td>
-<td><label style="font-weight: bold; color: green;">ON</label></td>
- <td></td><td></td><td></td><td></td><td></td> 
-
-      <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_line_height" title = "-0.1">--</button></td>
-      <td><div style="font-size:33px; width: 43px; height: 50px; font-weight: 600; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="line_height"></div></td>
-          <td><button style="font-size:30px;height:30px;width:45px; font-weight: 700; line-height: 0px;"  type="button" id="increaseButton_line_height" title = "+0.1">+</button></td>
-
-    </tr>
-  </table>
-  <ul></ul>
-
-
-<label  style="font-size:16px; color: red; font-weight: 600;">Attention! When saving the changed default extension settings, previously made settings for individual domains will be reset to new default settings.</label>
-
-
-<table class="table">
-    <tr>
- <td><button style="font-size:20px;height:30px; font-weight: 700;" type="button" id="defaultButton">Reset to start default</button></td>
-
-<td></td><td></td><td></td>
-
- <td><button style="font-size:20px;height:30px;width:100px; font-weight: 700;" type="saveForm" id="saveForm" title = "save">Save</button></td>
-    </tr>
-  </table>
-
-		</form>
-	</body>
 </html>
