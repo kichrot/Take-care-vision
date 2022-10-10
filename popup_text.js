@@ -45,7 +45,7 @@ chrome.tabs.query({ lastFocusedWindow: true, active: true }, function(tabs) {
 function display_no_yes(display) {
        document.getElementById('fieldset_font_size').style.display = display;
        document.getElementById('fieldset_header_size_coefficient').style.display = display;
-       document.getElementById('fieldset_line height').style.display = display;
+       document.getElementById('fieldset_line_height').style.display = display;
        document.getElementById('button_default_text').style.display = display;
 }
 
@@ -59,7 +59,7 @@ function display_options(id, level) {
 
 function filling_out_form() { 
     document.getElementById('current_domain').textContent = domain_current;
-    document.getElementById('defaultLabel_Font size').textContent = "Default: " + size_font_def + 'vw';
+    document.getElementById('default_Font_size').textContent = "Default: " + size_font_def + 'vw';
     document.getElementById('text_size').textContent = String(font_size) + 'vw';
     document.getElementById('def_h1').textContent = String(title_coeff_h1);
     document.getElementById('def_h2').textContent = String(title_coeff_h2);
@@ -69,11 +69,11 @@ function filling_out_form() {
     document.getElementById('def_h6').textContent = String(title_coeff_h6);
     document.getElementById('line_height').textContent = String(line_height);
     if (line_height_on_off == 1) {
-        document.getElementById('line height_checkbox').checked = true;
+        document.getElementById('line_height_checkbox').checked = true;
         display_no_yes_table_line_height("block");
     }
     if (line_height_on_off == 0) {
-         document.getElementById('line height_checkbox').checked = false;
+         document.getElementById('line_height_checkbox').checked = false;
          display_no_yes_table_line_height("none");
     }
     if (text_param_on_off == 1) {
@@ -342,7 +342,7 @@ function doZoomOut_line_height() {
 }
 
 function checkLineHeight() {
-    var checkbox = document.getElementById('line height_checkbox');
+    var checkbox = document.getElementById('line_height_checkbox');
     if (checkbox.checked == true) {
         display_no_yes_table_line_height("block");
         line_height_on_off = 1;
@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('decreaseButton_def_h6').onclick = doZoomOut_h6;
     document.getElementById('increaseButton_line_height').onclick = doZoomIn_line_height;
     document.getElementById('decreaseButton_line_height').onclick = doZoomOut_line_height;
-    document.getElementById('line height_checkbox').onclick = checkLineHeight;
+    document.getElementById('line_height_checkbox').onclick = checkLineHeight;
     document.getElementById('blacklist_checkbox').onclick = checkBlackList;
     document.getElementById('Option_text').onclick = openOptions;
 });

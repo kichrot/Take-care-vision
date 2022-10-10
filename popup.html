@@ -1,196 +1,256 @@
 ﻿<!doctype html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Take care vision</title>
-<script src="popup_text.js"></script>
-<script src="popup_zoom.js"></script>
-   
-<style>
-body {overflow-x: hidden; color: #000000; background-color: #3752776e;}
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Take care vision</title>
+	<script src="popup_text.js"></script>
+	<script src="popup_zoom.js"></script>
+	<style>
+	body {overflow-x: hidden; color: #000000; background-color: #3752776e;}
+	
+	button {border-radius: 5px; border-style: solid; border-width: 0.1px;}
+	
+	button:hover {background-color: darkgray;}
+	
+	button:hover > svg {fill: #4c5277;}
+	
+	button:active {-webkit-transform:scale(0.9);	transition: .01s ease-in-out; box-shadow: none !important;}
+	
+	/* Box around the slider */
+	.switch {position: relative; display: inline-block; width: 50px; height: 24px;}
+	
+	.switch input {display: none;}
+	
+	.slider {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: red; -webkit-transition: .2s; transition: .2s;}
+	
+	.slider:before {position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; -webkit-transition: .2s; transition: .2s;}
+	
+	input:checked + .slider {background-color: green;}
+	
+	input:focus + .slider {box-shadow: 0 0 1px #B5E61D;}
+	
+	input:checked + .slider:before {-webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px);}
+	
+	/* Rounded sliders */
+	.slider.round {border-radius: 34px;}
+	
+	.slider.round:before {border-radius: 50%; background-color: black;}
+	
+	.switch label {position: absolute; left: 60px; word-break: keep-all;}
+	
+	label.switch {zoom: 60%; margin-top: 7px;}
+	
+	label {font-weight: normal;}
+	</style>
+</head>
 
-button {border-radius: 5px; border-style: solid; border-width: 0.1px;}
-
-button:hover {background-color: darkgray;}
-
-button:hover > svg {fill: #4c5277;}
-
-button:active {-webkit-transform:scale(0.9);	transition: .01s ease-in-out; box-shadow: none !important;}
-
-/* Box around the slider */
-.switch {position: relative; display: inline-block; width: 50px; height: 24px;}
-
-.switch input {display: none;}
-
-.slider {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: red; -webkit-transition: .2s; transition: .2s;}
-
-.slider:before {position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; -webkit-transition: .2s; transition: .2s;}
-
-input:checked + .slider {background-color: green;}
-
-input:focus + .slider {box-shadow: 0 0 1px #B5E61D;}
-
-input:checked + .slider:before {-webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px);}
-
-/* Rounded sliders */
-.slider.round {border-radius: 34px;}
-
-.slider.round:before {border-radius: 50%; background-color: black;}
-
-.switch label {position: absolute; left: 60px; word-break: keep-all;}
-
-label.switch {zoom: 60%; margin-top: 7px;}
-
-label {font-weight: normal;}
-</style>
- 
-<table style="margin-top: -17px; margin-bottom: -8px;">
-<tr>
-<td><div style="width: 47px;"></div></td>
- <td><div style="font-size:25px; color: black; text-align: center; font-weight: 900; margin-bottom: -10px;" id="titleLabel">Take care vision</div></td>
-<td><button style="font-size:25px; font-weight: 900; padding-left: 27px; border: none; background-color: transparent;" type="button" id="Option_text" title = "Setings"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M23.269 19.743l-11.945-11.945c-.557-.557-.842-1.33-.783-2.115.115-1.485-.395-3.009-1.529-4.146-1.03-1.028-2.376-1.537-3.723-1.537-.507 0-1.015.072-1.505.216l3.17 3.17c.344 1.589-1.959 3.918-3.567 3.567l-3.169-3.17c-.145.492-.218 1-.218 1.509 0 1.347.51 2.691 1.538 3.721 1.135 1.136 2.66 1.645 4.146 1.53.783-.06 1.557.226 2.113.783l11.946 11.944c.468.468 1.102.73 1.763.73 1.368 0 2.494-1.108 2.494-2.494 0-.638-.244-1.276-.731-1.763zm-1.769 2.757c-.553 0-1-.448-1-1s.447-1 1-1c.553 0 1 .448 1 1s-.447 1-1 1zm-7.935-15.289l5.327-5.318c.584-.585 1.348-.878 2.113-.878.764 0 1.529.292 2.113.878.589.587.882 1.357.882 2.125 0 .764-.291 1.528-.873 2.11l-5.326 5.318-4.236-4.235zm-3.53 9.18l-5.227 5.185c-.227.23-.423.488-.574.774l-.301.58-2.1 1.07-.833-.834 1.025-2.146.58-.302c.286-.15.561-.329.79-.558l5.227-5.185 1.413 1.416z"/></svg></button></td>
-</tr>
-</table>	
-
-  </head>
-  <body>
-
-<table >
-<tr>
-<td>Current domain:</td>
-<td><div style="font-size: 14px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="current_domain"></div></td>
-</tr>
-</table>	
-
-<fieldset style="margin-top: -6px; padding: 0px;  border-width: 4px; text-align: center; background-color: #37527721; ">
-  <legend  style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Current domain page zoom:</legend>  
- <table style="zoom: 104%; margin: 3px auto; margin-top: -32px;">
-        <tr>
-           <td><div style="font-size:30px; color: red; width: 60px; height: 30px; border-style: solid; border-width: 1px; font-weight: 900; border: none; line-height: 49px; letter-spacing: -8px;">--</div></td>
-            <td><div style="width: 125px; height: 0px; line-height: 29px; font-size: 16px; border-style: solid; border-width: 1px; border: none;" id="defaultLabel" ></div></td>
-            <td><div style="font-size:30px; color: green; width: 60px; height: 30px; border-style: solid; border-width: 1px; font-weight: 900; border: none; line-height: 49px;">+</div></td>
-       </tr>
-  </table>    
- <table style="zoom: 104%; margin: 1px auto; margin-top: -10px; margin-bottom: -10px;">    
-          <tr>
-          <td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_decreaseButton_1" title = "-1%">1%</button></td>
-<td><button style="font-size:20px;height:30px;width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_decreaseButton_10" title = "-10%">10%</button></td>
-          <td><div style="font-size:33px;width: 100px; height: 50px; border-style: solid; border-width: 1px; font-weight: 600; font-stretch: extra-condensed; color: blue; border: none; line-height: 49px;" id="Zoom_proc">100%</div></td>
-<td><button style="font-size:20px;height:30px;width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_increaseButton_10"title = "+10%">10%</button></td>
-          <td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_increaseButton_1" title = "+1%">1%</button></td>
-</tr>
-</table>
-
-<button style="height:20px; font-size:12px; margin-top: 1px; margin-bottom: 2px;" type="button" id="Zoom_defaultButton">Reset to Default</button>
-</fieldset>
-     
-<fieldset style="padding: 0px;  border-width: 4px; text-align: center; background-color: #37527721; min-height: 46px;">
-  <legend  style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Current domain text options:</legend>
-
-<table style="margin-top: -9px; margin-bottom: -9px;">
- <tr>
-<td>Use for current domain:</td>
-<td></td><td></td>
-<td><label style="font-weight: bold; color: red;">OFF</label></td>
-<td><label class="switch"><input type="checkbox" id="blacklist_checkbox"><span class="slider round"></span></td> 
-<td><label style="font-weight: bold; color: green;">ON</label></td>
-</tr>
-</table>	
-
-
-<fieldset style="padding: 0px; text-align: center; background-color: #3752772b; display: none;" id="fieldset_font_size">
-  <legend  style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Font size:</legend>
-
- <table style="zoom: 104%; margin: 3px auto; margin-top: -34px;">
-        <tr>
-           <td><div style="font-size:30px; color: red; width: 60px; height: 30px; border-style: solid; border-width: 1px; font-weight: 900; border: none; line-height: 49px; letter-spacing: -8px;" id="minusDiv">--</div></td>
-            <td><div style="width: 125px; height: 0px; line-height: 29px; font-size: 16px; border-style: solid; border-width: 1px; border: none;" id="defaultLabel_Font size" ></div></td>
-            <td><div style="font-size:30px; color: green; width: 60px; height: 30px; border-style: solid; border-width: 1px; font-weight: 900; border: none; line-height: 49px;"  id="plusDiv">+</div></td>
-       </tr>
-  </table>    
- <table style="zoom: 104%; margin: 1px auto; margin-top: -10px; margin-bottom: -10px;">    
-          <tr>
-          <td><button style="font-size:20px;height:30px;width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px; type="button" id="decreaseButton_001" title = "-0.01">0.01</button></td>
-          <td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px; type="button" id="decreaseButton_01" title = "-0.1">0.1</button></td>
-          <td><div style="font-size:33px;width: 100px; height: 50px; border-style: solid; border-width: 1px; font-weight: 600; font-stretch: extra-condensed; color: blue; border: none; line-height: 49px;" id="text_size"></div></td>
-          <td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px; " type="button" id="increaseButton_01" title = "+0.1">0.1</button></td>
-          <td><button style="font-size:20px;height:30px;width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px; " type="button" id="increaseButton_001"title = "+0.01">0.01</button></td>
- </tr>
-</table>
-</fieldset>
-
-<fieldset style="padding: 0px; text-align: center; background-color: #3752772b; display: none;" id="fieldset_header_size_coefficient">
-  <legend  style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Text header size coefficient:</legend>
-
-<table style="zoom: 80%; border-style: solid; border-width: 1px; border: none; margin-top: -12px; margin-bottom: -1px; line-height: 17px;">
-        <tr>
-   <td><div style="font-size: 18px; font-weight: 700;" >h1:</div></td>
-         <td><button  style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h1" title = "-0.1">--</button></td>
-          <td><div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h1"></div></td>
-          <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h1" title = "+0.1">+</button></td>
-<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-      
-  
-<td><div style="font-size: 18px; font-weight: 700;" >h2:</div></td>
-         <td><button  style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button"  id="decreaseButton_def_h2" title = "-0.1">--</button></td>
-          <td><div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h2"></div></td>
-          <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h2" title = "+0.1">+</button></td>
-<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-     
-      <td><div style="font-size: 18px; font-weight: 700;" >h3:</div></td>
-         <td><button  style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h3" title = "-0.1">--</button></td>
-          <td><div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h3"></div></td>
-          <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h3" title = "+0.1">+</button></td>
-        </tr>
-
-        <tr>
-<td><div style="font-size: 18px; font-weight: 700;" >h4:</div></td>
-         <td><button  style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h4" title = "-0.1">--</button></td>
-          <td><div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h4"></div></td>
-          <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h4" title = "+0.1">+</button></td>
-<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-      <td><div style="font-size: 18px; font-weight: 700;" >h5:</div></td>
-         <td><button  style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h5" title = "-0.1">--</button></td>
-          <td><div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h5"></div></td>
-          <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h5" title = "+0.1">+</button></td>
-<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-      
-      <td><div style="font-size: 18px; font-weight: 700;" >h6:</div></td>
-         <td><button  style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h6" title = "-0.1">--</button></td>
-          <td><div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h6"></div></td>
-          <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h6" title = "+0.1">+</button></td>
-        </tr>
-</table>
-</fieldset>
-
- <fieldset style="padding: 0px; text-align: center; background-color: #3752772b; min-height: 40px; display: none;" id="fieldset_line height">
-  <legend  style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Line height:</legend>  
- <table style="margin-top: -13px; margin-bottom: -7px;">
-    <tr>
-    <td><div style="zoom: 91%;">Use for current domain:</div></td>
-<td><label style="font-weight: bold; color: red;">OFF</label></td>
-<td><label class="switch"><input type="checkbox" id="line height_checkbox"><span class="slider round"></span></td> 
-<td><label style="font-weight: bold; color: green;">ON</label></td>
-
-  <td><table style="zoom: 80%; border-style: solid; border-width: 1px; border: none; margin-top: -12px; margin-bottom: -10px; line-height: 17px; display: none;" id="table_line_height" >
-  <td><button  style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_line_height" title = "-0.1">--</button></td>
-          <td><div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="line_height"></div></td>
-          <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_line_height" title = "+0.1">+</button></td>
-
-  </table></td>
-    </tr>
-  </table>
-</fieldset>
- <table>
-        <tr>
-         <td><div style="width:88px;"></div></td>
-           <td><button style="height:20px; font-size:12px; margin-top: 1px; margin-bottom: 2px; display: none;" type="button" id="button_default_text">Reset to Default</button></td>
-          <td><div style="width:88px;"></div></td>
-        </tr>
-</table>
-</fieldset>
+<body>
+	<table style="margin-top: -17px; margin-bottom: -8px;">
+		<tr>
+			<td>
+				<div style="width: 47px;"></div>
+			</td>
+			<td>
+				<div style="font-size:25px; color: black; text-align: center; font-weight: 900; margin-bottom: -10px;" id="titleLabel">Take care vision</div>
+			</td>
+			<td><button style="font-size:25px; font-weight: 900; padding-left: 27px; border: none; background-color: transparent;" type="button" id="Option_text" title="Setings"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M23.269 19.743l-11.945-11.945c-.557-.557-.842-1.33-.783-2.115.115-1.485-.395-3.009-1.529-4.146-1.03-1.028-2.376-1.537-3.723-1.537-.507 0-1.015.072-1.505.216l3.17 3.17c.344 1.589-1.959 3.918-3.567 3.567l-3.169-3.17c-.145.492-.218 1-.218 1.509 0 1.347.51 2.691 1.538 3.721 1.135 1.136 2.66 1.645 4.146 1.53.783-.06 1.557.226 2.113.783l11.946 11.944c.468.468 1.102.73 1.763.73 1.368 0 2.494-1.108 2.494-2.494 0-.638-.244-1.276-.731-1.763zm-1.769 2.757c-.553 0-1-.448-1-1s.447-1 1-1c.553 0 1 .448 1 1s-.447 1-1 1zm-7.935-15.289l5.327-5.318c.584-.585 1.348-.878 2.113-.878.764 0 1.529.292 2.113.878.589.587.882 1.357.882 2.125 0 .764-.291 1.528-.873 2.11l-5.326 5.318-4.236-4.235zm-3.53 9.18l-5.227 5.185c-.227.23-.423.488-.574.774l-.301.58-2.1 1.07-.833-.834 1.025-2.146.58-.302c.286-.15.561-.329.79-.558l5.227-5.185 1.413 1.416z"/></svg></button></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td>Current domain:</td>
+			<td>
+				<div style="font-size: 14px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="current_domain"></div>
+			</td>
+		</tr>
+	</table>
+	<fieldset style="margin-top: -6px; padding: 0px;  border-width: 4px; text-align: center; background-color: #37527721; ">
+		<legend style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Current domain page zoom:</legend>
+		<table style="zoom: 104%; margin: 3px auto; margin-top: -32px;">
+			<tr>
+				<td>
+					<div style="font-size:30px; color: red; width: 60px; height: 30px; border-style: solid; border-width: 1px; font-weight: 900; border: none; line-height: 49px; letter-spacing: -8px;">--</div>
+				</td>
+				<td>
+					<div style="width: 125px; height: 0px; line-height: 29px; font-size: 16px; border-style: solid; border-width: 1px; border: none;" id="defaultLabel"></div>
+				</td>
+				<td>
+					<div style="font-size:30px; color: green; width: 60px; height: 30px; border-style: solid; border-width: 1px; font-weight: 900; border: none; line-height: 49px;">+</div>
+				</td>
+			</tr>
+		</table>
+		<table style="zoom: 104%; margin: 1px auto; margin-top: -10px; margin-bottom: -10px;">
+			<tr>
+				<td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_decreaseButton_1" title="-1%">1%</button></td>
+				<td><button style="font-size:20px;height:30px;width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_decreaseButton_10" title="-10%">10%</button></td>
+				<td>
+					<div style="font-size:33px;width: 100px; height: 50px; border-style: solid; border-width: 1px; font-weight: 600; font-stretch: extra-condensed; color: blue; border: none; line-height: 49px;" id="Zoom_proc">100%</div>
+				</td>
+				<td><button style="font-size:20px; height:30px; width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_increaseButton_10" title="+10%">10%</button></td>
+				<td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_increaseButton_1" title="+1%">1%</button></td>
+			</tr>
+		</table> <button style="height:20px; font-size:12px; margin-top: 1px; margin-bottom: 2px;" type="button" id="Zoom_defaultButton">Reset to Default</button> </fieldset>
+	<fieldset style="padding: 0px;  border-width: 4px; text-align: center; background-color: #37527721; min-height: 46px;">
+		<legend style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Current domain text options:</legend>
+		<table style="margin-top: -9px; margin-bottom: -9px;">
+			<tr>
+				<td>Use for current domain:</td>
+				<td></td>
+				<td></td>
+				<td><label style="font-weight: bold; color: red;">OFF</label></td>
+				<td><label class="switch"><input type="checkbox" id="blacklist_checkbox"><span class="slider round"></span></label></td>
+				<td><label style="font-weight: bold; color: green;">ON</label></td>
+			</tr>
+		</table>
+		<fieldset style="padding: 0px; text-align: center; background-color: #3752772b; display: none;" id="fieldset_font_size">
+			<legend style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Font size:</legend>
+			<table style="zoom: 104%; margin: 3px auto; margin-top: -34px;">
+				<tr>
+					<td>
+						<div style="font-size:30px; color: red; width: 60px; height: 30px; border-style: solid; border-width: 1px; font-weight: 900; border: none; line-height: 49px; letter-spacing: -8px;" id="minusDiv">--</div>
+					</td>
+					<td>
+						<div style="width: 125px; height: 0px; line-height: 29px; font-size: 16px; border-style: solid; border-width: 1px; border: none;" id="default_Font_size"></div>
+					</td>
+					<td>
+						<div style="font-size:30px; color: green; width: 60px; height: 30px; border-style: solid; border-width: 1px; font-weight: 900; border: none; line-height: 49px;" id="plusDiv">+</div>
+					</td>
+				</tr>
+			</table>
+			<table style="zoom: 104%; margin: 1px auto; margin-top: -10px; margin-bottom: -10px;">
+				<tr>
+					<td><button style="font-size:20px; height:30px; width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="decreaseButton_001" title="-0.01">0.01</button></td>
+					<td><button style="font-size:20px; height:30px; width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="decreaseButton_01" title="-0.1">0.1</button></td>
+					<td>
+						<div style="font-size:33px; width: 100px; height: 50px; border-style: solid; border-width: 1px; font-weight: 600; font-stretch: extra-condensed; color: blue; border: none; line-height: 49px;" id="text_size"></div>
+					</td>
+					<td><button style="font-size:20px; height:30px; width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="increaseButton_01" title="+0.1">0.1</button></td>
+					<td><button style="font-size:20px; height:30px; width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="increaseButton_001" title="+0.01">0.01</button></td>
+				</tr>
+			</table>
+		</fieldset>
+		<fieldset style="padding: 0px; text-align: center; background-color: #3752772b; display: none;" id="fieldset_header_size_coefficient">
+			<legend style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Text header size coefficient:</legend>
+			<table style="zoom: 80%; border-style: solid; border-width: 1px; border: none; margin-top: -12px; margin-bottom: -1px; line-height: 17px;">
+				<tr>
+					<td>
+						<div style="font-size: 18px; font-weight: 700;">h1:</div>
+					</td>
+					<td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h1" title="-0.1">--</button></td>
+					<td>
+						<div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h1"></div>
+					</td>
+					<td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h1" title="+0.1">+</button></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<div style="font-size: 18px; font-weight: 700;">h2:</div>
+					</td>
+					<td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h2" title="-0.1">--</button></td>
+					<td>
+						<div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h2"></div>
+					</td>
+					<td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h2" title="+0.1">+</button></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<div style="font-size: 18px; font-weight: 700;">h3:</div>
+					</td>
+					<td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h3" title="-0.1">--</button></td>
+					<td>
+						<div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h3"></div>
+					</td>
+					<td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h3" title="+0.1">+</button></td>
+				</tr>
+				<tr>
+					<td>
+						<div style="font-size: 18px; font-weight: 700;">h4:</div>
+					</td>
+					<td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h4" title="-0.1">--</button></td>
+					<td>
+						<div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h4"></div>
+					</td>
+					<td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h4" title="+0.1">+</button></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<div style="font-size: 18px; font-weight: 700;">h5:</div>
+					</td>
+					<td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h5" title="-0.1">--</button></td>
+					<td>
+						<div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h5"></div>
+					</td>
+					<td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h5" title="+0.1">+</button></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<div style="font-size: 18px; font-weight: 700;">h6:</div>
+					</td>
+					<td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_def_h6" title="-0.1">--</button></td>
+					<td>
+						<div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="def_h6"></div>
+					</td>
+					<td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_def_h6" title="+0.1">+</button></td>
+				</tr>
+			</table>
+		</fieldset>
+		<fieldset style="padding: 0px; text-align: center; background-color: #3752772b; min-height: 40px; display: none;" id="fieldset_line_height">
+			<legend style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Line height:</legend>
+			<table style="margin-top: -13px; margin-bottom: -7px;">
+				<tr>
+					<td>
+						<div style="zoom: 91%;">Use for current domain:</div>
+					</td>
+					<td><label style="font-weight: bold; color: red;">OFF</label></td>
+					<td><label class="switch"><input type="checkbox" id="line_height_checkbox"><span class="slider round"></span></label></td>
+					<td><label style="font-weight: bold; color: green;">ON</label></td>
+					<td>
+						<table style="zoom: 80%; border-style: solid; border-width: 1px; border: none; margin-top: -12px; margin-bottom: -10px; line-height: 17px; display: none;" id="table_line_height">
+							<tr>
+								<td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_line_height" title="-0.1">--</button></td>
+								<td>
+									<div style="font-size: 24px; width: 30px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="line_height"></div>
+								</td>
+								<td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_line_height" title="+0.1">+</button></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+		<table>
+			<tr>
+				<td>
+					<div style="width:88px;"></div>
+				</td>
+				<td><button style="height:20px; font-size:12px; margin-top: 1px; margin-bottom: 2px; display: none;" type="button" id="button_default_text">Reset to Default</button></td>
+				<td>
+					<div style="width:88px;"></div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
 </body>
-</html>
 
+</html>
