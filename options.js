@@ -72,7 +72,7 @@ function load_data() {
                 chrome.tabs.reload(tabs[0].id);
             });
         }
-        display_options("defaultLabel_browser_Font size", "In the browser: " + String(fsd) + "vw" + "(" + brauzer_font_size_def + "px" + ")");
+        display_options("default_browser_font_size", "In browser: " + String(fsd) + "vw" + "(" + brauzer_font_size_def + "px" + ")");
         display_options("def_text_size", size_font_def);
         display_options("def_h1", title_coeff_h1);
         display_options("def_h2", title_coeff_h2);
@@ -81,8 +81,8 @@ function load_data() {
         display_options("def_h5", title_coeff_h5);
         display_options("def_h6", title_coeff_h6);
         display_options("line_height", line_height);
-        if (line_height_on_off == 1) document.getElementById('line height_checkbox').checked = true;
-        if (line_height_on_off == 0) document.getElementById('line height_checkbox').checked = false;
+        if (line_height_on_off == 1) document.getElementById('line_height_checkbox').checked = true;
+        if (line_height_on_off == 0) document.getElementById('line_height_checkbox').checked = false;
         if (text_param_on_off == 1) document.getElementById('blacklist_checkbox').checked = true;
         if (text_param_on_off == 0) document.getElementById('blacklist_checkbox').checked = false;
     });
@@ -196,7 +196,7 @@ function doZoomOut_line_height() {
 }
 
 function checkLineHeight() {
-    var checkbox = document.getElementById('line height_checkbox');
+    var checkbox = document.getElementById('line_height_checkbox');
     if (checkbox.checked == true) {
         line_height_on_off = 1;
     } else {
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('decreaseButton_def_h6').onclick = doZoomOut_h6;
     document.getElementById('increaseButton_line_height').onclick = doZoomIn_line_height;
     document.getElementById('decreaseButton_line_height').onclick = doZoomOut_line_height;
-    document.getElementById('line height_checkbox').onclick = checkLineHeight;
+    document.getElementById('line_height_checkbox').onclick = checkLineHeight;
     document.getElementById('blacklist_checkbox').onclick = checkBlackList;
     document.getElementById('saveForm').onclick = Save;
     document.getElementById('defaultButton').onclick = StartDefaultData;
