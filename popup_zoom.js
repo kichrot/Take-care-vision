@@ -1,5 +1,4 @@
-﻿'use strict';
-
+﻿
 tabId = -1;
 
 function displayZoomLevel(level) {
