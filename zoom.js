@@ -12,10 +12,12 @@ var title_coeff_h3;
 var title_coeff_h4;
 var title_coeff_h5;
 var title_coeff_h6;
-var line_height; /* The variable assigns an interline interval/Переменная назначает межстрочный интервал */
+var line_height;
 var line_height_on_off;
 var text_param_on_off;
-var text_param_def = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;1;";
+var page_width;
+var page_shift;
+var text_param_def = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;100;0;";
 
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
@@ -23,9 +25,7 @@ brauzer_font_size_def = Number(brauzer_font_size_def.replace("px", ""));
 
 /* функция масштабирования шрифта на странице */
 function textZoom() {
-    if (text_param_on_off == 0) return 0;
-    var font_size_unit = 'vw'; /* The variable assigns the measurement unit to the font size/Переменная назначает еденицу измерения для размера шрифта */
-    /* px | em | rem | vw | % */
+
     var title_line_height = 1.1; /* The variable assigns an interline interval of the headings/Переменная назначает межстрочный интервал заголовков */
     var title_font_weight = 600; /*  */
     /* 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 */
@@ -37,57 +37,66 @@ function textZoom() {
     }
 
     var css = document.createElement('style');
+    if (text_param_on_off == 1) {
+        css.innerHTML += [
+            `*` +
+            `:not(a,abbr,area,aside,audio,base,body,br,button,button *,canvas,caption,col,command,datalist,` +
+            `details,dd,dl,dt,embed,fieldset,figcaption,form,font,footer,h1,h2,h3,h4,h5,h6,head,header,hr,html,i,iframe,img,` +
+            `h1 *,h2 *,h3 *,h4 *,h5 *,h6 *,` +
+            `input,input *,keygen,label,legend,li,link,map,menu,menuitem,meta,` +
+            `meter,nav,nav *,noindex,noscript,object,optgroup,option,param,params,progress,relative-time,script,` +
+            `select,small,source,style,summary,svg,template,textarea,time,title,track,ul,video,wbr)` +
+            `{`,
+            `font-size: ${font_size}vw !important;`,
+            `${start_comment}line-height: ${line_height} !important;${end_comment}`,
+            `}`,
+
+            `[class*=title]` +
+            `:not([class*="subtitle"],[class*=spoil] div,[class*=block],h1,h2,h3,h4,h5,h6,h1 *,h2 *,h3 *,h4 *,h5 *,h6 *,ul li,` +
+            `a[class*="sidebar"] [class*="title"],a span,span,td *),` +
+            `a[class*=title] {`,
+            `font-size: ${font_size * title_coeff_h2}vw !important;`,
+            `font-weight: ${title_font_weight} !important;`,
+            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `}`,
+
+            `h1,h1 * {`,
+            `font-size: ${font_size * title_coeff_h1}vw !important;`,
+            `font-weight: ${title_font_weight} !important;`,
+            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `}`,
+            `h2,h2 * {`,
+            `font-size: ${font_size * title_coeff_h2}vw !important;`,
+            `font-weight: ${title_font_weight} !important;`,
+            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `}`,
+            `h3,h3 * {`,
+            `font-size: ${font_size * title_coeff_h3}vw !important;`,
+            `font-weight: ${title_font_weight} !important;`,
+            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `}`,
+            `h4,h4 * {`,
+            `font-size: ${font_size * title_coeff_h4}vw !important;`,
+            `font-weight: ${title_font_weight} !important;`,
+            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `}`,
+            `h5,h5 * {`,
+            `font-size: ${font_size * title_coeff_h5}vw !important;`,
+            `font-weight: ${title_font_weight} !important;`,
+            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `}`,
+            `h6,h6 * {`,
+            `font-size:  ${font_size * title_coeff_h6}vw !important;`,
+            `font-weight: ${title_font_weight} !important;`,
+            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `}`,
+        ].join("\n");
+        document.documentElement.appendChild(css);
+    }
     css.innerHTML += [
-        `*` +
-        `:not(a,abbr,area,aside,audio,base,body,br,button,button *,canvas,caption,col,command,datalist,` +
-        `details,dd,dl,dt,embed,fieldset,figcaption,form,font,footer,h1,h2,h3,h4,h5,h6,head,header,hr,html,i,iframe,img,` +
-        `h1 *,h2 *,h3 *,h4 *,h5 *,h6 *,` +
-        `input,input *,keygen,label,legend,li,link,map,menu,menuitem,meta,` +
-        `meter,nav,nav *,noindex,noscript,object,optgroup,option,param,params,progress,relative-time,script,` +
-        `select,small,source,style,summary,svg,template,textarea,time,title,track,ul,video,wbr)` +
-        `{`,
-        `font-size: ${font_size}${font_size_unit} !important;`,
-        `${start_comment}line-height: ${line_height} !important;${end_comment}`,
-        `}`,
-
-        `[class*=title]` +
-        `:not([class*="subtitle"],[class*=spoil] div,[class*=block],h1,h2,h3,h4,h5,h6,h1 *,h2 *,h3 *,h4 *,h5 *,h6 *,ul li,` +
-        `a[class*="sidebar"] [class*="title"],a span,span,td *),` +
-        `a[class*=title] {`,
-        `font-size: ${font_size * title_coeff_h2}${font_size_unit} !important;`,
-        `font-weight: ${title_font_weight} !important;`,
-        `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
-        `}`,
-
-        `h1,h1 * {`,
-        `font-size: ${font_size * title_coeff_h1}${font_size_unit} !important;`,
-        `font-weight: ${title_font_weight} !important;`,
-        `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
-        `}`,
-        `h2,h2 * {`,
-        `font-size: ${font_size * title_coeff_h2}${font_size_unit} !important;`,
-        `font-weight: ${title_font_weight} !important;`,
-        `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
-        `}`,
-        `h3,h3 * {`,
-        `font-size: ${font_size * title_coeff_h3}${font_size_unit} !important;`,
-        `font-weight: ${title_font_weight} !important;`,
-        `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
-        `}`,
-        `h4,h4 * {`,
-        `font-size: ${font_size * title_coeff_h4}${font_size_unit} !important;`,
-        `font-weight: ${title_font_weight} !important;`,
-        `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
-        `}`,
-        `h5,h5 * {`,
-        `font-size: ${font_size * title_coeff_h5}${font_size_unit} !important;`,
-        `font-weight: ${title_font_weight} !important;`,
-        `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
-        `}`,
-        `h6,h6 * {`,
-        `font-size:  ${font_size * title_coeff_h6}${font_size_unit} !important;`,
-        `font-weight: ${title_font_weight} !important;`,
-        `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+        `html {`,
+        `width: ${page_width}% !important;`,
+        `margin-left: ${page_shift}px !important;`,
         `}`,
     ].join("\n");
     document.documentElement.appendChild(css);
@@ -116,6 +125,8 @@ function loadData() {
         line_height = Number(arr[7]);
         line_height_on_off = Number(arr[8]);
         text_param_on_off = Number(arr[9]);
+        page_width = Number(arr[10]);
+        page_shift = Number(arr[11]);
 
         if (typeof result.list_domain !== 'undefined') {
             domain_list = result.list_domain;
@@ -135,6 +146,8 @@ function loadData() {
                         line_height = Number(arr_2[9]);
                         line_height_on_off = Number(arr_2[10]);
                         text_param_on_off = Number(arr_2[11]);
+                        page_width = Number(arr_2[12]);
+                        page_shift = Number(arr_2[13]);
                     }
                 }
             } else {
@@ -150,13 +163,13 @@ function loadData() {
 
 function ReloadAllFrame() {
     var items = document.getElementsByTagName('frame');
-    for (var el of items){
-        el.src  = el.src;
+    for (var el of items) {
+        el.src = el.src;
     }
     var itemss = document.getElementsByTagName('iframe');
-    for (var ell of itemss){
-        ell.src  = ell.src;
-    }   
+    for (var ell of itemss) {
+        ell.src = ell.src;
+    }
 }
 
 function domain() {

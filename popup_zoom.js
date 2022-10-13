@@ -1,4 +1,6 @@
-﻿tabId = -1;
+﻿'use strict';
+
+tabId = -1;
 
 function displayZoomLevel(level) {
     var percentZoom = parseFloat(level) * 100;
@@ -120,4 +122,3 @@ function doSetMode() {
             }
         });
 }
-

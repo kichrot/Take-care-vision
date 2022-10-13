@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 var domain_list;
-var text_param_start = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;1;";
+var text_param_start = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;100;0;";
 var text_param_def;
 var brauzer_font_size_def;
 var size_font_def;
@@ -14,6 +14,9 @@ var title_coeff_h6;
 var line_height;
 var line_height_on_off;
 var text_param_on_off;
+var page_width;
+var page_shift;
+
 var title_coeff_h1_def;
 var title_coeff_h2_def;
 var title_coeff_h3_def;
@@ -23,6 +26,8 @@ var title_coeff_h6_def;
 var line_height_def;
 var line_height_on_off_def;
 var text_param_on_off_def;
+var page_width_def;
+var page_shift_def;
 
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
@@ -37,7 +42,7 @@ function clean_domain_list() {
         let arr = domain_list.split("|");
         for (let i = 0; i < arr.length; i += 1) {
             let arr_2 = arr[i].split(";");
-            if (Number(arr_2[2]) == size_font_def && Number(arr_2[3]) == title_coeff_h1_def && Number(arr_2[4]) == title_coeff_h2_def && Number(arr_2[5]) == title_coeff_h3_def && Number(arr_2[6]) == title_coeff_h4_def && Number(arr_2[7]) == title_coeff_h5_def && Number(arr_2[8]) == title_coeff_h6_def && Number(arr_2[9]) == line_height_def && Number(arr_2[10]) == line_height_on_off_def && Number(arr_2[11]) == text_param_on_off_def) {
+            if (Number(arr_2[2]) == size_font_def && Number(arr_2[3]) == title_coeff_h1_def && Number(arr_2[4]) == title_coeff_h2_def && Number(arr_2[5]) == title_coeff_h3_def && Number(arr_2[6]) == title_coeff_h4_def && Number(arr_2[7]) == title_coeff_h5_def && Number(arr_2[8]) == title_coeff_h6_def && Number(arr_2[9]) == line_height_def && Number(arr_2[10]) == line_height_on_off_def && Number(arr_2[11]) == text_param_on_off_def && Number(arr_2[12]) == page_width_def && Number(arr_2[13]) == page_shift_def) {
                 arr.splice(i, 1);
             }
         }
@@ -65,6 +70,8 @@ function load_data() {
             line_height = Number(arr[7]);
             line_height_on_off = Number(arr[8]);
             text_param_on_off = Number(arr[9]);
+            page_width = Number(arr[10]);
+            page_shift = Number(arr[11]);
         } else {
             text_param_def = String(fsd) + ";" + text_param_start;
             chrome.storage.local.set({ "def_text_param": text_param_def });
@@ -98,7 +105,7 @@ function Save() {
         title_coeff_h5 = Number(document.getElementById("def_h5").textContent);
         title_coeff_h6 = Number(document.getElementById("def_h6").textContent);
         line_height = Number(document.getElementById("line_height").textContent);
-        var tpd = size_font_def + ";" + title_coeff_h1 + ";" + title_coeff_h2 + ";" + title_coeff_h3 + ";" + title_coeff_h4 + ";" + title_coeff_h5 + ";" + title_coeff_h6 + ";" + line_height + ";" + line_height_on_off + ";" + text_param_on_off + ";";
+        var tpd = size_font_def + ";" + title_coeff_h1 + ";" + title_coeff_h2 + ";" + title_coeff_h3 + ";" + title_coeff_h4 + ";" + title_coeff_h5 + ";" + title_coeff_h6 + ";" + line_height + ";" + line_height_on_off + ";" + text_param_on_off + ";" + page_width + ";" + page_shift + ";";
         chrome.storage.local.set({ "def_text_param": tpd });
         if (tpd !== text_param_def) {
             domain_list = "";

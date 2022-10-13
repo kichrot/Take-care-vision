@@ -2,23 +2,23 @@
     "manifest_version": 3,
     "minimum_chrome_version": "88",
     "name": "Take care vision",
-    "description": "Take care vision",
+    "description": "Configuring page display for easy reading, in order to maintain visual health, both for all sites and differentially for domains.",
     "version": "0.1",
     "options_page": "options.html",
     "homepage_url": "https://github.com/kichrot/Take-care-vision",
-    "permissions": [ "tabs", "storage", "activeTab", "scripting" ], 
-
-
-
+    "permissions": [
+        "tabs",
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
     "icons": {
         "48": "icon.png"
     },
-
     "options_ui": {
         "open_in_tab": true,
         "page": "options.html"
     },
-
     "action": {
         "default_icon": {
             "48": "icon.png"
@@ -26,13 +26,17 @@
         "default_popup": "popup.html",
         "default_title": "Take care vision"
     },
-
-    "content_scripts": [ {
+    "content_scripts": [{
         "all_frames": true,
-        "js": [ "zoom.js" ],
+        "js": [
+            "zoom.js"
+        ],
         "match_about_blank": true,
-        "matches": [ "http://*/*", "https://*/*", "file:///*" ], 
+        "matches": [
+            "http://*/*",
+            "https://*/*",
+            "file:///*"
+        ],
         "run_at": "document_start"
-    } ]
-
+    }]
 }

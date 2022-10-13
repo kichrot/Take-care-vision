@@ -1,6 +1,6 @@
 **********************************************************************
 
-                    ZOOM PAGE WE LICENSE NOTICE
+                    "Take care vision" LICENSE NOTICE
 
 "Take care vision" is an extension program for web browsers that allows 
 zooming of web pages. 
