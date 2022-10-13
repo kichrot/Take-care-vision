@@ -92,7 +92,7 @@ function textZoom() {
         document.documentElement.appendChild(css);
     }
     css.innerHTML += [
-        `body {`,
+        `html, body {`,
         `width: ${page_width}% !important;`,
         `margin-left: ${page_shift}px !important;`,
         `}`,

@@ -420,14 +420,14 @@ function doZoomOut_page_width() {
 
 function doZoomIn_page_shift() {
     if (Number.isFinite(page_shift)) {
-        page_shift = doZoom_ps("page_shift", page_shift, 5);
+        page_shift = doZoom_ps("page_shift", page_shift, 2);
         save_domain_list();
     }
 }
 
 function doZoomOut_page_shift() {
     if (Number.isFinite(page_shift)) {
-        page_shift = doZoom_ps("page_shift", page_shift, -5);
+        page_shift = doZoom_ps("page_shift", page_shift, -2);
         save_domain_list();
     }
 }
