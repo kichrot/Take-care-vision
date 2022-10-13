@@ -404,58 +404,62 @@ function checkBlackList() {
 }
 
 function doZoomIn_page_width() {
-    if (document.getElementById('increaseButton_page_width').disabled) {
+    var but = document.getElementById('increaseButton_page_width');
+    if (but.disabled) {
         return;
     }
-    document.getElementById('increaseButton_page_width').disabled = true;
+    but.disabled = true;
     if (Number.isFinite(page_width)) {
         page_width = doZoom_pw("page_width", page_width, 1);
         save_domain_list();
     }
     setTimeout(() => {
-        document.getElementById('increaseButton_page_width').disabled = false;
+        but.disabled = false;
     }, 500);
 }
 
 function doZoomOut_page_width() {
-    if (document.getElementById('decreaseButton_page_width').disabled) {
+    var but = document.getElementById('decreaseButton_page_width');
+    if (but.disabled) {
         return;
     }
-    document.getElementById('decreaseButton_page_width').disabled = true;
+    but.disabled = true;
     if (Number.isFinite(page_width)) {
         page_width = doZoom_pw("page_width", page_width, -1);
         save_domain_list();
     }
     setTimeout(() => {
-        document.getElementById('decreaseButton_page_width').disabled = false;
+        but.disabled = false;
     }, 500);
 }
 
 function doZoomIn_page_shift() {
-    if (document.getElementById('increaseButton_page_shift').disabled) {
+    var but = document.getElementById('increaseButton_page_shift');
+    if (but.disabled) {
         return;
     }
-    document.getElementById('increaseButton_page_shift').disabled = true;
+    but.disabled = true;
     if (Number.isFinite(page_shift)) {
         page_shift = doZoom_ps("page_shift", page_shift, 2);
         save_domain_list();
     }
     setTimeout(() => {
-        document.getElementById('increaseButton_page_shift').disabled = false;
+        but.disabled = false;
     }, 500);
 }
 
 function doZoomOut_page_shift() {
-    if (document.getElementById('decreaseButton_page_shift').disabled) {
+    var but = document.getElementById('decreaseButton_page_shift');
+    if (but.disabled) {
         return;
     }
-    document.getElementById('decreaseButton_page_shift').disabled = true;
+    but.disabled = true;
     if (Number.isFinite(page_shift)) {
         page_shift = doZoom_ps("page_shift", page_shift, -2);
         save_domain_list();
     }
     setTimeout(() => {
-        document.getElementById('decreaseButton_page_shift').disabled = false;
+        but.disabled = false;
     }, 500);
 }
 
