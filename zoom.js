@@ -23,10 +23,8 @@ var text_param_def = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;100;0;";
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
 brauzer_font_size_def = Number(brauzer_font_size_def.replace("px", ""));
 
-/* функция масштабирования шрифта на странице */
+/* функция применения параметров на странице */
 function textZoom() {
-
-    var title_line_height = 1.1; /* The variable assigns an interline interval of the headings/Переменная назначает межстрочный интервал заголовков */
     var title_font_weight = 600; /*  */
     /* 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 */
     var start_comment = " ";
@@ -57,44 +55,44 @@ function textZoom() {
             `a[class*=title] {`,
             `font-size: ${font_size * title_coeff_h2}vw !important;`,
             `font-weight: ${title_font_weight} !important;`,
-            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `${start_comment}line-height: ${line_height} !important;${end_comment}`,
             `}`,
 
             `h1,h1 * {`,
             `font-size: ${font_size * title_coeff_h1}vw !important;`,
             `font-weight: ${title_font_weight} !important;`,
-            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `${start_comment}line-height: ${line_height} !important;${end_comment}`,
             `}`,
             `h2,h2 * {`,
             `font-size: ${font_size * title_coeff_h2}vw !important;`,
             `font-weight: ${title_font_weight} !important;`,
-            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `${start_comment}line-height: ${line_height} !important;${end_comment}`,
             `}`,
             `h3,h3 * {`,
             `font-size: ${font_size * title_coeff_h3}vw !important;`,
             `font-weight: ${title_font_weight} !important;`,
-            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `${start_comment}line-height: ${line_height} !important;${end_comment}`,
             `}`,
             `h4,h4 * {`,
             `font-size: ${font_size * title_coeff_h4}vw !important;`,
             `font-weight: ${title_font_weight} !important;`,
-            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `${start_comment}line-height: ${line_height} !important;${end_comment}`,
             `}`,
             `h5,h5 * {`,
             `font-size: ${font_size * title_coeff_h5}vw !important;`,
             `font-weight: ${title_font_weight} !important;`,
-            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `${start_comment}line-height: ${line_height} !important;${end_comment}`,
             `}`,
             `h6,h6 * {`,
             `font-size:  ${font_size * title_coeff_h6}vw !important;`,
             `font-weight: ${title_font_weight} !important;`,
-            `${start_comment}line-height: ${title_line_height} !important;${end_comment}`,
+            `${start_comment}line-height: ${line_height} !important;${end_comment}`,
             `}`,
         ].join("\n");
         document.documentElement.appendChild(css);
     }
     css.innerHTML += [
-        `html {`,
+        `body {`,
         `width: ${page_width}% !important;`,
         `margin-left: ${page_shift}px !important;`,
         `}`,

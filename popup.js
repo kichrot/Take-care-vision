@@ -61,8 +61,6 @@ function display_options(id, level) {
     document.getElementById(id).value = level;
 }
 
-
-
 function filling_out_form() {
     document.getElementById('current_domain').textContent = domain_current;
     document.getElementById('default_Font_size').textContent = "Default: " + size_font_def + 'vw';
@@ -93,7 +91,6 @@ function filling_out_form() {
     document.getElementById('page_width').textContent = String(page_width);
     document.getElementById('page_shift').textContent = String(page_shift);
 }
-
 
 function load_font_size() {
     if (typeof domain_list !== 'undefined') {
