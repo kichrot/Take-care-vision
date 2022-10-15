@@ -90,7 +90,7 @@ function filling_out_form() {
         document.getElementById('blacklist_checkbox').checked = false;
         display_no_yes("none");
     }
-    document.getElementById('Zoom_css').textContent = String(page_css_zoom*100) + "%";
+    document.getElementById('Zoom_css').textContent = (page_css_zoom*100).toFixed(0) + "%";
     document.getElementById('page_X_shift').textContent = String(page_X_shift);
     document.getElementById('page_Y_shift').textContent = String(page_Y_shift);
 }
@@ -477,7 +477,7 @@ function doZoomIn_page_X_shift() {
 }
 
 function doZoomOut_page_X_shift() {
-    var but = document.getElementById('increaseButton_page_X_shift');
+    var but = document.getElementById('decreaseButton_page_X_shift');
     if (but.disabled) {
         return;
     }
@@ -507,7 +507,7 @@ function doZoomIn_page_Y_shift() {
 }
 
 function doZoomOut_page_Y_shift() {
-    var but = document.getElementById('increaseButton_page_Y_shift');
+    var but = document.getElementById('decreaseButton_page_Y_shift');
     if (but.disabled) {
         return;
     }
