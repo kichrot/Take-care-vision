@@ -15,9 +15,11 @@ var title_coeff_h6;
 var line_height;
 var line_height_on_off;
 var text_param_on_off;
-var page_width;
-var page_shift;
-var text_param_def = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;100;0;";
+var page_css_zoom;
+var page_X_shift;
+var page_Y_shift;
+var text_param_def = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;";
+
 
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
@@ -92,11 +94,9 @@ function textZoom() {
         document.documentElement.appendChild(css);
     }
     css.innerHTML += [
-        `html, body {`,
-        `/*min-width: ${page_width}% !important;*/`,
-        `/*max-width: ${page_width}% !important;*/`,
-        `width: ${page_width}% !important;`,
-        `margin: 0px ${page_shift}px !important;`,
+       `html, body {`,
+       `transform-origin: 0px 0px !important;`,
+       `transform: matrix(${page_css_zoom}, 0, 0, ${page_css_zoom}, ${page_X_shift}, ${page_Y_shift}) !important;`,
         `}`,
     ].join("\n");
     document.documentElement.appendChild(css);
@@ -125,9 +125,9 @@ function loadData() {
         line_height = Number(arr[7]);
         line_height_on_off = Number(arr[8]);
         text_param_on_off = Number(arr[9]);
-        page_width = Number(arr[10]);
-        page_shift = Number(arr[11]);
-
+        page_css_zoom = Number(arr[10]);
+        page_X_shift = Number(arr[11]);
+        page_Y_shift = Number(arr[12]);
         if (typeof result.list_domain !== 'undefined') {
             domain_list = result.list_domain;
             domain_list = domain_list.replace(/\s+/g, '');
@@ -146,8 +146,9 @@ function loadData() {
                         line_height = Number(arr_2[9]);
                         line_height_on_off = Number(arr_2[10]);
                         text_param_on_off = Number(arr_2[11]);
-                        page_width = Number(arr_2[12]);
-                        page_shift = Number(arr_2[13]);
+                        page_css_zoom = Number(arr_2[12]);
+                        page_X_shift = Number(arr_2[13]);
+                        page_Y_shift = Number(arr_2[14]);
                     }
                 }
             } else {
