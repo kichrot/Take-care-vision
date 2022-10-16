@@ -90,7 +90,7 @@ function filling_out_form() {
         document.getElementById('blacklist_checkbox').checked = false;
         display_no_yes("none");
     }
-    document.getElementById('Zoom_css').textContent = (page_css_zoom*100).toFixed(0) + "%";
+    document.getElementById('Zoom_css').textContent = (page_css_zoom*100).toFixed(1) + "%";
     document.getElementById('page_X_shift').textContent = String(page_X_shift);
     document.getElementById('page_Y_shift').textContent = String(page_Y_shift);
 }
@@ -408,9 +408,9 @@ function doZoomIn_page_css_zoom_001() {
     }
     but.disabled = true;
     if (Number.isFinite(page_css_zoom)) {
-        page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, 0.01);
-        page_css_zoom = Number(page_css_zoom.toFixed(2));
-        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(0)) + "%";
+        page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, 0.001);
+        page_css_zoom = Number(page_css_zoom.toFixed(3));
+        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(1)) + "%";
         save_domain_list();
     }
     setTimeout(() => {
@@ -425,9 +425,9 @@ function doZoomOut_page_css_zoom_001() {
     }
     but.disabled = true;
     if (Number.isFinite(page_css_zoom)) {
-        page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, -0.01);
-        page_css_zoom = Number(page_css_zoom.toFixed(2));
-        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(0)) + "%";
+        page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, -0.001);
+        page_css_zoom = Number(page_css_zoom.toFixed(3));
+        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(1)) + "%";
         save_domain_list();
     }
     setTimeout(() => {
@@ -442,9 +442,9 @@ function doZoomIn_page_css_zoom_01() {
     }
     but.disabled = true;
     if (Number.isFinite(page_css_zoom)) {
-        page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, 0.1);
-        page_css_zoom = Number(page_css_zoom.toFixed(2));
-        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(0)) + "%";
+        page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, 0.01);
+        page_css_zoom = Number(page_css_zoom.toFixed(3));
+        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(1)) + "%";
         save_domain_list();
     }
     setTimeout(() => {
@@ -459,9 +459,9 @@ function doZoomOut_page_css_zoom_01() {
     }
     but.disabled = true;
     if (Number.isFinite(page_css_zoom)) {
-        page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, -0.1);
-        page_css_zoom = Number(page_css_zoom.toFixed(2));
-        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(0)) + "%";
+        page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, -0.01);
+        page_css_zoom = Number(page_css_zoom.toFixed(3));
+        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(1)) + "%";
         save_domain_list();
     }
     setTimeout(() => {
