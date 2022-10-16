@@ -204,7 +204,7 @@ function doZoom_size_font(dif) {
     if (Number.isFinite(font_size)) {
         font_size = font_size + dif;
         font_size = font_size.toFixed(2);
-        //document.getElementById('text_size').textContent = String(font_size) + 'vw';
+        document.getElementById('text_size').textContent = String(font_size) + 'vw';
         save_domain_list();
     }
 }
@@ -231,7 +231,7 @@ function doZoom_h(Id, title_coeff, dif) {
     if (Number.isFinite(title_coeff)) {
         var title_coeff_new = title_coeff + dif;
         title_coeff_new = title_coeff_new.toFixed(1);
-        //document.getElementById(Id).textContent = String(title_coeff_new);
+        document.getElementById(Id).textContent = String(title_coeff_new);
         return title_coeff_new;
     }
 }
@@ -240,7 +240,7 @@ function doZoom_lh(Id, line_h, dif) {
     if (Number.isFinite(line_h)) {
         var line_height_new = line_h + dif;
         line_height_new = line_height_new.toFixed(1);
-        //document.getElementById(Id).textContent = String(line_height_new);
+        document.getElementById(Id).textContent = String(line_height_new);
         return line_height_new;
     }
 }
@@ -248,8 +248,8 @@ function doZoom_lh(Id, line_h, dif) {
 function doZoom_css(Id, p_css, dif) {
     if (Number.isFinite(p_css)) {
         var page_css_new = p_css + dif;
-        //page_css_new = page_css_new.toFixed(2);
-        //document.getElementById(Id).textContent = String(page_css_new);
+        //page_css_new = Number(page_css_new.toFixed(2));
+        //document.getElementById(Id).textContent = String(page_css_new * 100).toFixed(0)) + "%";
         return page_css_new;
     }
 }
@@ -409,6 +409,8 @@ function doZoomIn_page_css_zoom_001() {
     but.disabled = true;
     if (Number.isFinite(page_css_zoom)) {
         page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, 0.01);
+        page_css_zoom = Number(page_css_zoom.toFixed(2));
+        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(0)) + "%";
         save_domain_list();
     }
     setTimeout(() => {
@@ -424,6 +426,8 @@ function doZoomOut_page_css_zoom_001() {
     but.disabled = true;
     if (Number.isFinite(page_css_zoom)) {
         page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, -0.01);
+        page_css_zoom = Number(page_css_zoom.toFixed(2));
+        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(0)) + "%";
         save_domain_list();
     }
     setTimeout(() => {
@@ -439,6 +443,8 @@ function doZoomIn_page_css_zoom_01() {
     but.disabled = true;
     if (Number.isFinite(page_css_zoom)) {
         page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, 0.1);
+        page_css_zoom = Number(page_css_zoom.toFixed(2));
+        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(0)) + "%";
         save_domain_list();
     }
     setTimeout(() => {
@@ -454,6 +460,8 @@ function doZoomOut_page_css_zoom_01() {
     but.disabled = true;
     if (Number.isFinite(page_css_zoom)) {
         page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, -0.1);
+        page_css_zoom = Number(page_css_zoom.toFixed(2));
+        document.getElementById('Zoom_css').textContent = String((page_css_zoom * 100).toFixed(0)) + "%";
         save_domain_list();
     }
     setTimeout(() => {
