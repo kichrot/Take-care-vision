@@ -18,7 +18,8 @@ var text_param_on_off;
 var page_css_zoom;
 var page_X_shift;
 var page_Y_shift;
-var text_param_def = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;";
+var page_width;
+var text_param_def = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;";
 
 
 /* определяем размер шрифта браузера по умолчанию */
@@ -97,6 +98,7 @@ function textZoom() {
        `html, body {`,
        `transform-origin: 0px 0px !important;`,
        `transform: matrix(${page_css_zoom}, 0, 0, ${page_css_zoom}, ${page_X_shift}, ${page_Y_shift}) !important;`,
+       `width: ${page_width}% !important;`,
         `}`,
     ].join("\n");
     document.documentElement.appendChild(css);
@@ -128,6 +130,7 @@ function loadData() {
         page_css_zoom = Number(arr[10]);
         page_X_shift = Number(arr[11]);
         page_Y_shift = Number(arr[12]);
+        page_width = Number(arr[13]);
         if (typeof result.list_domain !== 'undefined') {
             domain_list = result.list_domain;
             domain_list = domain_list.replace(/\s+/g, '');
@@ -149,6 +152,7 @@ function loadData() {
                         page_css_zoom = Number(arr_2[12]);
                         page_X_shift = Number(arr_2[13]);
                         page_Y_shift = Number(arr_2[14]);
+                        page_width = Number(arr_2[15]);
                     }
                 }
             } else {
