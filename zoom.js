@@ -36,6 +36,12 @@ function textZoom() {
         start_comment = "/*";
         end_comment = "*/";
     }
+    var start_comment_pw = " ";
+    var end_comment_pw = " ";
+    if (page_width == 100) {
+        start_comment_pw = "/*";
+        end_comment_pw = "*/";
+    }
 
     var css = document.createElement('style');
     if (text_param_on_off == 1) {
@@ -98,7 +104,7 @@ function textZoom() {
        `html, body {`,
        `transform-origin: 0px 0px !important;`,
        `transform: matrix(${page_css_zoom}, 0, 0, ${page_css_zoom}, ${page_X_shift}, ${page_Y_shift}) !important;`,
-       `width: ${page_width}% !important;`,
+       `${start_comment_pw}width: ${page_width}% !important;${end_comment_pw}`,
         `}`,
     ].join("\n");
     document.documentElement.appendChild(css);
