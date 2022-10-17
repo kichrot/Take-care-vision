@@ -146,7 +146,11 @@ function clean_domain_list() {
 
 function loadData() {
     chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
-        if (typeof result.def_text_param !== 'undefined') {
+        if (typeof result.def_text_param == 'undefined') {
+            alert("Attention! \nTo initialize the extension, you need to restart the current page.");
+            open(location, '_self').close();
+            return;
+        } else {
             domain_list = result.list_domain;
             let arr = result.def_text_param.split(";");
             size_font_def = Number(arr[0]);
@@ -175,10 +179,7 @@ function loadData() {
             page_Y_shift = Number(arr[12]);
             page_Y_shift_def = Number(arr[12]);
             page_width = Number(arr[13]);
-            page_width_def = Number(arr[13]);
-        } else {
-            alert("Attention! \nTo initialize the extension, you need to restart the current page.");
-            return;
+            page_width_def = Number(arr[13]);    
         }
         if (typeof domain_list !== 'undefined') {
             domain_list = domain_list.replace(/\s+/g, '');
