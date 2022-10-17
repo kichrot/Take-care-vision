@@ -179,7 +179,7 @@ function loadData() {
             page_Y_shift = Number(arr[12]);
             page_Y_shift_def = Number(arr[12]);
             page_width = Number(arr[13]);
-            page_width_def = Number(arr[13]);    
+            page_width_def = Number(arr[13]);
         }
         if (typeof domain_list !== 'undefined') {
             domain_list = domain_list.replace(/\s+/g, '');
@@ -289,101 +289,213 @@ function doZoomTextDefault() {
 }
 
 function doZoomIn_h1() {
+    var but = document.getElementById('increaseButton_def_h1');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h1)) {
         title_coeff_h1 = doZoom_h("def_h1", title_coeff_h1, 0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomOut_h1() {
+    var but = document.getElementById('decreaseButton_def_h1');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h1)) {
         title_coeff_h1 = doZoom_h("def_h1", title_coeff_h1, -0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomIn_h2() {
+    var but = document.getElementById('increaseButton_def_h2');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h2)) {
         title_coeff_h2 = doZoom_h("def_h2", title_coeff_h2, 0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomOut_h2() {
+    var but = document.getElementById('decreaseButton_def_h2');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h2)) {
         title_coeff_h2 = doZoom_h("def_h2", title_coeff_h2, -0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomIn_h3() {
+    var but = document.getElementById('increaseButton_def_h3');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h3)) {
         title_coeff_h3 = doZoom_h("def_h3", title_coeff_h3, 0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomOut_h3() {
+    var but = document.getElementById('decreaseButton_def_h3');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h3)) {
         title_coeff_h3 = doZoom_h("def_h3", title_coeff_h3, -0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomIn_h4() {
+    var but = document.getElementById('increaseButton_def_h4');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h4)) {
         title_coeff_h4 = doZoom_h("def_h4", title_coeff_h4, 0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomOut_h4() {
+    var but = document.getElementById('decreaseButton_def_h4');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h4)) {
         title_coeff_h4 = doZoom_h("def_h4", title_coeff_h4, -0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomIn_h5() {
+    var but = document.getElementById('increaseButton_def_h5');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h5)) {
         title_coeff_h5 = doZoom_h("def_h5", title_coeff_h5, 0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomOut_h5() {
+    var but = document.getElementById('decreaseButton_def_h5');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h5)) {
         title_coeff_h5 = doZoom_h("def_h5", title_coeff_h5, -0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomIn_h6() {
+    var but = document.getElementById('increaseButton_def_h6');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h6)) {
         title_coeff_h6 = doZoom_h("def_h6", title_coeff_h6, 0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomOut_h6() {
+    var but = document.getElementById('decreaseButton_def_h6');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(title_coeff_h6)) {
         title_coeff_h6 = doZoom_h("def_h6", title_coeff_h6, -0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomIn_line_height() {
+    var but = document.getElementById('increaseButton_line_height');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(line_height)) {
         line_height = doZoom_lh("line_height", line_height, 0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoomOut_line_height() {
+    var but = document.getElementById('decreaseButton_line_height');
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(line_height)) {
         line_height = doZoom_lh("line_height", line_height, -0.1);
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function checkLineHeight() {
@@ -571,7 +683,6 @@ function doZoomOut_page_width() {
         but.disabled = false;
     }, 500);
 }
-
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('increaseButton_001').onclick = doZoomIn_001;
