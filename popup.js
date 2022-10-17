@@ -92,7 +92,7 @@ function filling_out_form() {
         document.getElementById('blacklist_checkbox').checked = false;
         display_no_yes("none");
     }
-    document.getElementById('Zoom_css').textContent = (page_css_zoom*100).toFixed(1) + "%";
+    document.getElementById('Zoom_css').textContent = (page_css_zoom * 100).toFixed(1) + "%";
     document.getElementById('page_X_shift').textContent = String(page_X_shift);
     document.getElementById('page_Y_shift').textContent = String(page_Y_shift);
     document.getElementById('page_width').textContent = String(page_width);
@@ -146,35 +146,40 @@ function clean_domain_list() {
 
 function loadData() {
     chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
-        domain_list = result.list_domain;
-        let arr = result.def_text_param.split(";");
-        size_font_def = Number(arr[0]);
-        title_coeff_h1 = Number(arr[1]);
-        title_coeff_h1_def = Number(arr[1]);
-        title_coeff_h2 = Number(arr[2]);
-        title_coeff_h2_def = Number(arr[2]);
-        title_coeff_h3 = Number(arr[3]);
-        title_coeff_h3_def = Number(arr[3]);
-        title_coeff_h4 = Number(arr[4]);
-        title_coeff_h4_def = Number(arr[4]);
-        title_coeff_h5 = Number(arr[5]);
-        title_coeff_h5_def = Number(arr[5]);
-        title_coeff_h6 = Number(arr[6]);
-        title_coeff_h6_def = Number(arr[6]);
-        line_height = Number(arr[7]);
-        line_height_def = Number(arr[7]);
-        line_height_on_off = Number(arr[8]);
-        line_height_on_off_def = Number(arr[8]);
-        text_param_on_off = Number(arr[9]);
-        text_param_on_off_def = Number(arr[9]);
-        page_css_zoom = Number(arr[10]);
-        page_css_zoom_def = Number(arr[10]);
-        page_X_shift = Number(arr[11]);
-        page_X_shift_def = Number(arr[11]);
-        page_Y_shift = Number(arr[12]);
-        page_Y_shift_def = Number(arr[12]);
-        page_width = Number(arr[13]);
-        page_width_def = Number(arr[13]);
+        if (typeof result.def_text_param !== 'undefined') {
+            domain_list = result.list_domain;
+            let arr = result.def_text_param.split(";");
+            size_font_def = Number(arr[0]);
+            title_coeff_h1 = Number(arr[1]);
+            title_coeff_h1_def = Number(arr[1]);
+            title_coeff_h2 = Number(arr[2]);
+            title_coeff_h2_def = Number(arr[2]);
+            title_coeff_h3 = Number(arr[3]);
+            title_coeff_h3_def = Number(arr[3]);
+            title_coeff_h4 = Number(arr[4]);
+            title_coeff_h4_def = Number(arr[4]);
+            title_coeff_h5 = Number(arr[5]);
+            title_coeff_h5_def = Number(arr[5]);
+            title_coeff_h6 = Number(arr[6]);
+            title_coeff_h6_def = Number(arr[6]);
+            line_height = Number(arr[7]);
+            line_height_def = Number(arr[7]);
+            line_height_on_off = Number(arr[8]);
+            line_height_on_off_def = Number(arr[8]);
+            text_param_on_off = Number(arr[9]);
+            text_param_on_off_def = Number(arr[9]);
+            page_css_zoom = Number(arr[10]);
+            page_css_zoom_def = Number(arr[10]);
+            page_X_shift = Number(arr[11]);
+            page_X_shift_def = Number(arr[11]);
+            page_Y_shift = Number(arr[12]);
+            page_Y_shift_def = Number(arr[12]);
+            page_width = Number(arr[13]);
+            page_width_def = Number(arr[13]);
+        } else {
+            alert("Attention! \nTo initialize the extension, you need to restart the current page.");
+            return;
+        }
         if (typeof domain_list !== 'undefined') {
             domain_list = domain_list.replace(/\s+/g, '');
         } else {
@@ -556,7 +561,7 @@ function doZoomOut_page_width() {
     if (but.disabled) {
         return;
     }
-     but.disabled = true;
+    but.disabled = true;
     if (Number.isFinite(page_width)) {
         page_width = doZoom_css("page_width", page_width, -1);
         save_domain_list();
