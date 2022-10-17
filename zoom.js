@@ -42,7 +42,12 @@ function textZoom() {
         start_comment_pw = "/*";
         end_comment_pw = "*/";
     }
-
+    var start_comment_pzcss = " ";
+    var end_comment_pzcss = " ";
+    if (page_css_zoom == 1 && page_X_shift == 0 && page_Y_shift == 0) {
+        start_comment_pzcss = "/*";
+        end_comment_pzcss = "*/";
+    }
     var css = document.createElement('style');
     if (text_param_on_off == 1) {
         css.innerHTML += [
@@ -101,10 +106,10 @@ function textZoom() {
         document.documentElement.appendChild(css);
     }
     css.innerHTML += [
-       `html, body {`,
-       `transform-origin: 0px 0px !important;`,
-       `transform: matrix(${page_css_zoom}, 0, 0, ${page_css_zoom}, ${page_X_shift}, ${page_Y_shift}) !important;`,
-       `${start_comment_pw}width: ${page_width}% !important;${end_comment_pw}`,
+        `html, body {`,
+        `${start_comment_pzcss}transform-origin: 0px 0px !important;${end_comment_pzcss}`,
+        `${start_comment_pzcss}transform: matrix(${page_css_zoom}, 0, 0, ${page_css_zoom}, ${page_X_shift}, ${page_Y_shift}) !important;${end_comment_pzcss}`,
+        `${start_comment_pw}width: ${page_width}% !important;${end_comment_pw}`,
         `}`,
     ].join("\n");
     document.documentElement.appendChild(css);
