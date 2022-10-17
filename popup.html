@@ -7,43 +7,111 @@
     <script src="popup.js"></script>
     <script src="popup_zoom.js"></script>
     <style>
-    body {overflow-x: hidden; color: #000000; background-color: #3752776e; min-width: 308px;}
-
-        fieldset {border-radius: 8px;}
-    	
-    	button {border-radius: 5px; border-style: solid; border-width: 0.1px;}
-    	
-    	button:hover {background-color: darkgray;}
-    	
-    	button:hover > svg {fill: #4c5277;}
-    	
-    	button:active {-webkit-transform:scale(0.9);	transition: .01s ease-in-out; box-shadow: none !important;}
-    	
-    	/* Box around the slider */
-    	.switch {position: relative; display: inline-block; width: 50px; height: 24px;}
-    	
-    	.switch input {display: none;}
-    	
-    	.slider {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: red; -webkit-transition: .2s; transition: .2s;}
-    	
-    	.slider:before {position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; -webkit-transition: .2s; transition: .2s;}
-    	
-    	input:checked + .slider {background-color: green;}
-    	
-    	input:focus + .slider {box-shadow: 0 0 1px #B5E61D;}
-    	
-    	input:checked + .slider:before {-webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px);}
-    	
-    	/* Rounded sliders */
-    	.slider.round {border-radius: 34px;}
-    	
-    	.slider.round:before {border-radius: 50%; background-color: black;}
-    	
-    	.switch label {position: absolute; left: 60px; word-break: keep-all;}
-    	
-    	label.switch {zoom: 60%; margin-top: 7px;}
-    	
-    	label {font-weight: normal;}
+        body {
+            overflow-x: hidden;
+            color: #000000;
+            background-color: #3752776e;
+            min-width: 308px;
+        }
+        
+        fieldset {
+            border-radius: 8px;
+        }
+        
+        button {
+            border-radius: 5px;
+            border-style: solid;
+            border-width: 0.1px;
+        }
+        
+        button:hover {
+            background-color: darkgray;
+        }
+        
+        button:hover>svg {
+            fill: #4c5277;
+        }
+        
+        button:active {
+            -webkit-transform: scale(0.9);
+            transition: .01s ease-in-out;
+            box-shadow: none !important;
+        }
+        /* Box around the slider */
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .switch input {
+            display: none;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: red;
+            -webkit-transition: .2s;
+            transition: .2s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .2s;
+            transition: .2s;
+        }
+        
+        input:checked+.slider {
+            background-color: green;
+        }
+        
+        input:focus+.slider {
+            box-shadow: 0 0 1px #B5E61D;
+        }
+        
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        /* Rounded sliders */
+        
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+            background-color: black;
+        }
+        
+        .switch label {
+            position: absolute;
+            left: 60px;
+            word-break: keep-all;
+        }
+        
+        label.switch {
+            zoom: 60%;
+            margin-top: 7px;
+        }
+        
+        label {
+            font-weight: normal;
+        }
     </style>
 </head>
 
@@ -92,13 +160,10 @@
                 <td><button style="font-size:20px; height:30px; width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_increaseButton_10" title="+10%">10%</button></td>
                 <td><button style="font-size:20px;height:30px;width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_increaseButton_1" title="+1%">1%</button></td>
             </tr>
-        </table> 
-<button style="height:20px; font-size:12px; margin-top: 1px; margin-bottom: 2px;" type="button" id="Zoom_defaultButton">Reset to Default</button> </fieldset>
+        </table> <button style="height:20px; font-size:12px; margin-top: 1px; margin-bottom: 2px;" type="button" id="Zoom_defaultButton">Reset to Default</button> </fieldset>
     <fieldset style="padding: 0px; text-align: center;  border-width: 4px; background-color: #3752772b; min-height: 42px;">
         <legend style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Page zoom css:</legend>
-
-
-<table style="zoom: 104%; margin: 3px auto; margin-top: -32px;">
+        <table style="zoom: 104%; margin: 3px auto; margin-top: -32px;">
             <tr>
                 <td>
                     <div style="font-size:30px; color: red; width: 60px; height: 30px; border-style: solid; border-width: 1px; font-weight: 900; border: none; line-height: 49px; letter-spacing: -8px;">--</div>
@@ -121,66 +186,62 @@
                 <td><button style="font-size:20px; text-align: center; padding: 0; height:30px; width:37px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_increaseButton_css_01" title="+1%">1%</button></td>
                 <td><button style="font-size:20px; text-align: center; padding: 0; height:30px; width:45px; font-weight: 700; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_increaseButton_css_001" title="+0.1%">0.1%</button></td>
             </tr>
-        </table> 
-
+        </table>
         <table style="zoom: 94%; border-style: solid; border-width: 1px; border: none; margin-top: 10px; line-height: 17px; text-align: left;">
-         <td>
-        <table style="zoom: 80%; border-style: solid; border-width: 1px; border: none; margin-top: -8px; line-height: 17px; text-align: left;">
             <tr>
                 <td>
-                    <div style="font-size: 18px; font-weight: 700; width: 70px;">P.width:</div>
-                </td>
-                <td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_width" title="-1%">--</button></td>
-                <td>
-                    <div style="font-size: 24px; text-align: center; width: 35px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="page_width"></div>
-                </td>
-                <td>
-                    <div style="font-size: 24px; text-align: center; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;">%</div>
-                </td>
-                <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_width" title="+1%">+</button></td>
-                <td>
+                    <table style="zoom: 80%; border-style: solid; border-width: 1px; border: none; margin-top: -8px; line-height: 17px; text-align: left;">
+                        <tr>
+                            <td>
+                                <div style="font-size: 18px; font-weight: 700; width: 70px;">P.width:</div>
+                            </td>
+                            <td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_width" title="-1%">--</button></td>
+                            <td>
+                                <div style="font-size: 24px; text-align: center; width: 35px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="page_width"></div>
+                            </td>
+                            <td>
+                                <div style="font-size: 24px; text-align: center; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;">%</div>
+                            </td>
+                            <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_width" title="+1%">+</button></td>
+                            <td>
+                        </tr>
+                    </table>
+                    </td>
+                    <td>
+                        <div style="width: 8px;"></div>
+                    </td>
+                    <td>
+                        <table style="zoom: 80%; border-style: solid; border-width: 1px; border: none; margin-top: -8px; line-height: 17px; text-align: left;">
+                            <tr>
+                                <td>
+                                    <div style="font-size: 18px; font-weight: 700; width: 63px;">X shift:</div>
+                                </td>
+                                <td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_page_X_shift" title="-1px">--</button></td>
+                                <td>
+                                    <div style="font-size: 24px; text-align: center; width: 42px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="page_X_shift"></div>
+                                </td>
+                                <td>
+                                    <div style="font-size: 24px; text-align: center; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;">px</div>
+                                </td>
+                                <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_page_X_shift" title="+1px">+</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="font-size: 18px; font-weight: 700; width: 63px;">Y shift:</div>
+                                </td>
+                                <td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_page_Y_shift" title="-1px">--</button></td>
+                                <td>
+                                    <div style="font-size: 24px; text-align: center; width: 42px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="page_Y_shift"></div>
+                                </td>
+                                <td>
+                                    <div style="font-size: 24px; text-align: center; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;">px</div>
+                                </td>
+                                <td><button style="font-size:21px; height:20px; width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_page_Y_shift" title="+1px">+</button></td>
+                            </tr>
+                        </table>
+                    </td>
             </tr>
         </table>
-</td>
-
-                 <td>
-                    <div style="width: 8px;"></div>
-                </td>
-
-<td>
-        <table style="zoom: 80%; border-style: solid; border-width: 1px; border: none; margin-top: -8px; line-height: 17px; text-align: left;">
-            <tr>
-                <td>
-                    <div style="font-size: 18px; font-weight: 700; width: 63px;">X shift:</div>
-                </td>
-                <td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_page_X_shift" title="-1px">--</button></td>
-                <td>
-                    <div style="font-size: 24px; text-align: center; width: 42px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="page_X_shift"></div>
-                </td>
-                <td>
-                    <div style="font-size: 24px; text-align: center; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;">px</div>
-                </td>
-                <td><button style="font-size:21px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_page_X_shift" title="+1px">+</button></td>
-
-               <tr>
-            </tr>
-                <td>
-                    <div style="font-size: 18px; font-weight: 700; width: 63px;">Y shift:</div>
-                </td>
-                <td><button style="font-size:20px;height:20px;width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-right: 3px; color: red; letter-spacing: -2px;" type="button" id="decreaseButton_page_Y_shift" title="-1px">--</button></td>
-                <td>
-                    <div style="font-size: 24px; text-align: center; width: 42px; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;" id="page_Y_shift"></div>
-                </td>
-                <td>
-                    <div style="font-size: 24px; text-align: center; height: 20px; font-weight: 600; font-stretch: extra-condensed; border: none; color: blue;">px</div>
-                </td>
-                <td><button style="font-size:21px; height:20px; width:20px; font-weight: 700;padding: 0px; line-height: 0px; padding-top: 1px; color: green;" type="button" id="increaseButton_page_Y_shift" title="+1px">+</button></td>
-            </tr>
-        </table>
-         </td>
-        </table>
-
-
     </fieldset>
     <fieldset style="padding: 0px;  border-width: 4px; text-align: center; background-color: #37527721; min-height: 46px;">
         <legend style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 700;">Text options:</legend>
