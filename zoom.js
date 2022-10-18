@@ -106,9 +106,9 @@ function textZoom() {
         document.documentElement.appendChild(css);
     }
     css.innerHTML += [
-        `html, body {`,
+        `/*html,*/ body {`,
         `transform-origin: 0px 0px !important;`,
-        `transform: matrix(${page_css_zoom}, 0, 0, ${page_css_zoom}, ${page_X_shift}, ${page_Y_shift}) !important;`,
+        `transform: matrix(${page_css_zoom}, 0, 0, ${page_css_zoom}, ${page_X_shift * 2}, ${page_Y_shift* 2}) !important;`,
         `${start_comment_pzcss}height: 100% !important;${end_comment_pzcss}`,
         `width: ${page_width}% !important;`,
         `}`,
