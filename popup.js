@@ -17,6 +17,7 @@ var page_css_zoom;
 var page_X_shift;
 var page_Y_shift;
 var page_width;
+var page_css_on_off;
 
 var title_coeff_h1_def;
 var title_coeff_h2_def;
@@ -31,6 +32,7 @@ var page_css_zoom_def;
 var page_X_shift_def;
 var page_Y_shift_def;
 var page_width_def;
+var page_css_on_off_def;
 
 function openOptions() {
     chrome.runtime.openOptionsPage();
@@ -55,6 +57,12 @@ function display_no_yes(display) {
     document.getElementById('fieldset_font_size').style.display = display;
     document.getElementById('fieldset_header_size_coefficient').style.display = display;
     document.getElementById('fieldset_line_height').style.display = display;
+}
+
+function display_no_yes_Page_zoom_css(display) {
+    document.getElementById('table1_Page_zoom_css').style.display = display;
+    document.getElementById('table2_Page_zoom_css').style.display = display;
+    document.getElementById('table3_Page_zoom_css').style.display = display;
 }
 
 function display_no_yes_table_line_height(display) {
@@ -96,6 +104,14 @@ function filling_out_form() {
     document.getElementById('page_X_shift').textContent = String(page_X_shift);
     document.getElementById('page_Y_shift').textContent = String(page_Y_shift);
     document.getElementById('page_width').textContent = String(page_width);
+    if (page_css_on_off == 1) {
+        document.getElementById('Page_zoom_css_checkbox').checked = true;
+        display_no_yes_Page_zoom_css("block");
+    }
+    if (page_css_on_off == 0) {
+        document.getElementById('Page_zoom_css_checkbox').checked = false;
+        display_no_yes_Page_zoom_css("none");
+    }
 }
 
 function load_font_size() {
@@ -119,6 +135,7 @@ function load_font_size() {
                     page_X_shift = Number(arr_2[13]);
                     page_Y_shift = Number(arr_2[14]);
                     page_width = Number(arr_2[15]);
+                    page_css_on_off = Number(arr_2[16]);
                 }
             }
         } else {
@@ -135,7 +152,7 @@ function clean_domain_list() {
         let arr = domain_list.split("|");
         for (let i = 0; i < arr.length; i += 1) {
             let arr_2 = arr[i].split(";");
-            if (Number(arr_2[2]) == size_font_def && Number(arr_2[3]) == title_coeff_h1_def && Number(arr_2[4]) == title_coeff_h2_def && Number(arr_2[5]) == title_coeff_h3_def && Number(arr_2[6]) == title_coeff_h4_def && Number(arr_2[7]) == title_coeff_h5_def && Number(arr_2[8]) == title_coeff_h6_def && Number(arr_2[9]) == line_height_def && Number(arr_2[10]) == line_height_on_off_def && Number(arr_2[11]) == text_param_on_off_def && Number(arr_2[12]) == page_css_zoom_def && Number(arr_2[13]) == page_X_shift_def && Number(arr_2[14]) == page_Y_shift_def && Number(arr_2[15]) == page_width_def) {
+            if (Number(arr_2[2]) == size_font_def && Number(arr_2[3]) == title_coeff_h1_def && Number(arr_2[4]) == title_coeff_h2_def && Number(arr_2[5]) == title_coeff_h3_def && Number(arr_2[6]) == title_coeff_h4_def && Number(arr_2[7]) == title_coeff_h5_def && Number(arr_2[8]) == title_coeff_h6_def && Number(arr_2[9]) == line_height_def && Number(arr_2[10]) == line_height_on_off_def && Number(arr_2[11]) == text_param_on_off_def && Number(arr_2[12]) == page_css_zoom_def && Number(arr_2[13]) == page_X_shift_def && Number(arr_2[14]) == page_Y_shift_def && Number(arr_2[15]) == page_width_def && Number(arr_2[16]) == page_css_on_off_def) {
                 arr.splice(i, 1);
             }
         }
@@ -180,6 +197,8 @@ function loadData() {
             page_Y_shift_def = Number(arr[12]);
             page_width = Number(arr[13]);
             page_width_def = Number(arr[13]);
+            page_css_on_off = Number(arr[14]);
+            page_css_on_off_def = Number(arr[14]);
         }
         if (typeof domain_list !== 'undefined') {
             domain_list = domain_list.replace(/\s+/g, '');
@@ -196,7 +215,7 @@ function save_domain_list() {
     domain_list = domain_list + " ";
     if (domain_list == "undefined") domain_list = "";
     if (domain_list.includes(";" + domain_current + ";") == false) {
-        domain_list = domain_list + ";" + domain_current + ";" + String(font_size) + ";" + String(title_coeff_h1) + ";" + String(title_coeff_h2) + ";" + String(title_coeff_h3) + ";" + String(title_coeff_h4) + ";" + String(title_coeff_h5) + ";" + String(title_coeff_h6) + ";" + String(line_height) + ";" + String(line_height_on_off) + ";" + String(text_param_on_off) + ";" + String(page_css_zoom) + ";" + String(page_X_shift) + ";" + String(page_Y_shift) + ";" + String(page_width) + ";|";
+        domain_list = domain_list + ";" + domain_current + ";" + String(font_size) + ";" + String(title_coeff_h1) + ";" + String(title_coeff_h2) + ";" + String(title_coeff_h3) + ";" + String(title_coeff_h4) + ";" + String(title_coeff_h5) + ";" + String(title_coeff_h6) + ";" + String(line_height) + ";" + String(line_height_on_off) + ";" + String(text_param_on_off) + ";" + String(page_css_zoom) + ";" + String(page_X_shift) + ";" + String(page_Y_shift) + ";" + String(page_width) + ";" + String(page_css_on_off) + ";|";
     } else {
         let arr = domain_list.split("|");
         for (let i = 0; i < arr.length; i += 1) {
@@ -205,7 +224,7 @@ function save_domain_list() {
             }
         }
         let str = arr.join("|");
-        domain_list = str + ";" + domain_current + ";" + String(font_size) + ";" + String(title_coeff_h1) + ";" + String(title_coeff_h2) + ";" + String(title_coeff_h3) + ";" + String(title_coeff_h4) + ";" + String(title_coeff_h5) + ";" + String(title_coeff_h6) + ";" + String(line_height) + ";" + String(line_height_on_off) + ";" + String(text_param_on_off) + ";" + String(page_css_zoom) + ";" + String(page_X_shift) + ";" + String(page_Y_shift) + ";" + String(page_width) + ";|";
+        domain_list = str + ";" + domain_current + ";" + String(font_size) + ";" + String(title_coeff_h1) + ";" + String(title_coeff_h2) + ";" + String(title_coeff_h3) + ";" + String(title_coeff_h4) + ";" + String(title_coeff_h5) + ";" + String(title_coeff_h6) + ";" + String(line_height) + ";" + String(line_height_on_off) + ";" + String(text_param_on_off) + ";" + String(page_css_zoom) + ";" + String(page_X_shift) + ";" + String(page_Y_shift) + ";" + String(page_width) + ";" + String(page_css_on_off) + ";|";
     }
     domain_list = domain_list.replace(/\s+/g, '');
     clean_domain_list();
@@ -236,6 +255,7 @@ function doZoom_Texe_Default() {
     page_X_shift = page_X_shift_def;
     page_Y_shift = page_Y_shift_def;
     page_width = page_width_def;
+    page_css_on_off = page_css_on_off_def;
     filling_out_form();
     save_domain_list();
 }
@@ -526,6 +546,20 @@ function checkBlackList() {
     }
 }
 
+function check_page_css() {
+    var checkbox = document.getElementById('Page_zoom_css_checkbox');
+    if (checkbox.checked == true) {
+        display_no_yes_Page_zoom_css("block");
+        page_css_on_off = 1;
+        save_domain_list();
+    } else {
+        display_no_yes_Page_zoom_css("none");
+        page_css_on_off = 0;
+        save_domain_list();
+        chrome.tabs.reload();
+    }
+}
+
 function doZoomIn_page_css_zoom_001() {
     var but = document.getElementById('Zoom_increaseButton_css_001');
     if (but.disabled) {
@@ -717,6 +751,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('increaseButton_width').onclick = doZoomIn_page_width;
     document.getElementById('decreaseButton_width').onclick = doZoomOut_page_width;
     document.getElementById('button_default_text').onclick = doZoomTextDefault;
+    document.getElementById('Page_zoom_css_checkbox').onclick = check_page_css;
 });
 
 chrome.storage.onChanged.addListener(function(changes, areaName) {

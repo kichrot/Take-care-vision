@@ -161,9 +161,21 @@
                 <td><button style="font-size:20px;height:30px;width:37px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_increaseButton_1" title="+1%">1%</button></td>
             </tr>
         </table> <button style="height:20px; font-size:12px; margin-top: 1px; margin-bottom: 2px;" type="button" id="Zoom_defaultButton">Reset to Default</button> </fieldset>
-    <fieldset style="padding: 0px; text-align: center;  border-width: 4px; background-color: #3752772b; min-height: 42px;">
+    <fieldset style="padding: 0px; text-align: center;  border-width: 4px; background-color: #3752772b;  min-height: 35px;">
         <legend style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 600;">Page zoom css:</legend>
-        <table style="zoom: 104%; margin: 3px auto; margin-top: -32px;">
+
+        <table style="margin-top: -15px; margin-bottom: -3px;">
+            <tr>
+                <td>Use for current domain:</td>
+                <td></td>
+                <td></td>
+                <td><label style="font-weight: 600; color: red;">OFF</label></td>
+                <td><label class="switch"><input type="checkbox" id="Page_zoom_css_checkbox"><span class="slider round"></span></label></td>
+                <td><label style="font-weight: 600; color: green;">ON</label></td>
+            </tr>
+        </table>
+
+        <table style="zoom: 104%; margin-top: -28px; margin-bottom: 3px; margin-left: 15px; display: none;" id="table1_Page_zoom_css">
             <tr>
                 <td>
                     <div style="font-size:30px; color: red; width: 60px; height: 30px; border-style: solid; border-width: 1px; font-weight: 400; border: none; line-height: 49px; letter-spacing: -8px;">--</div>
@@ -176,7 +188,7 @@
                 </td>
             </tr>
         </table>
-        <table style="zoom: 104%; margin: 1px auto; margin-top: -10px; margin-bottom: -10px;">
+        <table style="zoom: 104%; margin: 1px auto; margin-top: -10px; margin-bottom: -10px;display: none;" id="table2_Page_zoom_css">
             <tr>
                 <td><button style="font-size:20px; text-align: center; padding: 0; height:30px; width:45px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_decreaseButton_css_001" title="-0.1%">0.1%</button></td>
                 <td><button style="font-size:20px; text-align: center; padding: 0; height:30px; width:37px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_decreaseButton_css_01" title="-1%">1%</button></td>
@@ -187,7 +199,7 @@
                 <td><button style="font-size:20px; text-align: center; padding: 0; height:30px; width:45px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px;" type="button" id="Zoom_increaseButton_css_001" title="+0.1%">0.1%</button></td>
             </tr>
         </table>
-        <table style="zoom: 94%; border-style: solid; border-width: 1px; border: none; margin-top: 10px; line-height: 17px; text-align: left;">
+        <table style="zoom: 94%; border-style: solid; border-width: 1px; border: none; margin-top: 10px; line-height: 17px; text-align: left; display: none;" id="table3_Page_zoom_css">
             <tr>
                 <td>
                     <table style="zoom: 80%; border-style: solid; border-width: 1px; border: none; margin-top: -8px; line-height: 17px; text-align: left;">
@@ -243,9 +255,9 @@
             </tr>
         </table>
     </fieldset>
-    <fieldset style="padding: 0px;  border-width: 4px; text-align: center; background-color: #37527721; min-height: 46px;">
+    <fieldset style="padding: 0px;  border-width: 4px; text-align: center; background-color: #37527721; min-height: 35px;">
         <legend style="height: 30px; line-height: 26px; font-size: 16px; font-weight: 600;">Text options:</legend>
-        <table style="margin-top: -9px; margin-bottom: -9px;">
+        <table style="margin-top: -15px; margin-bottom: -9px;">
             <tr>
                 <td>Use for current domain:</td>
                 <td></td>
