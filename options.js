@@ -35,6 +35,12 @@ var page_Y_shift_def;
 var page_width_def;
 var page_css_on_off_def;
 
+
+var elements = document.querySelectorAll('[localization]');
+elements.forEach(function(el) {
+    el.innerText = chrome.i18n.getMessage(el.getAttribute('localization'))
+})
+
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
 brauzer_font_size_def = Number(brauzer_font_size_def.replace("px", ""));
@@ -87,7 +93,7 @@ function load_data() {
                 chrome.tabs.reload(tabs[0].id);
             });
         }
-        display_options("default_browser_font_size", "In browser: " + String(fsd) + "vw" + "(" + brauzer_font_size_def + "px" + ")");
+        display_options("default_browser_font_size", chrome.i18n.getMessage("In_browser") + " " + String(fsd) + "vw" + "(" + brauzer_font_size_def + "px" + ")");
         display_options("def_text_size", size_font_def);
         display_options("def_h1", title_coeff_h1);
         display_options("def_h2", title_coeff_h2);
@@ -104,7 +110,7 @@ function load_data() {
 }
 
 function Save() {
-    if (confirm("Attention! \nYour individual settings, for specific domains, will be reset to the default new settings. \nYou agree?")) {
+    if (confirm(chrome.i18n.getMessage("save_message"))) {
         size_font_def = Number(document.getElementById("def_text_size").textContent);
         title_coeff_h1 = Number(document.getElementById("def_h1").textContent);
         title_coeff_h2 = Number(document.getElementById("def_h2").textContent);
@@ -123,7 +129,7 @@ function Save() {
 }
 
 function StartDefaultData() {
-    if (confirm("Attention! \nAll extension settings will be reset to the initial settings. Your individual settings for certain domains will be reset to the new default settings. \nYou agree?")) {
+    if (confirm(chrome.i18n.getMessage("Initial_settings_message"))) {
         var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
         fsd = Number(fsd.toFixed(2))
         text_param_def = String(fsd) + ";" + text_param_start;

@@ -1,10 +1,9 @@
 ﻿<!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Take care vision</title>
-    <script src="options.js"></script>
+    <title localization="Take_care_vision_title"></title>
     <style>
         body {
             overflow-x: hidden;
@@ -106,19 +105,19 @@
 </head>
 
 <body>
-    <h1 style="margin-top: -5px;"><a>Take care vision</a></h1>
+    <h1  style="margin-top: -5px;" localization="Take_care_vision_title"></h1>
     <table>
         <tr>
-            <td><label>Use for all domains:</label></td>
+            <td><label localization="Use_for_all_domains"></label></td>
             <td></td>
             <td></td>
-            <td><label style="font-weight: 600; color: red;">OFF</label></td>
+            <td><label style="font-weight: 600; color: red;" localization="NO"></label></td>
             <td><label class="switch"><input type="checkbox" id="blacklist_checkbox"><span class="slider round"></span></label></td>
-            <td><label style="font-weight: 600; color: green;">ON</label></td>
+            <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
         </tr>
     </table>
     <ul>
-        <li><label style="font-size:20px;height:30px;width:100px; font-weight: 400;">Default text size:  </label></ul>
+        <li><label style="font-size:20px;height:30px;width:100px; font-weight: 400;" localization="Default_text_size"></label></ul>
     <table style="margin-top: -20px; margin-bottom: -20px;">
         <tr>
             <td>
@@ -147,7 +146,7 @@
         </tr>
     </table>
     <ul>
-        <li><label style="font-size:20px;height:30px;width:100px; font-weight: 400;">Default coefficient of text headings:</label></ul>
+        <li><label style="font-size:20px;height:30px;width:100px; font-weight: 400;" localization="Default_coefficient_of_text_headings"></label></ul>
     <table style="margin-top: -20px; margin-bottom: 40px;">
         <tr>
             <td>
@@ -233,15 +232,15 @@
         </tr>
     </table>
     <ul>
-        <li><label style="font-size:20px;height:30px;width:100px; font-weight: 400;">Default line height:</label></ul>
+        <li><label style="font-size:20px;height:30px;width:100px; font-weight: 400;" localization="Default_line_height"></label></ul>
     <table style="margin-top: -20px; margin-bottom: 40px;">
         <tr>
-            <td><label>Line height:</label></td>
+            <td><label localization="Use_for_all_domains"></label></td>
             <td></td>
             <td></td>
-            <td><label style="font-weight: 600; color: red;">OFF</label></td>
+            <td><label style="font-weight: 600; color: red;" localization="NO"></label></td>
             <td><label class="switch"><input type="checkbox" id="line_height_checkbox"><span class="slider round"></span></label></td>
-            <td><label style="font-weight: 600; color: green;">ON</label></td>
+            <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
             <td></td>
             <td></td>
             <td></td>
@@ -254,16 +253,16 @@
             <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_line_height" title="+0.1">+</button></td>
         </tr>
     </table>
-    <ul></ul> <label style="font-size:16px; color: red; font-weight: 400;">Attention! When saving the changed default extension settings, previously made settings for individual domains will be reset to new default settings.</label>
+    <ul></ul> <label style="font-size:16px; color: red; font-weight: 400;" localization="Attention_saving"></label>
     <table class="table">
         <tr>
-            <td><button style="font-size:20px;height:30px; font-weight: 400;" type="button" id="defaultButton" title="Reset and save settings to the default settings specified by the extension author">Reset to start default</button></td>
+            <td><button style="font-size:20px; height:30px; font-weight: 400;" type="button" id="defaultButton" title="Reset and save settings to the default settings specified by the extension author" localization="Reset_to_start_default"></button></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><button style="font-size:20px;height:30px;width:100px; font-weight: 400;" type="button" id="saveForm" title="Save new default settings">Save</button></td>
+            <td><button style="font-size:20px;height:30px; width: 112px; font-weight: 400;" type="button" id="saveForm" title="Save new default settings" localization="Save"></button></td>
         </tr>
     </table>
 </body>
-
+    <script src="options.js"></script>
 </html>

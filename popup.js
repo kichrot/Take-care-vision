@@ -34,6 +34,11 @@ var page_Y_shift_def;
 var page_width_def;
 var page_css_on_off_def;
 
+var elements = document.querySelectorAll('[localization]');
+elements.forEach(function(el) {
+    el.innerText = chrome.i18n.getMessage(el.getAttribute('localization'))
+})
+
 function openOptions() {
     chrome.runtime.openOptionsPage();
     setTimeout(() => window.close(), 300);
@@ -75,7 +80,8 @@ function display_options(id, level) {
 
 function filling_out_form() {
     document.getElementById('current_domain').textContent = domain_current;
-    document.getElementById('default_Font_size').textContent = "Default: " + size_font_def + 'vw';
+    document.getElementById('default_Font_size').textContent = chrome.i18n.getMessage("Default") + " " + size_font_def + 'vw';
+    document.getElementById('defaultLabel_css').textContent = chrome.i18n.getMessage("Default") + " " + "100%";
     document.getElementById('text_size').textContent = String(font_size) + 'vw';
     document.getElementById('def_h1').textContent = String(title_coeff_h1);
     document.getElementById('def_h2').textContent = String(title_coeff_h2);

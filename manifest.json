@@ -2,6 +2,7 @@
     "manifest_version": 3,
     "minimum_chrome_version": "88",
     "name": "Take care vision",
+    "default_locale": "en",
     "description": "Configuring page display for easy reading, in order to maintain visual health, both for all sites and differentially for domains.",
     "version": "0.1",
     "options_page": "options.html",

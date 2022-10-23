@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var percentDefaultZoom =
                 parseFloat(zoomSettings.defaultZoomFactor) * 100;
             document.getElementById('defaultLabel').textContent =
-                'Default: ' + percentDefaultZoom.toFixed(0) + '%';
+                chrome.i18n.getMessage("Default") + " " + percentDefaultZoom.toFixed(0) + '%';
         });
 
         chrome.tabs.getZoom(tabId, displayZoomLevel);
