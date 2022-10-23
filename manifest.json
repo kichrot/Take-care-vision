@@ -1,9 +1,9 @@
 ﻿{
     "manifest_version": 3,
     "minimum_chrome_version": "88",
-    "name": "Take care vision",
+    "name": "__MSG_Take_care_vision_title__",
     "default_locale": "en",
-    "description": "Configuring page display for easy reading, in order to maintain visual health, both for all sites and differentially for domains.",
+    "description": "__MSG_Take_care_vision_description__",
     "version": "0.1",
     "options_page": "options.html",
     "homepage_url": "https://github.com/kichrot/Take-care-vision",
@@ -25,7 +25,7 @@
             "48": "icon.png"
         },
         "default_popup": "popup.html",
-        "default_title": "Take care vision"
+        "default_title": "__MSG_Take_care_vision_title__"
     },
     "content_scripts": [{
         "all_frames": true,

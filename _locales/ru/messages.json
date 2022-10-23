@@ -1,5 +1,6 @@
 ﻿{
    "Take_care_vision_title": {"message": "Берегите зрение"},
+   "Take_care_vision_description": {"message": "Настройка отображения страниц для удобного чтения, чтобы сохранять зрение, как для всех сайтов, так и для отдельных доменов."},
    "Use_for_all_domains": {"message": "Использовать для всех доменов:"},
    "NO": {"message": "НЕТ"},
    "YES": {"message": "ДА"},

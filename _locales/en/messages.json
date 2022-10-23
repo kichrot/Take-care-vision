@@ -1,5 +1,6 @@
 ﻿{
    "Take_care_vision_title": {"message": "Take care vision"},
+   "Take_care_vision_description": {"message": "Configuring page display for easy reading, in order to maintain visual health, both for all sites and differentially for domains."},
    "Use_for_all_domains": {"message": "Use for all domains:"},
    "NO": {"message": "NO"},
    "YES": {"message": "YES"},
