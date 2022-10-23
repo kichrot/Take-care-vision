@@ -170,7 +170,7 @@ function clean_domain_list() {
 function loadData() {
     chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
         if (typeof result.def_text_param == 'undefined') {
-            alert("Attention! \nTo initialize the extension, you need to restart the current page.");
+            alert(chrome.i18n.getMessage("Attention_initialize_extension")); 
             open(location, '_self').close();
             return;
         } else {

@@ -25,5 +25,6 @@
    "Font_size": {"message": "Размер шрифта:"},
    "Headers_size_coefficient": {"message": "Коэффициенты размера заголовков:"},
    "Line_height": {"message": "Высота строки:"},
-   "Default": {"message": "По умолчанию:"}
+   "Default": {"message": "По умолчанию:"},
+   "Attention_initialize_extension": {"message": "Внимание! \nДля инициализации расширения необходимо перезапустить текущую страницу."}
 }

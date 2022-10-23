@@ -25,5 +25,6 @@
    "Font_size": {"message": "Font size:"},
    "Headers_size_coefficient": {"message": "Headers size coefficient:"},
    "Line_height": {"message": "Line height:"},
-   "Default": {"message": "Default:"}
+   "Default": {"message": "Default:"},
+   "Attention_initialize_extension": {"message": "Attention! \nTo initialize the extension, you need to restart the current page."}
 }
