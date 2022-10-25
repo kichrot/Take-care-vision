@@ -40,6 +40,8 @@ var elements = document.querySelectorAll('[localization]');
 elements.forEach(function(el) {
     el.innerText = chrome.i18n.getMessage(el.getAttribute('localization'))
 })
+document.getElementById("defaultButton").title = chrome.i18n.getMessage("Title_defaultButton");
+document.getElementById("saveForm").title = chrome.i18n.getMessage("Title_saveForm");
 
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
