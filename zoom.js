@@ -137,6 +137,7 @@ function loadData() {
         }
         let arr = text_param_def.split(";");
         font_size_def = Number(arr[0]);
+        font_size = Number(arr[0]);
         title_coeff_h1 = Number(arr[1]);
         title_coeff_h2 = Number(arr[2]);
         title_coeff_h3 = Number(arr[3]);
