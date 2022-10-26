@@ -125,9 +125,7 @@ function textZoom() {
 
 function loadData() {
     chrome.storage.local.get(["list_domain", "def_text_param"], function(result) {
-
         if (typeof result.def_text_param !== 'undefined') {
-
             text_param_def = result.def_text_param;
         } else {
             font_size_def = 1 / (screen.width / 100) * brauzer_font_size_def;

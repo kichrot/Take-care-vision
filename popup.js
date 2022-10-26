@@ -324,26 +324,15 @@ function doZoom_css(Id, p_css, dif) {
     }
 }
 
-function doZoomIn_001() {
-    doZoom_size_font(0.01);
-}
+function doZoomIn_001() {doZoom_size_font(0.01);}
 
-function doZoomOut_001() {
-    doZoom_size_font(-0.01);
-}
+function doZoomOut_001() {doZoom_size_font(-0.01);}
 
-function doZoomIn_01() {
-    doZoom_size_font(0.1);
-}
+function doZoomIn_01() {doZoom_size_font(0.1);}
 
-function doZoomOut_01() {
-    doZoom_size_font(-0.1);
-}
+function doZoomOut_01() {doZoom_size_font(-0.1);}
 
-function doZoomTextDefault() {
-    doZoom_Texe_Default();
-    chrome.tabs.reload();
-}
+function doZoomTextDefault() {doZoom_Texe_Default(); chrome.tabs.reload();}
 
 function doZoomIn_h1() {
     var but = document.getElementById('increaseButton_def_h1');
