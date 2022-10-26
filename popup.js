@@ -127,21 +127,21 @@ function load_font_size() {
             for (let i = 0; i < arr.length; i += 1) {
                 if (arr[i].includes(";" + domain_current + ";")) {
                     let arr_2 = arr[i].split(";");
-                    font_size = Number(arr_2[2]);
-                    title_coeff_h1 = Number(arr_2[3]);
-                    title_coeff_h2 = Number(arr_2[4]);
-                    title_coeff_h3 = Number(arr_2[5]);
-                    title_coeff_h4 = Number(arr_2[6]);
-                    title_coeff_h5 = Number(arr_2[7]);
-                    title_coeff_h6 = Number(arr_2[8]);
-                    line_height = Number(arr_2[9]);
-                    line_height_on_off = Number(arr_2[10]);
-                    text_param_on_off = Number(arr_2[11]);
-                    page_css_zoom = Number(arr_2[12]);
-                    page_X_shift = Number(arr_2[13]);
-                    page_Y_shift = Number(arr_2[14]);
-                    page_width = Number(arr_2[15]);
-                    page_css_on_off = Number(arr_2[16]);
+                    if (arr_2[2] !== '') font_size = Number(arr_2[2]);
+                    if (arr_2[3] !== '') title_coeff_h1 = Number(arr_2[3]);
+                    if (arr_2[4] !== '') title_coeff_h2 = Number(arr_2[4]);
+                    if (arr_2[5] !== '') title_coeff_h3 = Number(arr_2[5]);
+                    if (arr_2[6] !== '') title_coeff_h4 = Number(arr_2[6]);
+                    if (arr_2[7] !== '') title_coeff_h5 = Number(arr_2[7]);
+                    if (arr_2[8] !== '') title_coeff_h6 = Number(arr_2[8]);
+                    if (arr_2[9] !== '') line_height = Number(arr_2[9]);
+                    if (arr_2[10] !== '') line_height_on_off = Number(arr_2[10]);
+                    if (arr_2[11] !== '') text_param_on_off = Number(arr_2[11]);
+                    if (arr_2[12] !== '') page_css_zoom = Number(arr_2[12]);
+                    if (arr_2[13] !== '') page_X_shift = Number(arr_2[13]);
+                    if (arr_2[14] !== '') page_Y_shift = Number(arr_2[14]);
+                    if (arr_2[15] !== '') page_width = Number(arr_2[15]);
+                    if (arr_2[16] !== '') page_css_on_off = Number(arr_2[16]);
                 }
             }
         } else {
@@ -158,7 +158,7 @@ function clean_domain_list() {
         let arr = domain_list.split("|");
         for (let i = 0; i < arr.length; i += 1) {
             let arr_2 = arr[i].split(";");
-            if (Number(arr_2[2]) == size_font_def && Number(arr_2[3]) == title_coeff_h1_def && Number(arr_2[4]) == title_coeff_h2_def && Number(arr_2[5]) == title_coeff_h3_def && Number(arr_2[6]) == title_coeff_h4_def && Number(arr_2[7]) == title_coeff_h5_def && Number(arr_2[8]) == title_coeff_h6_def && Number(arr_2[9]) == line_height_def && Number(arr_2[10]) == line_height_on_off_def && Number(arr_2[11]) == text_param_on_off_def && Number(arr_2[12]) == page_css_zoom_def && Number(arr_2[13]) == page_X_shift_def && Number(arr_2[14]) == page_Y_shift_def && Number(arr_2[15]) == page_width_def && Number(arr_2[16]) == page_css_on_off_def) {
+            if (arr_2[2] == "" && arr_2[3] == "" && arr_2[4] == "" && arr_2[5] == "" && arr_2[6] == "" && arr_2[7] == "" && arr_2[8] == "" && arr_2[9] == "" && arr_2[10] == "" && arr_2[11] == "" && arr_2[12] == "" && arr_2[13] == "" && arr_2[14] == "" && arr_2[15] == "" && arr_2[16] == "") {
                 arr.splice(i, 1);
             }
         }
@@ -170,12 +170,13 @@ function clean_domain_list() {
 function loadData() {
     chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
         if (typeof result.def_text_param == 'undefined') {
-            alert(chrome.i18n.getMessage("Attention_initialize_extension")); 
+            alert(chrome.i18n.getMessage("Attention_initialize_extension"));
             open(location, '_self').close();
             return;
         } else {
             domain_list = result.list_domain;
             let arr = result.def_text_param.split(";");
+            font_size = Number(arr[0]);
             size_font_def = Number(arr[0]);
             title_coeff_h1 = Number(arr[1]);
             title_coeff_h1_def = Number(arr[1]);
@@ -218,10 +219,40 @@ function loadData() {
 loadData();
 
 function save_domain_list() {
+    var font_size_save = font_size;
+    var title_coeff_h1_save = title_coeff_h1;
+    var title_coeff_h2_save = title_coeff_h2;
+    var title_coeff_h3_save = title_coeff_h3;
+    var title_coeff_h4_save = title_coeff_h4;
+    var title_coeff_h5_save = title_coeff_h5;
+    var title_coeff_h6_save = title_coeff_h6;
+    var line_height_save = line_height;
+    var line_height_on_off_save = line_height_on_off;
+    var text_param_on_off_save = text_param_on_off;
+    var page_css_zoom_save = page_css_zoom;
+    var page_X_shift_save = page_X_shift;
+    var page_Y_shift_save = page_Y_shift;
+    var page_width_save = page_width;
+    var page_css_on_off_save = page_css_on_off;
+    if (font_size == size_font_def) font_size_save = "";
+    if (title_coeff_h1 == title_coeff_h1_def) title_coeff_h1_save = "";
+    if (title_coeff_h2 == title_coeff_h2_def) title_coeff_h2_save = "";
+    if (title_coeff_h3 == title_coeff_h3_def) title_coeff_h3_save = "";
+    if (title_coeff_h4 == title_coeff_h4_def) title_coeff_h4_save = "";
+    if (title_coeff_h5 == title_coeff_h5_def) title_coeff_h5_save = "";
+    if (title_coeff_h6 == title_coeff_h6_def) title_coeff_h6_save = "";
+    if (line_height == line_height_def) line_height_save = "";
+    if (line_height_on_off == line_height_on_off_def) line_height_on_off_save = "";
+    if (text_param_on_off == text_param_on_off_def) text_param_on_off_save = "";
+    if (page_css_zoom == page_css_zoom_def) page_css_zoom_save = "";
+    if (page_X_shift == page_X_shift_def) page_X_shift_save = "";
+    if (page_Y_shift == page_Y_shift_def) page_Y_shift_save = "";
+    if (page_width == page_width_def) page_width_save = "";
+    if (page_css_on_off == page_css_on_off_def) page_css_on_off_save = "";
     domain_list = domain_list + " ";
     if (domain_list == "undefined") domain_list = "";
     if (domain_list.includes(";" + domain_current + ";") == false) {
-        domain_list = domain_list + ";" + domain_current + ";" + String(font_size) + ";" + String(title_coeff_h1) + ";" + String(title_coeff_h2) + ";" + String(title_coeff_h3) + ";" + String(title_coeff_h4) + ";" + String(title_coeff_h5) + ";" + String(title_coeff_h6) + ";" + String(line_height) + ";" + String(line_height_on_off) + ";" + String(text_param_on_off) + ";" + String(page_css_zoom) + ";" + String(page_X_shift) + ";" + String(page_Y_shift) + ";" + String(page_width) + ";" + String(page_css_on_off) + ";|";
+        domain_list = domain_list + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";|";
     } else {
         let arr = domain_list.split("|");
         for (let i = 0; i < arr.length; i += 1) {
@@ -230,7 +261,7 @@ function save_domain_list() {
             }
         }
         let str = arr.join("|");
-        domain_list = str + ";" + domain_current + ";" + String(font_size) + ";" + String(title_coeff_h1) + ";" + String(title_coeff_h2) + ";" + String(title_coeff_h3) + ";" + String(title_coeff_h4) + ";" + String(title_coeff_h5) + ";" + String(title_coeff_h6) + ";" + String(line_height) + ";" + String(line_height_on_off) + ";" + String(text_param_on_off) + ";" + String(page_css_zoom) + ";" + String(page_X_shift) + ";" + String(page_Y_shift) + ";" + String(page_width) + ";" + String(page_css_on_off) + ";|";
+        domain_list = str + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";|";
     }
     domain_list = domain_list.replace(/\s+/g, '');
     clean_domain_list();
