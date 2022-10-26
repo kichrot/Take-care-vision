@@ -79,6 +79,7 @@ function display_options(id, level) {
 }
 
 function filling_out_form() {
+    document.getElementById('Option_text').title = chrome.i18n.getMessage("Title_Setings");
     document.getElementById('current_domain').textContent = domain_current;
     document.getElementById('default_Font_size').textContent = chrome.i18n.getMessage("Default") + " " + size_font_def + 'vw';
     document.getElementById('defaultLabel_css').textContent = chrome.i18n.getMessage("Default") + " " + "100%";

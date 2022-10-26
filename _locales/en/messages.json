@@ -26,5 +26,6 @@
    "Default": {"message": "Default:"},
    "Attention_initialize_extension": {"message": "Attention! \nTo initialize the extension, you need to restart the current page."},
    "Title_defaultButton": {"message": "Reset to the settings set by the extension author and save the settings"},
-   "Title_saveForm": {"message": "Save new default settings"}
+   "Title_saveForm": {"message": "Save new default settings"},
+   "Title_Setings": {"message": "Setings"}
 }
