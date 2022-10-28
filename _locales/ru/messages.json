@@ -30,5 +30,6 @@
    "Title_Setings": {"message": "Настройки"},
    "Export_import": {"message": "Экспорт/импорт данных расширения:"},
    "Export_data": {"message": "Экспорт"},
-   "Import_data": {"message": "Импорт"}
+   "Import_data": {"message": "Импорт"},
+   "Import_data_message": {"message": "Внимание! \nПри импорте данных из файла все текущие настройки расширения будут заменены, на импортированные настройки. \nВы согласны?"}
 }

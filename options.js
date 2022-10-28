@@ -240,16 +240,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // чтение данных из файла в хранилище расширения
 document.getElementById('loadDataFile').addEventListener('click', async() => {
-    try {
-        const [fileHandle] = await window.showOpenFilePicker();
-        const file = await fileHandle.getFile();
-        const fileContent = await file.text();
-        let arr = fileContent.split('"');
-        chrome.storage.local.set({ "def_text_param": arr[0] });
-        chrome.storage.local.set({ "list_domain": arr[1] });
-    } catch { return }
-    //chrome.runtime.reload ();
-    setTimeout(load_data, 300);
+    if (confirm(chrome.i18n.getMessage("Import_data_message"))) {
+        try {
+            const [fileHandle] = await window.showOpenFilePicker();
+            const file = await fileHandle.getFile();
+            const fileContent = await file.text();
+            let arr = fileContent.split('"');
+            chrome.storage.local.set({ "def_text_param": arr[0] });
+            chrome.storage.local.set({ "list_domain": arr[1] });
+        } catch { return }
+        //chrome.runtime.reload ();
+        setTimeout(load_data, 300);
+    }
 });
 
 // завись данных из хранилища в файл
