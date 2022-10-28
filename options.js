@@ -35,11 +35,11 @@ var page_Y_shift_def;
 var page_width_def;
 var page_css_on_off_def;
 
-
+// локализация
 var elements = document.querySelectorAll('[localization]');
 elements.forEach(function(el) {
     el.innerText = chrome.i18n.getMessage(el.getAttribute('localization'))
-})
+});
 document.getElementById("defaultButton").title = chrome.i18n.getMessage("Title_defaultButton");
 document.getElementById("saveForm").title = chrome.i18n.getMessage("Title_saveForm");
 
@@ -146,77 +146,41 @@ function doZoom_size(dif, Id, discharge) {
         String((Number(document.getElementById(Id).textContent) + dif).toFixed(discharge));
 }
 
-function doZoomIn_001() {
-    doZoom_size(0.01, 'def_text_size', 2);
-}
+function doZoomIn_001() { doZoom_size(0.01, 'def_text_size', 2); }
 
-function doZoomOut_001() {
-    doZoom_size(-0.01, 'def_text_size', 2);
-}
+function doZoomOut_001() { doZoom_size(-0.01, 'def_text_size', 2); }
 
-function doZoomIn_01() {
-    doZoom_size(0.1, 'def_text_size', 2);
-}
+function doZoomIn_01() { doZoom_size(0.1, 'def_text_size', 2); }
 
-function doZoomOut_01() {
-    doZoom_size(-0.1, 'def_text_size', 2);
-}
+function doZoomOut_01() { doZoom_size(-0.1, 'def_text_size', 2); }
 
-function doZoomIn_h1() {
-    doZoom_size(0.1, 'def_h1', 1);
-}
+function doZoomIn_h1() { doZoom_size(0.1, 'def_h1', 1); }
 
-function doZoomOut_h1() {
-    doZoom_size(-0.1, 'def_h1', 1);
-}
+function doZoomOut_h1() { doZoom_size(-0.1, 'def_h1', 1); }
 
-function doZoomIn_h2() {
-    doZoom_size(0.1, 'def_h2', 1);
-}
+function doZoomIn_h2() { doZoom_size(0.1, 'def_h2', 1); }
 
-function doZoomOut_h2() {
-    doZoom_size(-0.1, 'def_h2', 1);
-}
+function doZoomOut_h2() { doZoom_size(-0.1, 'def_h2', 1); }
 
-function doZoomIn_h3() {
-    doZoom_size(0.1, 'def_h3', 1);
-}
+function doZoomIn_h3() { doZoom_size(0.1, 'def_h3', 1); }
 
-function doZoomOut_h3() {
-    doZoom_size(-0.1, 'def_h3', 1);
-}
+function doZoomOut_h3() { doZoom_size(-0.1, 'def_h3', 1); }
 
-function doZoomIn_h4() {
-    doZoom_size(0.1, 'def_h4', 1);
-}
+function doZoomIn_h4() { doZoom_size(0.1, 'def_h4', 1); }
 
-function doZoomOut_h4() {
-    doZoom_size(-0.1, 'def_h4', 1);
-}
+function doZoomOut_h4() { doZoom_size(-0.1, 'def_h4', 1); }
 
-function doZoomIn_h5() {
-    doZoom_size(0.1, 'def_h5', 1);
-}
+function doZoomIn_h5() { doZoom_size(0.1, 'def_h5', 1); }
 
-function doZoomOut_h5() {
-    doZoom_size(-0.1, 'def_h5', 1);
-}
+function doZoomOut_h5() { doZoom_size(-0.1, 'def_h5', 1); }
 
-function doZoomIn_h6() {
-    doZoom_size(0.1, 'def_h6', 1);
-}
+function doZoomIn_h6() { doZoom_size(0.1, 'def_h6', 1); }
 
-function doZoomOut_h6() {
-    doZoom_size(-0.1, 'def_h6', 1);
-}
+function doZoomOut_h6() { doZoom_size(-0.1, 'def_h6', 1); }
 
-function doZoomIn_line_height() {
-    doZoom_size(0.1, 'line_height', 1);
-}
+function doZoomIn_line_height() { doZoom_size(0.1, 'line_height', 1); }
 
-function doZoomOut_line_height() {
-    doZoom_size(-0.1, 'line_height', 1);
-}
+function doZoomOut_line_height() { doZoom_size(-0.1, 'line_height', 1); }
 
 function checkLineHeight() {
     var checkbox = document.getElementById('line_height_checkbox');
@@ -234,6 +198,19 @@ function checkBlackList() {
     } else {
         text_param_on_off = 0;
     }
+}
+
+function Save_Data() {
+    chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
+        var result = result.def_text_param + " " + result.list_domain,
+            obj = {
+                "filename": "localStorage.txt",
+                "url": 'data:application;charset=utf-8,' + encodeURIComponent(result),
+                "conflictAction": "prompt",
+                "saveAs": true
+            };
+        chrome.downloads.download(obj);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -261,6 +238,34 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('defaultButton').onclick = StartDefaultData;
 });
 
+// чтение данных из файла в хранилище расширения
+document.getElementById('loadDataFile').addEventListener('click', async() => {
+    try {
+        const [fileHandle] = await window.showOpenFilePicker();
+        const file = await fileHandle.getFile();
+        const fileContent = await file.text();
+        let arr = fileContent.split('"');
+        chrome.storage.local.set({ "def_text_param": arr[0] });
+        chrome.storage.local.set({ "list_domain": arr[1] });
+    } catch { return }
+    //chrome.runtime.reload ();
+    setTimeout(load_data, 300);
+});
+
+// завись данных из хранилища в файл
+document.getElementById('saveDataFile').addEventListener('click', async() => {
+    const options = { suggestedName: 'Take_care_vision.txt', types: [{ description: 'Text', accept: { 'text/plain': '.txt' } }], excludeAcceptAllOption: true }
+    var S_Data;
+    chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
+        S_Data = result.def_text_param + '\"' + result.list_domain + '\"';
+    });
+    try {
+        const fileHandle = await window.showSaveFilePicker(options);
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(S_Data);
+        await writableStream.close();
+    } catch { return }
+});
 
 (function() {
     setTimeout(load_data, 300);
