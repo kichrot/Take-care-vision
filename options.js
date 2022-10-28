@@ -256,7 +256,7 @@ document.getElementById('loadDataFile').addEventListener('click', async() => {
 
 // завись данных из хранилища в файл
 document.getElementById('saveDataFile').addEventListener('click', async() => {
-    const options = { suggestedName: 'Take_care_vision.txt', types: [{ description: 'Text', accept: { 'text/plain': '.txt' } }], excludeAcceptAllOption: true }
+    const options = { suggestedName: 'Take_care_vision_' + new Date().toLocaleString() + '.txt', types: [{ description: 'Text', accept: { 'text/plain': '.txt' } }], excludeAcceptAllOption: true }
     var S_Data;
     chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
         S_Data = result.def_text_param + '\"' + result.list_domain + '\"';
