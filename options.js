@@ -96,6 +96,13 @@ function DeleteDomain() {
     }
 }
 
+function OpenDomain() {
+    var objSel = document.getElementById("List_domain_no_default");
+    if (objSel.selectedIndex != -1) {
+        window.open("http://" + objSel.options[objSel.selectedIndex].value, "_blank");
+    }
+}
+
 function clean_domain_list() {
     if (typeof domain_list !== 'undefined') {
         let arr = domain_list.split("|");
@@ -285,6 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('saveForm').onclick = Save;
     document.getElementById('defaultButton').onclick = StartDefaultData;
     document.getElementById('Delete_domain').onclick = DeleteDomain;
+    document.getElementById('Open_domain').onclick = OpenDomain;
 });
 
 // чтение данных из файла в хранилище расширения

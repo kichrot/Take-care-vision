@@ -33,5 +33,6 @@
    "Import_data": {"message": "Импорт"},
    "Import_data_message": {"message": "Внимание! \nПри импорте данных из файла все текущие настройки расширения будут заменены, на импортированные настройки. \nВы согласны?"},
    "List_domains": {"message": "Домены с индивидуальными настройками:"},
-   "Delete_domain": {"message": "Удалить"}
+   "Delete_domain": {"message": "Удалить"},
+   "Open_domain": {"message": "Открыть"}
 }
