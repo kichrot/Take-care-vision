@@ -51,6 +51,51 @@ function display_options(id, level) {
     document.getElementById(id).textContent = String(level);
 }
 
+function filling_domain_list() {
+    chrome.storage.local.get(['list_domain'], function(result) {
+        if (typeof result.list_domain !== 'undefined') {
+            let arr = result.list_domain.split("|");
+            var objSel = document.getElementById("List_domain_no_default");
+            for (let i = 0; i < arr.length; i += 1) {
+                let arr_2 = arr[i].split(";");
+                if (typeof arr_2[1] !== 'undefined') {
+                    objSel.options[objSel.options.length] = new Option("", arr_2[1]);
+                }
+            }
+            // сортировка по алфавиту и нумерация списка доменов
+            var items = [...objSel.querySelectorAll("option")];
+            items.sort((a, b) => a.value == b.text ? 0 : a.value < b.value ? -1 : 1);
+            var i = 0;
+            items.forEach(item => {
+                objSel.appendChild(item);
+                item.text = String(i = i + 1) + ".        " + item.value
+            });
+        }
+    });
+}
+
+function DeleteDomain() {
+    var objSel = document.getElementById("List_domain_no_default");
+    if (objSel.selectedIndex != -1) {
+        if (typeof domain_list !== 'undefined') {
+            let arr = domain_list.split("|");
+            for (let i = 0; i < arr.length; i += 1) {
+                let arr_2 = arr[i].split(";");
+                if (arr_2[1] == objSel.options[objSel.selectedIndex].value) {
+                    arr.splice(i, 1);
+                    break;
+                }
+            }
+            let str = arr.join("|");
+            domain_list = str;
+        }
+        chrome.storage.local.set({ "list_domain": domain_list }, function() {
+            objSel.options.length = 0;
+            filling_domain_list();
+        });
+    }
+}
+
 function clean_domain_list() {
     if (typeof domain_list !== 'undefined') {
         let arr = domain_list.split("|");
@@ -108,6 +153,9 @@ function load_data() {
         if (line_height_on_off == 0) document.getElementById('line_height_checkbox').checked = false;
         if (text_param_on_off == 1) document.getElementById('blacklist_checkbox').checked = true;
         if (text_param_on_off == 0) document.getElementById('blacklist_checkbox').checked = false;
+        var objSel = document.getElementById("List_domain_no_default");
+        objSel.options.length = 0;
+        filling_domain_list();
     });
 }
 
@@ -236,6 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('blacklist_checkbox').onclick = checkBlackList;
     document.getElementById('saveForm').onclick = Save;
     document.getElementById('defaultButton').onclick = StartDefaultData;
+    document.getElementById('Delete_domain').onclick = DeleteDomain;
 });
 
 // чтение данных из файла в хранилище расширения

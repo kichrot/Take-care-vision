@@ -31,5 +31,7 @@
    "Export_import": {"message": "Export/import of extension data:"},
    "Export_data": {"message": "Export"},
    "Import_data": {"message": "Import"},
-   "Import_data_message": {"message": "Attention! \nWhen importing data from a file, all current extension settings will be replaced by imported settings. \nYou agree?"}
+   "Import_data_message": {"message": "Attention! \nWhen importing data from a file, all current extension settings will be replaced by imported settings. \nYou agree?"},
+   "List_domains": {"message": "Domains with individual settings:"},
+   "Delete_domain": {"message": "Delete"}
 }
