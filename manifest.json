@@ -14,7 +14,10 @@
         "scripting"
     ],
     "icons": {
-        "48": "icon.png"
+        "48": "icon_red.png"
+    },
+    "background": {
+        "service_worker": "background.js"
     },
     "options_ui": {
         "open_in_tab": true,
@@ -22,7 +25,7 @@
     },
     "action": {
         "default_icon": {
-            "48": "icon.png"
+            "48": "icon_red.png"
         },
         "default_popup": "popup.html",
         "default_title": "__MSG_Take_care_vision_title__"
