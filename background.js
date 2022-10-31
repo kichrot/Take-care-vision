@@ -1,4 +1,9 @@
-﻿function url_tab() {
+﻿chrome.runtime.onInstalled.addListener(() => {
+    chrome.storage.local.set({"def_text_param": "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;"});
+    chrome.storage.local.set({"list_domain": ""});
+});
+
+function url_tab() {
     chrome.storage.local.get(['list_domain'], function(result) {
         chrome.tabs.query({ lastFocusedWindow: true, active: true }, function(tabs) {
             try {
