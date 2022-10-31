@@ -2,6 +2,7 @@
 
 var domain_list;
 var domain_current;
+var brauzer_font_size_def;
 var font_size;
 var size_font_def;
 var title_coeff_h1;
@@ -33,6 +34,11 @@ var page_X_shift_def;
 var page_Y_shift_def;
 var page_width_def;
 var page_css_on_off_def;
+
+
+/* определяем размер шрифта браузера по умолчанию */
+brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
+brauzer_font_size_def = Number(brauzer_font_size_def.replace("px", ""));
 
 var elements = document.querySelectorAll('[localization]');
 elements.forEach(function(el) {
@@ -177,8 +183,15 @@ function loadData() {
         } else {
             domain_list = result.list_domain;
             let arr = result.def_text_param.split(";");
-            font_size = Number(arr[0]);
-            size_font_def = Number(arr[0]);
+            var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
+            fsd = Number(fsd.toFixed(2));
+            if (arr[0] == "") {
+                font_size = fsd; 
+                size_font_def = fsd;
+            } else {
+                font_size = Number(arr[0]);
+                size_font_def = Number(arr[0]);
+            }
             title_coeff_h1 = Number(arr[1]);
             title_coeff_h1_def = Number(arr[1]);
             title_coeff_h2 = Number(arr[2]);

@@ -120,12 +120,12 @@ function clean_domain_list() {
 function load_data() {
     chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
         var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
-        fsd = Number(fsd.toFixed(2))
+        fsd = Number(fsd.toFixed(2));
         if (typeof result.def_text_param !== 'undefined') {
             domain_list = result.list_domain;
             text_param_def = result.def_text_param;
             let arr = text_param_def.split(";");
-            size_font_def = Number(arr[0]);
+            if (arr[0] == "") {size_font_def = fsd;} else {size_font_def = Number(arr[0]);}
             title_coeff_h1 = Number(arr[1]);
             title_coeff_h2 = Number(arr[2]);
             title_coeff_h3 = Number(arr[3]);
