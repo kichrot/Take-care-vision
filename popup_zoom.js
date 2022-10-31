@@ -4,7 +4,6 @@ tabId = -1;
 function displayZoomLevel(level) {
     var percentZoom = parseFloat(level) * 100;
     var zoom_percent_str = percentZoom.toFixed(0) + '%';
-
     document.getElementById('Zoom_proc').textContent = zoom_percent_str;
 }
 

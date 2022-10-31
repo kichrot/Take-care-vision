@@ -10,6 +10,7 @@ function url_tab() {
                 var cd = tabs[0].url.split(/\/+/)[1];
                 if (tabs[0].url.includes("chrome://") || (tabs[0].url.includes("http://") == false && tabs[0].url.includes("https://") == false)) {
                     chrome.action.setIcon({ path: { "48": "/icons/icon_red.png" } });
+                    chrome.action.setBadgeText({text: ""});
                     return;
                 }
                 if (result.list_domain.includes(";" + cd + ";") == true) {
@@ -17,6 +18,9 @@ function url_tab() {
                 } else {
                     chrome.action.setIcon({ path: { "48": "/icons/icon_blue.png" } });
                 }
+                chrome.tabs.getZoom(function (zoomFactor) {
+                    chrome.action.setBadgeText({text: String(zoomFactor * 100)});
+                }); 
             } catch { return }
         });
     });
