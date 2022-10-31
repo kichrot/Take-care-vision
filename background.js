@@ -19,7 +19,7 @@ function url_tab() {
                     chrome.action.setIcon({ path: { "48": "/icons/icon_blue.png" } });
                 }
                 chrome.tabs.getZoom(function (zoomFactor) {
-                    chrome.action.setBadgeText({text: String(zoomFactor * 100)});
+                    chrome.action.setBadgeText({text: String(Math.round(zoomFactor * 100))});
                 }); 
             } catch { return }
         });
