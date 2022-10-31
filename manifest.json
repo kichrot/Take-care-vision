@@ -14,7 +14,7 @@
         "scripting"
     ],
     "icons": {
-        "48": "icon_red.png"
+        "48": "/icons/icon_red.png"
     },
     "background": {
         "service_worker": "background.js"
@@ -25,7 +25,7 @@
     },
     "action": {
         "default_icon": {
-            "48": "icon_red.png"
+            "48": "/icons/icon_red.png"
         },
         "default_popup": "popup.html",
         "default_title": "__MSG_Take_care_vision_title__"

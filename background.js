@@ -9,13 +9,13 @@ function url_tab() {
             try {
                 var cd = tabs[0].url.split(/\/+/)[1];
                 if (tabs[0].url.includes("chrome://") || (tabs[0].url.includes("http://") == false && tabs[0].url.includes("https://") == false)) {
-                    chrome.action.setIcon({ path: { "48": "icon_red.png" } });
+                    chrome.action.setIcon({ path: { "48": "/icons/icon_red.png" } });
                     return;
                 }
                 if (result.list_domain.includes(";" + cd + ";") == true) {
-                    chrome.action.setIcon({ path: { "48": "icon_green.png" } });
+                    chrome.action.setIcon({ path: { "48": "/icons/icon_green.png" } });
                 } else {
-                    chrome.action.setIcon({ path: { "48": "icon_blue.png" } });
+                    chrome.action.setIcon({ path: { "48": "/icons/icon_blue.png" } });
                 }
             } catch { return }
         });
