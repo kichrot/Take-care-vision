@@ -10,7 +10,7 @@ function url_tab() {
                 var cd = tabs[0].url.split(/\/+/)[1];
                 if (tabs[0].url.includes("chrome://") || (tabs[0].url.includes("http://") == false && tabs[0].url.includes("https://") == false)) {
                     chrome.action.setIcon({ path: { "48": "/icons/icon_red.png" } });
-                    chrome.action.setBadgeText({text: ""});
+                    chrome.action.setBadgeText({text: ''});
                     return;
                 }
                 if (result.list_domain.includes(";" + cd + ";") == true) {
@@ -26,6 +26,10 @@ function url_tab() {
     });
 }
 
+function zoomChangeListener(zoomChangeInfo) {
+    setTimeout(function() {url_tab(); }, 300);
+}
+
 chrome.tabs.onActivated.addListener((activeInfo) => {
     setTimeout(function() {url_tab(); }, 300);
 });
@@ -37,3 +41,5 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 chrome.tabs.onRemoved.addListener((removeInfo) => {
     setTimeout(function() {url_tab(); }, 300);
 });
+
+chrome.tabs.onZoomChange.addListener(zoomChangeListener);
