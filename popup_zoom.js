@@ -1,4 +1,4 @@
-﻿tabId = -1;
+﻿var tabId = -1;
 
 function displayZoomLevel(level) {
     var percentZoom = parseFloat(level) * 100;
@@ -45,9 +45,7 @@ function changeZoomByFactorDelta(factorDelta) {
         return;
     chrome.tabs.getZoom(tabId, function(zoomFactor) {
         var newZoomFactor = factorDelta + zoomFactor;
-        chrome.tabs.setZoom(tabId, newZoomFactor, function() {
-            if (chrome.runtime.lastError) console.log(chrome.runtime.lastError.message);
-        });
+        chrome.tabs.setZoom(tabId, newZoomFactor);
     });
 }
 
@@ -69,10 +67,7 @@ function doZoomOut_10() {
 
 function doZoomDefault() {
     if (tabId == -1) return;
-    chrome.tabs.setZoom(tabId, 0, function() {
-        if (chrome.runtime.lastError)
-            console.log(chrome.runtime.lastError.message);
-    });
+    chrome.tabs.setZoom(tabId, 0);
 }
 
 function doSetMode() {
@@ -90,10 +85,5 @@ function doSetMode() {
             scopeVal = scopeRadios[i].value;
     }
     if (!modeVal || !scopeVal) { return; }
-    chrome.tabs.setZoomSettings(tabId, { mode: modeVal, scope: scopeVal },
-        function() {
-            if (chrome.runtime.lastError) {
-                console.log('doSetMode() error: ' + chrome.runtime.lastError.message);
-            }
-        });
+    chrome.tabs.setZoomSettings(tabId, { mode: modeVal, scope: scopeVal });
 }
