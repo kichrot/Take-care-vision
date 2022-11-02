@@ -45,10 +45,7 @@ elements.forEach(function(el) {
     el.innerText = chrome.i18n.getMessage(el.getAttribute('localization'))
 })
 
-function openOptions() {
-    chrome.runtime.openOptionsPage();
-    setTimeout(() => window.close(), 300);
-}
+function openOptions() {chrome.runtime.openOptionsPage();}
 
 function url_domain(data) {
     var a = document.createElement('a');
@@ -792,6 +789,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('decreaseButton_width').onclick = doZoomOut_page_width;
     document.getElementById('button_default_text').onclick = doZoomTextDefault;
     document.getElementById('Page_zoom_css_checkbox').onclick = check_page_css;
+});
+
+chrome.tabs.onActivated.addListener((activeInfo) => {
+    setTimeout(() => window.close(), 300);
 });
 
 chrome.storage.onChanged.addListener(function(changes, areaName) {
