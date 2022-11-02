@@ -283,11 +283,41 @@
                     </tr>
                 </table>
             </td>
-            <tr>
+            <td>
+               <table style="margin-top: -96px;">
+                <tr>
+                <td>
+                    <fieldset style="max-width: 385px; padding: 4px; margin-top: 0px; border-width: 4px; background-color: #37527721;">
+                       <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Interface_options"></legend>
+                       <table style="">
+                        <tr>
+                            <td><label localization="Change_icons"></label></td>
+                            <td></td>
+                            <td></td>
+                            <td><label style="font-weight: 600; color: red;" localization="NO"></label></td>
+                            <td><label class="switch"><input type="checkbox" id="change_icons_checkbox"><span
+                                        class="slider round"></span></label></td>
+                            <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
+                        </tr>
+                        <tr>
+                            <td><label localization="Change_badge"></label></td>
+                            <td></td>
+                            <td></td>
+                            <td><label style="font-weight: 600; color: red;" localization="NO"></label></td>
+                            <td><label class="switch"><input type="checkbox" id="change_badge_checkbox"><span
+                                        class="slider round"></span></label></td>
+                            <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
+                        </tr>
+                    </table>
+
+                   </fieldset>
+                </td>
+                  </tr>
+                <tr>
                 <td>
                     <fieldset style="max-width: 385px; padding: 4px; margin-top: 0px; border-width: 4px; background-color: #37527721;">
                         <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Export_import"></legend>
-                        <table style="min-width: 384px;">
+                        <table style="">
                             <tr>
                                 <td align="center"><button style="font-size:20px;height:30px; width: 112px; font-weight: 400;" type="button" id="saveDataFile" localization="Export_data"></button></td>
                                 <td align="center"><button style="font-size:20px;height:30px; width: 112px; font-weight: 400;" type="button" id="loadDataFile" localization="Import_data"></button></td>
@@ -295,14 +325,14 @@
                         </table>
                     </fieldset>
                 </td>
-            </tr>
-            <tr>
+                  </tr>
+                <tr>
                 <td>
                     <fieldset style="max-width: 385px; padding: 4px; margin-top: 0px; border-width: 4px; background-color: #37527721;">
                         <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="List_domains"></legend>
-                        <table style="min-width: 384px;">
+                        <table style="">
                             <tr>
-                                <td><select style="width: 265px; height: 150px;" select size="2" id="List_domain_no_default"></select></td>
+                                <td><select style="width: 255px; height: 150px;" select size="2" id="List_domain_no_default"></select></td>
                                 <td>
                                     <table>
                                         <tr>
@@ -316,9 +346,9 @@
                             </tr>
                         </table>
                     </fieldset>
-                </td>
-            </tr>
-        </tr>
+                  </tr>
+</table>
+</td>
     </table>
 
 </body>

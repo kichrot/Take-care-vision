@@ -34,5 +34,8 @@
    "Import_data_message": {"message": "Attention! \nWhen importing data from a file, all current extension settings will be replaced by imported settings. \nYou agree?"},
    "List_domains": {"message": "Domains with individual settings:"},
    "Delete_domain": {"message": "Delete"},
-   "Open_domain": {"message": "Open"}
+   "Open_domain": {"message": "Open"},
+   "Interface_options": {"message": "Interface options:"},
+   "Change_icons": {"message": "Dynamic icon:"},
+   "Change_badge": {"message": "The scale of the page on the icon:"}
 }

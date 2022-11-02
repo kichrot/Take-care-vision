@@ -19,6 +19,8 @@ var page_X_shift;
 var page_Y_shift;
 var page_width;
 var page_css_on_off;
+var change_icons_on_off;
+var change_badge_on_off;
 
 var title_coeff_h1_def;
 var title_coeff_h2_def;
@@ -118,7 +120,7 @@ function clean_domain_list() {
 }
 
 function load_data() {
-    chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
+    chrome.storage.local.get(['list_domain', 'def_text_param', 'interface_param'], function(result) {
         var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
         fsd = Number(fsd.toFixed(2));
         if (typeof result.def_text_param !== 'undefined') {
@@ -147,6 +149,13 @@ function load_data() {
                 chrome.tabs.reload(tabs[0].id);
             });
         }
+        let arr = result.interface_param.split(";");
+        change_icons_on_off = Number(arr[0]);
+        if (Number(arr[0])== 1) document.getElementById('change_icons_checkbox').checked = true;
+        if (Number(arr[0])== 0) document.getElementById('change_icons_checkbox').checked = false;
+        change_badge_on_off = Number(arr[1]);
+        if (Number(arr[1])== 1) document.getElementById('change_badge_checkbox').checked = true;
+        if (Number(arr[1])== 0) document.getElementById('change_badge_checkbox').checked = false;
         display_options("default_browser_font_size", chrome.i18n.getMessage("In_browser") + " " + String(fsd) + "vw" + "(" + brauzer_font_size_def + "px" + ")");
         display_options("def_text_size", size_font_def);
         display_options("def_h1", title_coeff_h1);
@@ -268,6 +277,28 @@ function Save_Data() {
     });
 }
 
+function checkChange_icons() {
+    var checkbox = document.getElementById('change_icons_checkbox');
+    if (checkbox.checked == true) {
+        change_icons_on_off = 1;
+    } else {
+        change_icons_on_off = 0;
+    }
+    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";";
+    chrome.storage.local.set({"interface_param": ip});
+}
+
+function checkChange_badge() {
+    var checkbox = document.getElementById('change_badge_checkbox');
+    if (checkbox.checked == true) {
+        change_badge_on_off = 1;
+    } else {
+        change_badge_on_off = 0;
+    }
+    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";";
+    chrome.storage.local.set({"interface_param": ip});
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('increaseButton_001').onclick = doZoomIn_001;
     document.getElementById('decreaseButton_001').onclick = doZoomOut_001;
@@ -293,6 +324,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('defaultButton').onclick = StartDefaultData;
     document.getElementById('Delete_domain').onclick = DeleteDomain;
     document.getElementById('Open_domain').onclick = OpenDomain;
+    document.getElementById('change_icons_checkbox').onclick = checkChange_icons;
+    document.getElementById('change_badge_checkbox').onclick = checkChange_badge;
 });
 
 // чтение данных из файла в хранилище расширения
@@ -303,8 +336,9 @@ document.getElementById('loadDataFile').addEventListener('click', async() => {
             const file = await fileHandle.getFile();
             const fileContent = await file.text();
             let arr = fileContent.split('"');
-            chrome.storage.local.set({ "def_text_param": arr[0] });
-            chrome.storage.local.set({ "list_domain": arr[1] });
+            chrome.storage.local.set({ "interface_param": arr[0] });
+            chrome.storage.local.set({ "def_text_param": arr[1] });
+            chrome.storage.local.set({ "list_domain": arr[2] });
         } catch { return }
         //chrome.runtime.reload ();
         setTimeout(load_data, 300);
@@ -315,8 +349,8 @@ document.getElementById('loadDataFile').addEventListener('click', async() => {
 document.getElementById('saveDataFile').addEventListener('click', async() => {
     const options = { suggestedName: 'Take_care_vision_' + new Date().toLocaleString() + '.txt', types: [{ description: 'Text', accept: { 'text/plain': '.txt' } }], excludeAcceptAllOption: true }
     var S_Data;
-    chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
-        S_Data = result.def_text_param + '\"' + result.list_domain + '\"';
+    chrome.storage.local.get(['list_domain', 'def_text_param', 'interface_param'], function(result) {
+        S_Data = result.interface_param + '\"' + result.def_text_param + '\"' + result.list_domain + '\"';
     });
     try {
         const fileHandle = await window.showSaveFilePicker(options);
