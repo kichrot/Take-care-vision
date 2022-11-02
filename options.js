@@ -264,19 +264,6 @@ function checkBlackList() {
     }
 }
 
-function Save_Data() {
-    chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
-        var result = result.def_text_param + " " + result.list_domain,
-            obj = {
-                "filename": "localStorage.txt",
-                "url": 'data:application;charset=utf-8,' + encodeURIComponent(result),
-                "conflictAction": "prompt",
-                "saveAs": true
-            };
-        chrome.downloads.download(obj);
-    });
-}
-
 function checkChange_icons() {
     var checkbox = document.getElementById('change_icons_checkbox');
     if (checkbox.checked == true) {
