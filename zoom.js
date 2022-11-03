@@ -155,7 +155,8 @@ function loadData() {
             domain_list = domain_list.replace(/\s+/g, '');
             if (domain_list.includes(";" + doc_dom + ";") == true) {
                 let arr = domain_list.split("|");
-                for (let i = 0; i < arr.length; i += 1) {
+                let k = arr.length;
+                for (let i = 0; i < k; i += 1) {
                     if (arr[i].includes(";" + doc_dom + ";")) {
                         let arr_2 = arr[i].split(";");
                         if (arr_2[2] !== '') font_size = Number(arr_2[2]);
