@@ -173,6 +173,7 @@ function loadData() {
                         if (arr_2[14] !== '') page_Y_shift = Number(arr_2[14]);
                         if (arr_2[15] !== '') page_width = Number(arr_2[15]);
                         if (arr_2[16] !== '') page_css_on_off = Number(arr_2[16]);
+                        break;
                     }
                 }
             } else {
