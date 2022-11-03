@@ -106,7 +106,6 @@
 
 <body>
     <h1 style="margin-top: -5px;" localization="Take_care_vision_title"></h1>
-
     <table style="margin-top: -8px; margin-bottom: -20px;">
         <tr>
             <td>
@@ -271,84 +270,94 @@
                             </tr>
                         </table>
                     </fieldset>
+                    <label style="font-size:14px; line-height: 0.9; color: red; font-weight: 400; display: inline-block; width: 400px; text-align: justify;" localization="Attention_saving"></label>
+                    <table style="margin: auto;">
+
+                        <tr>
+                            <td><button style="font-size:20px;height:30px; width: 112px; font-weight: 400;" type="button" id="saveForm" localization="Save"></button></td>
+                        </tr>
+                    </table>
                 </fieldset>
-                <label style="font-size:14px; line-height: 0.9; color: red; font-weight: 400; display: inline-block; width: 400px; text-align: justify;" localization="Attention_saving"></label>
-                <table style="margin: auto;">
+            </td>
+            <td>
+                <table style="margin-top: -14px; margin-left: -392px;">
                     <tr>
-                        <td><button style="font-size:20px; height:30px; font-weight: 400;" type="button" id="defaultButton" localization="Reset_to_start_default"></button></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button style="font-size:20px;height:30px; width: 112px; font-weight: 400;" type="button" id="saveForm" localization="Save"></button></td>
+                        <td>
+                            <fieldset style="max-width: 385px; padding: 4px; margin-top: 0px; border-width: 4px; background-color: #37527721;">
+                                <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Interface_options"></legend>
+                                <table style="">
+                                    <tr>
+                                        <td><label localization="Change_icons"></label></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><label style="font-weight: 600; color: red;" localization="NO"></label></td>
+                                        <td><label class="switch"><input type="checkbox"
+                                                    id="change_icons_checkbox"><span
+                                                    class="slider round"></span></label></td>
+                                        <td><label style="font-weight: 600; color: green;" localization="YES"></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label localization="Change_badge"></label></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><label style="font-weight: 600; color: red;" localization="NO"></label></td>
+                                        <td><label class="switch"><input type="checkbox"
+                                                    id="change_badge_checkbox"><span
+                                                    class="slider round"></span></label></td>
+                                        <td><label style="font-weight: 600; color: green;" localization="YES"></label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            </fieldset>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <fieldset style="max-width: 385px; padding: 4px; margin-top: 0px; border-width: 4px; background-color: #37527721;">
+                                <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="List_domains"></legend>
+                                <table style="">
+                                    <tr>
+                                        <td><select style="width: 255px; height: 300px;" select size="2" id="List_domain_no_default"></select></td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td align="center"><button style="font-size:20px;height:30px; width: 95px; font-weight: 400;" type="button" id="Open_domain" localization="Open_domain"></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center"><button style="font-size:20px;height:30px; width: 95px; font-weight: 400;" type="button" id="Delete_domain" localization="Delete_domain"></button></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                        </td>
                     </tr>
                 </table>
             </td>
+        </tr>
+        <tr>
             <td>
-               <table style="margin-top: -96px;">
-                <tr>
-                <td>
-                    <fieldset style="max-width: 385px; padding: 4px; margin-top: 0px; border-width: 4px; background-color: #37527721;">
-                       <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Interface_options"></legend>
-                       <table style="">
+                <fieldset style="min-width: 795px; padding: 4px; margin-top: 0px; border-width: 4px; background-color: #37527721;">
+                    <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Export_import"></legend>
+                    <table style="">
                         <tr>
-                            <td><label localization="Change_icons"></label></td>
-                            <td></td>
-                            <td></td>
-                            <td><label style="font-weight: 600; color: red;" localization="NO"></label></td>
-                            <td><label class="switch"><input type="checkbox" id="change_icons_checkbox"><span
-                                        class="slider round"></span></label></td>
-                            <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
-                        </tr>
-                        <tr>
-                            <td><label localization="Change_badge"></label></td>
-                            <td></td>
-                            <td></td>
-                            <td><label style="font-weight: 600; color: red;" localization="NO"></label></td>
-                            <td><label class="switch"><input type="checkbox" id="change_badge_checkbox"><span
-                                        class="slider round"></span></label></td>
-                            <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
+                            <td><button style="font-size:20px; font-weight: 400; height:30px; min-width: 210px;" type="button" id="defaultButton" localization="Reset_to_start_default"></button>
+                            </td>
+                            <td align="center"><button style="font-size:20px;height:30px; width: 112px; font-weight: 400; margin-left: 262px; margin-right: 53px;" type="button" id="saveDataFile" localization="Export_data"></button></td>
+                            <td align="center"><button style="font-size:20px;height:30px; width: 112px; font-weight: 400;" type="button" id="loadDataFile" localization="Import_data"></button></td>
                         </tr>
                     </table>
-
-                   </fieldset>
-                </td>
-                  </tr>
-                <tr>
-                <td>
-                    <fieldset style="max-width: 385px; padding: 4px; margin-top: 0px; border-width: 4px; background-color: #37527721;">
-                        <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Export_import"></legend>
-                        <table style="">
-                            <tr>
-                                <td align="center"><button style="font-size:20px;height:30px; width: 112px; font-weight: 400;" type="button" id="saveDataFile" localization="Export_data"></button></td>
-                                <td align="center"><button style="font-size:20px;height:30px; width: 112px; font-weight: 400;" type="button" id="loadDataFile" localization="Import_data"></button></td>
-                            </tr>
-                        </table>
-                    </fieldset>
-                </td>
-                  </tr>
-                <tr>
-                <td>
-                    <fieldset style="max-width: 385px; padding: 4px; margin-top: 0px; border-width: 4px; background-color: #37527721;">
-                        <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="List_domains"></legend>
-                        <table style="">
-                            <tr>
-                                <td><select style="width: 255px; height: 150px;" select size="2" id="List_domain_no_default"></select></td>
-                                <td>
-                                    <table>
-                                        <tr>
-                                            <td align="center"><button style="font-size:20px;height:30px; width: 95px; font-weight: 400;" type="button" id="Open_domain" localization="Open_domain"></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td align="center"><button style="font-size:20px;height:30px; width: 95px; font-weight: 400;" type="button" id="Delete_domain" localization="Delete_domain"></button></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </fieldset>
-                  </tr>
-</table>
-</td>
+                </fieldset>
+            </td>
+        </tr>
     </table>
 
 </body>
