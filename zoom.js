@@ -153,30 +153,25 @@ function loadData() {
         if (typeof result.list_domain !== 'undefined') {
             domain_list = result.list_domain;
             domain_list = domain_list.replace(/\s+/g, '');
-            if (domain_list.includes(";" + doc_dom + ";") == true) {
-                let arr = domain_list.split("|");
-                let k = arr.length;
-                for (let i = 0; i < k; i += 1) {
-                    if (arr[i].includes(";" + doc_dom + ";")) {
-                        let arr_2 = arr[i].split(";");
-                        if (arr_2[2] !== '') font_size = Number(arr_2[2]);
-                        if (arr_2[3] !== '') title_coeff_h1 = Number(arr_2[3]);
-                        if (arr_2[4] !== '') title_coeff_h2 = Number(arr_2[4]);
-                        if (arr_2[5] !== '') title_coeff_h3 = Number(arr_2[5]);
-                        if (arr_2[6] !== '') title_coeff_h4 = Number(arr_2[6]);
-                        if (arr_2[7] !== '') title_coeff_h5 = Number(arr_2[7]);
-                        if (arr_2[8] !== '') title_coeff_h6 = Number(arr_2[8]);
-                        if (arr_2[9] !== '') line_height = Number(arr_2[9]);
-                        if (arr_2[10] !== '') line_height_on_off = Number(arr_2[10]);
-                        if (arr_2[11] !== '') text_param_on_off = Number(arr_2[11]);
-                        if (arr_2[12] !== '') page_css_zoom = Number(arr_2[12]);
-                        if (arr_2[13] !== '') page_X_shift = Number(arr_2[13]);
-                        if (arr_2[14] !== '') page_Y_shift = Number(arr_2[14]);
-                        if (arr_2[15] !== '') page_width = Number(arr_2[15]);
-                        if (arr_2[16] !== '') page_css_on_off = Number(arr_2[16]);
-                        break;
-                    }
-                }
+            let k = domain_list.indexOf(";" + doc_dom + ";");
+            if (k != -1) {
+                let sd = domain_list.slice(k, domain_list.indexOf("|", k));
+                let arr = sd.split(";");
+                if (arr[2] !== '') font_size = Number(arr[2]);
+                if (arr[3] !== '') title_coeff_h1 = Number(arr[3]);
+                if (arr[4] !== '') title_coeff_h2 = Number(arr[4]);
+                if (arr[5] !== '') title_coeff_h3 = Number(arr[5]);
+                if (arr[6] !== '') title_coeff_h4 = Number(arr[6]);
+                if (arr[7] !== '') title_coeff_h5 = Number(arr[7]);
+                if (arr[8] !== '') title_coeff_h6 = Number(arr[8]);
+                if (arr[9] !== '') line_height = Number(arr[9]);
+                if (arr[10] !== '') line_height_on_off = Number(arr[10]);
+                if (arr[11] !== '') text_param_on_off = Number(arr[11]);
+                if (arr[12] !== '') page_css_zoom = Number(arr[12]);
+                if (arr[13] !== '') page_X_shift = Number(arr[13]);
+                if (arr[14] !== '') page_Y_shift = Number(arr[14]);
+                if (arr[15] !== '') page_width = Number(arr[15]);
+                if (arr[16] !== '') page_css_on_off = Number(arr[16]);
             } else {
                 font_size = font_size_def;
             }
