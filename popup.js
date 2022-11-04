@@ -45,7 +45,7 @@ elements.forEach(function(el) {
     el.innerText = chrome.i18n.getMessage(el.getAttribute('localization'))
 })
 
-function openOptions() {chrome.runtime.openOptionsPage();}
+function openOptions() { chrome.runtime.openOptionsPage(); }
 
 function url_domain(data) {
     var a = document.createElement('a');
@@ -126,28 +126,25 @@ function filling_out_form() {
 
 function load_font_size() {
     if (typeof domain_list !== 'undefined') {
-        if (domain_list.includes(";" + domain_current + ";") == true) {
-            let arr = domain_list.split("|");
-            for (let i = 0; i < arr.length; i += 1) {
-                if (arr[i].includes(";" + domain_current + ";")) {
-                    let arr_2 = arr[i].split(";");
-                    if (arr_2[2] !== '') font_size = Number(arr_2[2]);
-                    if (arr_2[3] !== '') title_coeff_h1 = Number(arr_2[3]);
-                    if (arr_2[4] !== '') title_coeff_h2 = Number(arr_2[4]);
-                    if (arr_2[5] !== '') title_coeff_h3 = Number(arr_2[5]);
-                    if (arr_2[6] !== '') title_coeff_h4 = Number(arr_2[6]);
-                    if (arr_2[7] !== '') title_coeff_h5 = Number(arr_2[7]);
-                    if (arr_2[8] !== '') title_coeff_h6 = Number(arr_2[8]);
-                    if (arr_2[9] !== '') line_height = Number(arr_2[9]);
-                    if (arr_2[10] !== '') line_height_on_off = Number(arr_2[10]);
-                    if (arr_2[11] !== '') text_param_on_off = Number(arr_2[11]);
-                    if (arr_2[12] !== '') page_css_zoom = Number(arr_2[12]);
-                    if (arr_2[13] !== '') page_X_shift = Number(arr_2[13]);
-                    if (arr_2[14] !== '') page_Y_shift = Number(arr_2[14]);
-                    if (arr_2[15] !== '') page_width = Number(arr_2[15]);
-                    if (arr_2[16] !== '') page_css_on_off = Number(arr_2[16]);
-                }
-            }
+        let k = domain_list.indexOf(";" + domain_current + ";");
+        if (k != -1) {
+            let sd = domain_list.slice(k, domain_list.indexOf("|", k));
+            let arr = sd.split(";");
+            if (arr[2] !== '') font_size = Number(arr[2]);
+            if (arr[3] !== '') title_coeff_h1 = Number(arr[3]);
+            if (arr[4] !== '') title_coeff_h2 = Number(arr[4]);
+            if (arr[5] !== '') title_coeff_h3 = Number(arr[5]);
+            if (arr[6] !== '') title_coeff_h4 = Number(arr[6]);
+            if (arr[7] !== '') title_coeff_h5 = Number(arr[7]);
+            if (arr[8] !== '') title_coeff_h6 = Number(arr[8]);
+            if (arr[9] !== '') line_height = Number(arr[9]);
+            if (arr[10] !== '') line_height_on_off = Number(arr[10]);
+            if (arr[11] !== '') text_param_on_off = Number(arr[11]);
+            if (arr[12] !== '') page_css_zoom = Number(arr[12]);
+            if (arr[13] !== '') page_X_shift = Number(arr[13]);
+            if (arr[14] !== '') page_Y_shift = Number(arr[14]);
+            if (arr[15] !== '') page_width = Number(arr[15]);
+            if (arr[16] !== '') page_css_on_off = Number(arr[16]);
         } else {
             font_size = size_font_def;
         }
@@ -183,7 +180,7 @@ function loadData() {
             var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
             fsd = Number(fsd.toFixed(2));
             if (arr[0] == "") {
-                font_size = fsd; 
+                font_size = fsd;
                 size_font_def = fsd;
             } else {
                 font_size = Number(arr[0]);
@@ -335,15 +332,18 @@ function doZoom_css(Id, p_css, dif) {
     }
 }
 
-function doZoomIn_001() {doZoom_size_font(0.01);}
+function doZoomIn_001() { doZoom_size_font(0.01); }
 
-function doZoomOut_001() {doZoom_size_font(-0.01);}
+function doZoomOut_001() { doZoom_size_font(-0.01); }
 
-function doZoomIn_01() {doZoom_size_font(0.1);}
+function doZoomIn_01() { doZoom_size_font(0.1); }
 
-function doZoomOut_01() {doZoom_size_font(-0.1);}
+function doZoomOut_01() { doZoom_size_font(-0.1); }
 
-function doZoomTextDefault() {doZoom_Texe_Default(); chrome.tabs.reload();}
+function doZoomTextDefault() {
+    doZoom_Texe_Default();
+    chrome.tabs.reload();
+}
 
 function doZoomIn_h1() {
     var but = document.getElementById('increaseButton_def_h1');
