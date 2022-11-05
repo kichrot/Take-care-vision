@@ -52,7 +52,7 @@ function textZoom() {
     var css = document.createElement('style');
     if (text_param_on_off == 1) {
         css.innerHTML += [
-            `*` +
+            `html *` +
             `:not(a,abbr,area,aside,audio,base,body,br,button,button *,canvas,caption,col,command,datalist,` +
             `details,dd,dl,dt,embed,fieldset,figcaption,form,font,footer,h1,h2,h3,h4,h5,h6,head,header,hr,html,i,iframe,img,` +
             `h1 *,h2 *,h3 *,h4 *,h5 *,h6 *,` +
