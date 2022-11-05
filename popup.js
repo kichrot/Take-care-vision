@@ -276,13 +276,21 @@ function save_domain_list() {
     chrome.storage.local.set({ "list_domain": domain_list });
 }
 
-function doZoom_size_font(dif) {
+function doZoom_size_font(Id, dif) {
+    var but = document.getElementById(Id);
+    if (but.disabled) {
+        return;
+    }
+    but.disabled = true;
     if (Number.isFinite(font_size)) {
         font_size = font_size + dif;
         font_size = font_size.toFixed(2);
         document.getElementById('text_size').textContent = String(font_size) + 'vw';
         save_domain_list();
     }
+    setTimeout(() => {
+        but.disabled = false;
+    }, 500);
 }
 
 function doZoom_Texe_Default() {
@@ -332,13 +340,13 @@ function doZoom_css(Id, p_css, dif) {
     }
 }
 
-function doZoomIn_001() { doZoom_size_font(0.01); }
+function doZoomIn_001() { doZoom_size_font('increaseButton_001', 0.01); }
 
-function doZoomOut_001() { doZoom_size_font(-0.01); }
+function doZoomOut_001() { doZoom_size_font('decreaseButton_001', -0.01); }
 
-function doZoomIn_01() { doZoom_size_font(0.1); }
+function doZoomIn_01() { doZoom_size_font('increaseButton_01', 0.1); }
 
-function doZoomOut_01() { doZoom_size_font(-0.1); }
+function doZoomOut_01() { doZoom_size_font('decreaseButton_01', -0.1); }
 
 function doZoomTextDefault() {
     doZoom_Texe_Default();
