@@ -1,10 +1,11 @@
 ﻿{
    "Take_care_vision_title": {"message": "Берегите зрение"},
    "Take_care_vision_description": {"message": "Настройка отображения страниц для удобного чтения, чтобы сохранять зрение, как для всех сайтов, так и для отдельных доменов."},
-   "Use_for_all_domains": {"message": "Использовать для всех доменов:"},
+   "Use_for_all_domains": {"message": "Использовать:"},
    "NO": {"message": "НЕТ"},
    "YES": {"message": "ДА"},
-   "Default_text_options": {"message": "Параметры текста по умолчанию:"},
+   "Default_options": {"message": "Параметры по умолчанию:"},
+   "Default_text_options": {"message": "Параметры текста:"},
    "Attention_saving": {"message": "Внимание! При сохранении, измененных настроек расширения по умолчанию, ранее сделанные настройки для отдельных доменов будут сброшены, на новые настройки по умолчанию."},
    "Reset_to_start_default": {"message": "Сброс всех настроек"},
    "Save": {"message": "Сохранить"},
@@ -37,5 +38,14 @@
    "Open_domain": {"message": "Открыть"},
    "Interface_options": {"message": "Параметры интерфейса:"},
    "Change_icons": {"message": "Динамическая иконка:"},
-   "Change_badge": {"message": "Масштаб страницы на иконке:"}
+   "Change_badge": {"message": "Масштаб страницы на иконке:"},
+   "Font_options": {"message": "Параметры шрифта:"},
+   "Font_weight_1": {"message": "Тень шрифта:"},
+   "Font_shadow_width": {"message": "Толщина тени:"},
+   "Font_shadow_blur": {"message": "Размытие тени:"},
+   "Font_shadow_lightens": {"message": "Яркость тени:"},
+   "Font_weight_2": {"message": "Контур шрифта:"},
+   "Font_stroke_width": {"message": "Толщина контура:"},
+   "Font_family": {"message": "Единый шрифт на всех страницах:"},
+   "Selected_font": {"message": "Выбранный шрифт:"}
 }

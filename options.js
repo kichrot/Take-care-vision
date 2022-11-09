@@ -21,6 +21,15 @@ var page_width;
 var page_css_on_off;
 var change_icons_on_off;
 var change_badge_on_off;
+var param_font_on_off;
+var shadow_font_on_off;
+var shadow_font_width;
+var shadow_font_blur;
+var shadow_font_lightens;
+var contour_font_on_off;
+var contour_font_width;
+var selected_font_on_off;
+var selected_font;
 
 var title_coeff_h1_def;
 var title_coeff_h2_def;
@@ -120,7 +129,7 @@ function clean_domain_list() {
 }
 
 function load_data() {
-    chrome.storage.local.get(['list_domain', 'def_text_param', 'interface_param'], function(result) {
+    chrome.storage.local.get(['list_domain', 'def_text_param', 'interface_param', 'font_param'], function(result) {
         var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
         fsd = Number(fsd.toFixed(2));
         if (typeof result.def_text_param !== 'undefined') {
@@ -172,10 +181,33 @@ function load_data() {
         var objSel = document.getElementById("List_domain_no_default");
         objSel.options.length = 0;
         filling_domain_list();
+        arr = result.font_param.split(";");
+        param_font_on_off = Number(arr[0]);
+        if (Number(arr[0])== 1) document.getElementById('Font_options_checkbox').checked = true;
+        if (Number(arr[0])== 0) document.getElementById('Font_options_checkbox').checked = false;
+        shadow_font_on_off = Number(arr[1]);
+        if (Number(arr[1])== 1) document.getElementById('Font_shadow_checkbox').checked = true;
+        if (Number(arr[1])== 0) document.getElementById('Font_shadow_checkbox').checked = false;
+        shadow_font_width = Number(arr[2]);
+        display_options("font_shadow_width", shadow_font_width);
+        shadow_font_blur = Number(arr[3]);
+        display_options("font_shadow_blur", shadow_font_blur);
+        shadow_font_lightens = Number(arr[4]);
+        display_options("font_shadow_lightens", shadow_font_lightens);
+        contour_font_on_off = Number(arr[5]);
+        if (Number(arr[5])== 1) document.getElementById('Font_contour_checkbox').checked = true;
+        if (Number(arr[5])== 0) document.getElementById('Font_contour_checkbox').checked = false;
+        contour_font_width = Number(arr[6]);
+        display_options("font_contour_width", contour_font_width);
+        selected_font_on_off = Number(arr[7]);
+        if (Number(arr[7])== 1) document.getElementById('Font_family_checkbox').checked = true;
+        if (Number(arr[7])== 0) document.getElementById('Font_family_checkbox').checked = false;
+        selected_font = arr[8];    
+        document.getElementById('font_family_input').value = selected_font;
     });
 }
 
-function Save() {
+function SaveParamText() {
     if (confirm(chrome.i18n.getMessage("save_message"))) {
         size_font_def = Number(document.getElementById("def_text_size").textContent);
         title_coeff_h1 = Number(document.getElementById("def_h1").textContent);
@@ -194,6 +226,20 @@ function Save() {
     }
 }
 
+function SaveParamFont() {
+    if (document.getElementById("Font_options_checkbox").checked == true) {param_font_on_off = "1"} else {param_font_on_off = "0"}
+    if (document.getElementById("Font_shadow_checkbox").checked == true) {shadow_font_on_off = "1"} else {shadow_font_on_off = "0"}
+    shadow_font_width = document.getElementById("font_shadow_width").textContent;
+    shadow_font_blur = document.getElementById("font_shadow_blur").textContent;
+    shadow_font_lightens = document.getElementById("font_shadow_lightens").textContent;
+    if (document.getElementById("Font_contour_checkbox").checked == true) {contour_font_on_off = "1"} else {contour_font_on_off = "0"}
+    contour_font_width = document.getElementById("font_contour_width").textContent;
+    if (document.getElementById("Font_family_checkbox").checked == true) {selected_font_on_off = "1"} else {selected_font_on_off = "0"}
+    selected_font = document.getElementById("font_family_input").value;
+    var spf = param_font_on_off + ";" + shadow_font_on_off + ";" + shadow_font_width + ";" + shadow_font_blur + ";" + shadow_font_lightens + ";" + contour_font_on_off + ";" + contour_font_width + ";" + selected_font_on_off + ";" + selected_font + ";";
+    chrome.storage.local.set({ "font_param": spf });
+}
+
 function StartDefaultData() {
     if (confirm(chrome.i18n.getMessage("Initial_settings_message"))) {
         var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
@@ -202,6 +248,7 @@ function StartDefaultData() {
         chrome.storage.local.set({ "def_text_param": text_param_def });
         chrome.storage.local.set({ "list_domain": "" });
         chrome.storage.local.set({ "interface_param": "1;0;"});
+        chrome.storage.local.set({ "font_param": "0;0;0;0;0;0;0;0;;"});
         setTimeout(load_data, 300);
     }
 }
@@ -209,6 +256,12 @@ function StartDefaultData() {
 function doZoom_size(dif, Id, discharge) {
     document.getElementById(Id).textContent =
         String((Number(document.getElementById(Id).textContent) + dif).toFixed(discharge));
+}
+
+function doZoom_size_font_param(dif, Id, discharge) {
+    var l = Number(document.getElementById(Id).textContent) + dif;
+    if ( l < 0) l = 0;
+    document.getElementById(Id).textContent = String(l.toFixed(discharge));
 }
 
 function doZoomIn_001() { doZoom_size(0.01, 'def_text_size', 2); }
@@ -246,6 +299,22 @@ function doZoomOut_h6() { doZoom_size(-0.1, 'def_h6', 1); }
 function doZoomIn_line_height() { doZoom_size(0.1, 'line_height', 1); }
 
 function doZoomOut_line_height() { doZoom_size(-0.1, 'line_height', 1); }
+
+function doZoomIn_font_shadow_width() { doZoom_size_font_param(0.1, 'font_shadow_width', 1); }
+
+function doZoomOut_font_shadow_width() { doZoom_size_font_param(-0.1, 'font_shadow_width', 1); }
+
+function doZoomIn_font_shadow_blur() { doZoom_size_font_param(0.1, 'font_shadow_blur', 1); }
+
+function doZoomOut_font_shadow_blur() { doZoom_size_font_param(-0.1, 'font_shadow_blur', 1); }
+
+function doZoomIn_font_shadow_lightens() { doZoom_size_font_param(0.1, 'font_shadow_lightens', 1); }
+
+function doZoomOut_font_shadow_lightens() { doZoom_size_font_param(-0.1, 'font_shadow_lightens', 1); }
+
+function doZoomIn_font_contour_width() { doZoom_size_font_param(0.1, 'font_contour_width', 1); }
+
+function doZoomOut_font_contour_width() { doZoom_size_font_param(-0.1, 'font_contour_width', 1); }
 
 function checkLineHeight() {
     var checkbox = document.getElementById('line_height_checkbox');
@@ -308,12 +377,21 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('decreaseButton_line_height').onclick = doZoomOut_line_height;
     document.getElementById('line_height_checkbox').onclick = checkLineHeight;
     document.getElementById('blacklist_checkbox').onclick = checkBlackList;
-    document.getElementById('saveForm').onclick = Save;
+    document.getElementById('saveForm').onclick = SaveParamText;
     document.getElementById('defaultButton').onclick = StartDefaultData;
     document.getElementById('Delete_domain').onclick = DeleteDomain;
     document.getElementById('Open_domain').onclick = OpenDomain;
     document.getElementById('change_icons_checkbox').onclick = checkChange_icons;
     document.getElementById('change_badge_checkbox').onclick = checkChange_badge;
+    document.getElementById('increaseButton_font_shadow').onclick = doZoomIn_font_shadow_width;
+    document.getElementById('decreaseButton_font_shadow').onclick = doZoomOut_font_shadow_width;
+    document.getElementById('increaseButton_font_shadow_blur').onclick = doZoomIn_font_shadow_blur;
+    document.getElementById('decreaseButton_font_shadow_blur').onclick = doZoomOut_font_shadow_blur;
+    document.getElementById('increaseButton_font_lightens').onclick = doZoomIn_font_shadow_lightens;
+    document.getElementById('decreaseButton_font_lightens').onclick = doZoomOut_font_shadow_lightens;
+    document.getElementById('increaseButton_font_contour').onclick = doZoomIn_font_contour_width;
+    document.getElementById('decreaseButton_font_contour').onclick = doZoomOut_font_contour_width;
+    document.getElementById('saveFont').onclick = SaveParamFont;
 });
 
 // чтение данных из файла в хранилище расширения
@@ -326,7 +404,8 @@ document.getElementById('loadDataFile').addEventListener('click', async() => {
             let arr = fileContent.split('"');
             chrome.storage.local.set({ "interface_param": arr[0] });
             chrome.storage.local.set({ "def_text_param": arr[1] });
-            chrome.storage.local.set({ "list_domain": arr[2] });
+            chrome.storage.local.set({ "font_param": arr[2] });
+            chrome.storage.local.set({ "list_domain": arr[3] });
         } catch { return }
         //chrome.runtime.reload ();
         setTimeout(load_data, 300);
@@ -337,8 +416,8 @@ document.getElementById('loadDataFile').addEventListener('click', async() => {
 document.getElementById('saveDataFile').addEventListener('click', async() => {
     const options = { suggestedName: 'Take_care_vision_' + new Date().toLocaleString() + '.txt', types: [{ description: 'Text', accept: { 'text/plain': '.txt' } }], excludeAcceptAllOption: true }
     var S_Data;
-    chrome.storage.local.get(['list_domain', 'def_text_param', 'interface_param'], function(result) {
-        S_Data = result.interface_param + '\"' + result.def_text_param + '\"' + result.list_domain + '\"';
+    chrome.storage.local.get(['list_domain', 'def_text_param', 'interface_param', 'font_param'], function(result) {
+        S_Data = result.interface_param + '\"' + result.def_text_param + '\"' + result.font_param + '\"' + result.list_domain + '\"';
     });
     try {
         const fileHandle = await window.showSaveFilePicker(options);

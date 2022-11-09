@@ -21,7 +21,15 @@ var page_Y_shift;
 var page_width;
 var page_css_on_off;
 var text_param_def = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;";
-
+var param_font_on_off;
+var shadow_font_on_off;
+var shadow_font_width;
+var shadow_font_blur;
+var shadow_font_lightens;
+var contour_font_on_off;
+var contour_font_width;
+var selected_font_on_off;
+var selected_font;
 
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
@@ -49,6 +57,26 @@ function textZoom() {
         start_comment_pzcss = "/*";
         end_comment_pzcss = "*/";
     }
+    var start_comment_shf = " ";
+    var end_comment_shf = " ";
+    if (shadow_font_on_off == 0) {
+        start_comment_shf = "/*";
+        end_comment_shf = "*/";
+    }
+    var start_comment_cf = " ";
+    var end_comment_cf = " ";
+    if (contour_font_on_off == 0) {
+        start_comment_cf = "/*";
+        end_comment_cf = "*/";
+    }
+    var start_comment_sf = " ";
+    var end_comment_sf = " ";
+    if (selected_font_on_off == 0) {
+        start_comment_sf = "/*";
+        end_comment_sf = "*/";
+    }
+
+
     var css = document.createElement('style');
     if (text_param_on_off == 1) {
         css.innerHTML += [
@@ -121,10 +149,29 @@ function textZoom() {
         ].join("\n");
         document.documentElement.appendChild(css);
     }
+    if (param_font_on_off == 1) {
+        css.innerHTML += [`html * {`,
+            `-webkit-text-fill-color:currentColor  !important;`,
+            `${start_comment_shf}text-shadow:-${shadow_font_width}px -${shadow_font_width}px ${shadow_font_blur}px rgba(250,250,250,${shadow_font_lightens}), ${shadow_font_width}px ${shadow_font_width}px ${shadow_font_blur}px rgba(250,250,250,${shadow_font_lightens}), ${shadow_font_width}px ${shadow_font_width}px ${shadow_font_blur}px currentColor, -${shadow_font_width}px -${shadow_font_width}px ${shadow_font_blur}px currentColor  !important;${end_comment_shf}`,
+            `${start_comment_cf}-webkit-text-stroke-width: ${contour_font_width}px !important;${end_comment_cf}`,
+            `-webkit-font-smoothing: subpixel-antialiased /*antialiased*/ !important;`,
+            `text-rendering: geometricPrecision !important;`,
+            `font-optical-sizing: auto !important;`,
+            `}`,
+
+            `${start_comment_sf}html *:not(img,svg,[class*=\"icon\"],[class*=\"ico\"],[class*=\"button\"],[class*=mjx],[class*=vjs],[class*=fa],` +
+            `[class*=ms-Button-icon],[class*=DPvwYc],[class*=bb],[class*=icon],[class*=ll],i,[role*=button],[type*=button],` +
+            `[class*=btn],[class*=button],[class*=button] *),` +
+            `[class*="text"]:not([class*=fa])  {`,
+            `font-family: ${selected_font} !important;`,
+            `}${end_comment_sf}`
+        ].join("\n");
+        document.documentElement.appendChild(css);
+    }
 }
 
 function loadData() {
-    chrome.storage.local.get(["list_domain", "def_text_param"], function(result) {
+    chrome.storage.local.get(["list_domain", "def_text_param", 'font_param'], function(result) {
         if (typeof result.def_text_param !== 'undefined') {
             text_param_def = result.def_text_param;
         } else {
@@ -150,6 +197,16 @@ function loadData() {
         page_Y_shift = Number(arr[12]);
         page_width = Number(arr[13]);
         page_css_on_off = Number(arr[14]);
+        arr = result.font_param.split(";");
+        param_font_on_off = Number(arr[0]);
+        shadow_font_on_off = Number(arr[1]);
+        shadow_font_width = Number(arr[2]);
+        shadow_font_blur = Number(arr[3]);
+        shadow_font_lightens = Number(arr[4]);
+        contour_font_on_off = Number(arr[5]);
+        contour_font_width = Number(arr[6]);
+        selected_font_on_off = Number(arr[7]);
+        selected_font = arr[8];
         if (typeof result.list_domain !== 'undefined') {
             domain_list = result.list_domain;
             domain_list = domain_list.replace(/\s+/g, '');
@@ -226,5 +283,7 @@ function domain() {
 }
 
 (function() {
+    console.time('FirstWay');
     domain();
+    console.timeEnd('FirstWay');
 })();
