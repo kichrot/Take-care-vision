@@ -20,7 +20,7 @@ var page_X_shift;
 var page_Y_shift;
 var page_width;
 var page_css_on_off;
-var text_param_def = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;";
+var text_param_def = ";1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;0;";
 var param_font_on_off;
 var shadow_font_on_off;
 var shadow_font_width;
@@ -30,6 +30,7 @@ var contour_font_on_off;
 var contour_font_width;
 var selected_font_on_off;
 var selected_font;
+var align_text_on_off;
 
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
@@ -134,6 +135,26 @@ function textZoom() {
         ].join("\n");
         document.documentElement.appendChild(css);
     }
+
+    if (align_text_on_off == 1) {
+        css.innerHTML += [
+            `:where(span,p,[class*=text],[class*=desc],[class*=excerpt],[class*=comment],[class*=post])` +
+            `:not([style*="text-align:"])` +
+            `:not([class*=title],[class*=subject],[class*=heading],[class*=headline],[class*=caption],[class*=subtitle])` +
+            `:not(a,a *,td,tr,h1,h2,h3,h4,h5,h6),` +
+            `div:has(>i,>br),` +
+            `td:has(>span)` +
+            ` {`,
+            `text-align: justify;`,
+            `hyphens: auto;`,
+            `}`,
+            `code,pre:has(code),a,[class*=title] {`,
+            `text-align: start;`,
+            `}`
+        ].join("\n");
+        document.documentElement.appendChild(css);
+    }
+
     if (page_css_on_off == 1) {
         css.innerHTML += [
             `body {`,
@@ -149,6 +170,7 @@ function textZoom() {
         ].join("\n");
         document.documentElement.appendChild(css);
     }
+
     if (param_font_on_off == 1) {
         css.innerHTML += [`html * {`,
             `-webkit-text-fill-color:currentColor  !important;`,
@@ -197,6 +219,7 @@ function loadData() {
         page_Y_shift = Number(arr[12]);
         page_width = Number(arr[13]);
         page_css_on_off = Number(arr[14]);
+        align_text_on_off = Number(arr[15]);
         arr = result.font_param.split(";");
         param_font_on_off = Number(arr[0]);
         shadow_font_on_off = Number(arr[1]);
@@ -229,6 +252,7 @@ function loadData() {
                 if (arr[14] !== '') page_Y_shift = Number(arr[14]);
                 if (arr[15] !== '') page_width = Number(arr[15]);
                 if (arr[16] !== '') page_css_on_off = Number(arr[16]);
+                if (arr[17] !== '') align_text_on_off = Number(arr[17]);
             } else {
                 font_size = font_size_def;
             }
@@ -283,7 +307,8 @@ function domain() {
 }
 
 (function() {
-    console.time('FirstWay');
+    const t0 = performance.now();
     domain();
-    console.timeEnd('FirstWay');
+    const t1 = performance.now();
+    console.log(`zoom.js выполнялся ${t1 - t0} milliseconds.`);
 })();

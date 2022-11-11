@@ -109,194 +109,216 @@
     <table>
         <tr>
             <td>
-                <fieldset style="padding: 0px; padding-top: 18px; padding-bottom: 12px; margin-top: -20px; border-width: 4px; background-color: #37527721; max-width: max-content; display: grid; place-items: center; align-items: center;">
+                <fieldset style="padding: 0px; padding-top: 10px; padding-bottom: 12px; margin-top: -20px; border-width: 4px; background-color: #37527721; max-width: max-content; display: grid; place-items: center; align-items: center;">
                     <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Default_options"></legend>
                     <table style="margin-top: -8px; margin-bottom: -20px;">
                         <tr>
                             <td>
-                                <fieldset style="max-width: 385px; padding: 4px; margin-top: -12px; border-width: 4px; background-color: #37527721;">
+                                <fieldset style="max-width: 385px; padding: 3px; margin-top: -4px; padding-top: 10px; border-width: 3px; background-color: #37527721;">
                                     <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Default_text_options"></legend>
-                                    <table style="margin-top: -8px; margin-bottom: -20px;">
-                                        <tr>
-                                            <td><label localization="Use_for_all_domains"></label></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><label style="font-weight: 600; color: red;" localization="NO"></label>
-                                            </td>
-                                            <td><label class="switch"><input type="checkbox"
-                                                        id="blacklist_checkbox"><span
-                                                        class="slider round"></span></label></td>
-                                            <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
-                                        </tr>
-                                    </table>
-                                    <fieldset style="padding: 7px; height: 65px; margin-top: 15px; background-color: #37527721; display: grid; place-items: center;">
-                                        <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Font_size"></legend>
-                                        <table style="margin-top: -20px; margin-bottom: -20px;">
+                                    <fieldset style="max-width: 385px; padding: 4px; padding-bottom: 1px; margin-top: -12px; border-width: 2.5px; background-color: #37527721;">
+                                        <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Text_options"></legend>
+                                        <table style="margin-top: -12px; margin-bottom: -20px;">
                                             <tr>
-                                                <td>
-                                                    <div style="font-size:30px; text-align: center; color: red; width: 77px; font-weight: 400; border: none; letter-spacing: -6px;" id="minusDiv">--</div>
+                                                <td><label localization="Use_for_all_domains"></label></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><label style="font-weight: 600; color: red;" localization="NO"></label>
                                                 </td>
-                                                <td>
-                                                    <div style="width: 125px; font-size: 15px; line-height: 14px; text-align: center; border: none;" id="default_browser_font_size"></div>
-                                                </td>
-                                                <td>
-                                                    <div style="font-size:30px; text-align: center; color: green; width: 60px; font-weight: 400; border: none;" id="plusDiv">+</div>
-                                                </td>
+                                                <td><label class="switch"><input type="checkbox"
+                                                            id="blacklist_checkbox"><span
+                                                            class="slider round"></span></label></td>
+                                                <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
                                             </tr>
                                         </table>
-                                        <table style="margin-bottom: 40px;">
-                                            <tr>
-                                                <td><button style="font-size:20px;height:30px;width:45px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px;" type="button" id="decreaseButton_001" title="-0.01">0.01</button></td>
-                                                <td><button style="font-size:20px;height:30px;width:37px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px; " type="button" id="decreaseButton_01" title="-0.1">0.1</button>
-                                                </td>
-                                                <td>
-                                                    <div style="font-size:33px;width: 55px; height: 50px; font-weight: 400; font-stretch: extra-condensed; color: blue; text-align: center; text-align: right; border: none; line-height: 49px;" id="def_text_size"></div>
-                                                </td>
-                                                <td>
-                                                    <div style="font-size:33px;width: 45px; height: 50px; font-weight: 400; font-stretch: extra-condensed; color: blue; text-align: right; border: none; line-height: 49px;">
-                                                        vw</div>
-                                                </td>
-                                                <td><button style="font-size:20px;height:30px;width:37px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px; " type="button" id="increaseButton_01" title="+0.1">0.1</button>
-                                                </td>
-                                                <td><button style="font-size:20px;height:30px;width:45px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px; " type="button" id="increaseButton_001" title="+0.01">0.01</button></td>
-                                            </tr>
-                                        </table>
+                                        <fieldset style="padding: 7px; padding-bottom: 1px; height: 65px; margin-top: 15px; background-color: #37527721; display: grid; place-items: center;">
+                                            <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Font_size"></legend>
+                                            <table style="margin-top: -22px; margin-bottom: -20px;">
+                                                <tr>
+                                                    <td>
+                                                        <div style="font-size:30px; text-align: center; color: red; width: 77px; font-weight: 400; border: none; letter-spacing: -6px;" id="minusDiv">--</div>
+                                                    </td>
+                                                    <td>
+                                                        <div style="width: 125px; font-size: 15px; line-height: 14px; text-align: center; border: none;" id="default_browser_font_size"></div>
+                                                    </td>
+                                                    <td>
+                                                        <div style="font-size:30px; text-align: center; color: green; width: 60px; font-weight: 400; border: none;" id="plusDiv">+</div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table style="margin-bottom: 40px;">
+                                                <tr>
+                                                    <td><button style="font-size:20px;height:30px;width:45px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px;" type="button" id="decreaseButton_001" title="-0.01">0.01</button></td>
+                                                    <td><button style="font-size:20px;height:30px;width:37px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px; " type="button" id="decreaseButton_01" title="-0.1">0.1</button>
+                                                    </td>
+                                                    <td>
+                                                        <div style="font-size:33px;width: 55px; height: 50px; font-weight: 400; font-stretch: extra-condensed; color: blue; text-align: center; text-align: right; border: none; line-height: 49px;" id="def_text_size"></div>
+                                                    </td>
+                                                    <td>
+                                                        <div style="font-size:33px;width: 45px; height: 50px; font-weight: 400; font-stretch: extra-condensed; color: blue; text-align: right; border: none; line-height: 49px;">
+                                                            vw</div>
+                                                    </td>
+                                                    <td><button style="font-size:20px;height:30px;width:37px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px; " type="button" id="increaseButton_01" title="+0.1">0.1</button>
+                                                    </td>
+                                                    <td><button style="font-size:20px;height:30px;width:45px; font-weight: 400; font-stretch: extra-condensed; line-height: 0px; " type="button" id="increaseButton_001" title="+0.01">0.01</button></td>
+                                                </tr>
+                                            </table>
+                                        </fieldset>
+                                        <fieldset style="max-height: 97px; padding: 7px; padding-bottom: 1px; margin-top: 5px; background-color: #37527721; display: grid; place-items: center;">
+                                            <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Headers_size_coefficient"></legend>
+                                            <table style="margin-top: -25px; zoom: 70%;">
+                                                <tr>
+                                                    <td>
+                                                        <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
+                                                            h1:</div>
+                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
+                                                            h2:</div>
+                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
+                                                            h3:</div>
+                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h1" title="-0.1">--</button></td>
+                                                    <td>
+                                                        <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h1"></div>
+                                                    </td>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h1" title="+0.1">+</button>
+                                                    </td>
+                                                    <td>
+                                                        <div style="width: 40px; height: 50px; border: none;"></div>
+                                                    </td>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h2" title="-0.1">--</button></td>
+                                                    <td>
+                                                        <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h2"></div>
+                                                    </td>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h2" title="+0.1">+</button>
+                                                    </td>
+                                                    <td>
+                                                        <div style="width: 40px; height: 50px; border: none;"></div>
+                                                    </td>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h3" title="-0.1">--</button></td>
+                                                    <td>
+                                                        <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h3"></div>
+                                                    </td>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h3" title="+0.1">+</button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table style="margin-top: -25px; zoom: 70%;">
+                                                <tr>
+                                                    <td>
+                                                        <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
+                                                            h4:</div>
+                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
+                                                            h5:</div>
+                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
+                                                            h6:</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h4" title="-0.1">--</button></td>
+                                                    <td>
+                                                        <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h4"></div>
+                                                    </td>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h4" title="+0.1">+</button>
+                                                    </td>
+                                                    <td>
+                                                        <div style="width: 40px; height: 50px; border: none;"></div>
+                                                    </td>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h5" title="-0.1">--</button></td>
+                                                    <td>
+                                                        <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h5"></div>
+                                                    </td>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h5" title="+0.1">+</button>
+                                                    </td>
+                                                    <td>
+                                                        <div style="width: 40px; height: 50px; border: none;"></div>
+                                                    </td>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h6" title="-0.1">--</button></td>
+                                                    <td>
+                                                        <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h6"></div>
+                                                    </td>
+                                                    <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h6" title="+0.1">+</button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </fieldset>
+                                        <fieldset style="max-height: 50px; padding: 7px; padding-bottom: 1px; margin-top: 5px; background-color: #37527721;">
+                                            <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Line_height"></legend>
+                                            <table style="margin-top: -15px; margin-bottom: -10px;">
+                                                <tr>
+                                                    <td>
+                                                        <table style="margin-top: -14px; margin-bottom: -10px;">
+                                                            <tr>
+                                                                <td><label localization="Use_for_all_domains"></label>
+                                                                </td>
+                                                                <td><label style="font-weight: 600; color: red;" localization="NO"></label></td>
+                                                                <td><label class="switch"><input type="checkbox"
+                                                                            id="line_height_checkbox"><span
+                                                                            class="slider round"></span></label></td>
+                                                                <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table style="zoom: 70%; margin-left: 112px; margin-top: -8px;">
+                                                            <tr>
+                                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_line_height" title="-0.1">--</button></td>
+                                                                <td>
+                                                                    <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="line_height"></div>
+                                                                </td>
+                                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_line_height" title="+0.1">+</button></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </fieldset>
                                     </fieldset>
-                                    <fieldset style="max-height: 97px; padding: 7px; margin-top: 5px; background-color: #37527721; display: grid; place-items: center;">
-                                        <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Headers_size_coefficient"></legend>
-                                        <table style="margin-top: -25px; zoom: 70%;">
+                                    <fieldset style="max-height: 50px; padding: 7px; border-width: 2.5px; padding-bottom: 1px; margin-top: 5px; background-color: #37527721;">
+                                        <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Align_text"></legend>
+                                        <table style="">
                                             <tr>
                                                 <td>
-                                                    <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
-                                                        h1:</div>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
-                                                        h2:</div>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
-                                                        h3:</div>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h1" title="-0.1">--</button></td>
-                                                <td>
-                                                    <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h1"></div>
-                                                </td>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h1" title="+0.1">+</button>
-                                                </td>
-                                                <td>
-                                                    <div style="width: 40px; height: 50px; border: none;"></div>
-                                                </td>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h2" title="-0.1">--</button></td>
-                                                <td>
-                                                    <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h2"></div>
-                                                </td>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h2" title="+0.1">+</button>
-                                                </td>
-                                                <td>
-                                                    <div style="width: 40px; height: 50px; border: none;"></div>
-                                                </td>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h3" title="-0.1">--</button></td>
-                                                <td>
-                                                    <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h3"></div>
-                                                </td>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h3" title="+0.1">+</button>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <table style="margin-top: -25px; zoom: 70%;">
-                                            <tr>
-                                                <td>
-                                                    <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
-                                                        h4:</div>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
-                                                        h5:</div>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <div style="font-size:20px;height:30px;width:45px; font-weight: 400; line-height: 50px;">
-                                                        h6:</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h4" title="-0.1">--</button></td>
-                                                <td>
-                                                    <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h4"></div>
-                                                </td>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h4" title="+0.1">+</button>
-                                                </td>
-                                                <td>
-                                                    <div style="width: 40px; height: 50px; border: none;"></div>
-                                                </td>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h5" title="-0.1">--</button></td>
-                                                <td>
-                                                    <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h5"></div>
-                                                </td>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h5" title="+0.1">+</button>
-                                                </td>
-                                                <td>
-                                                    <div style="width: 40px; height: 50px; border: none;"></div>
-                                                </td>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_def_h6" title="-0.1">--</button></td>
-                                                <td>
-                                                    <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="def_h6"></div>
-                                                </td>
-                                                <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_def_h6" title="+0.1">+</button>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </fieldset>
-                                    <fieldset style="max-height: 50px; padding: 7px; margin-top: 5px; background-color: #37527721;">
-                                        <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Line_height"></legend>
-                                        <table style="margin-top: -15px; margin-bottom: -10px;">
-                                            <tr>
-                                                <td>
-                                                    <table style="margin-top: -14px; margin-bottom: -10px;">
+                                                    <table style="margin-top: -18px; margin-bottom: -6px;">
                                                         <tr>
                                                             <td><label localization="Use_for_all_domains"></label></td>
                                                             <td><label style="font-weight: 600; color: red;" localization="NO"></label></td>
                                                             <td><label class="switch"><input type="checkbox"
-                                                                        id="line_height_checkbox"><span
+                                                                        id="align_text_checkbox"><span
                                                                         class="slider round"></span></label></td>
                                                             <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
                                                         </tr>
                                                     </table>
                                                 </td>
-                                                <td>
-                                                    <table style="zoom: 70%; margin-left: 112px; margin-top: -8px;">
-                                                        <tr>
-                                                            <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_line_height" title="-0.1">--</button></td>
-                                                            <td>
-                                                                <div style="font-size:33px; width: 43px; height: 50px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 49px;" id="line_height"></div>
-                                                            </td>
-                                                            <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton_line_height" title="+0.1">+</button></td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
                                             </tr>
                                         </table>
                                     </fieldset>
-                                    <label style="font-size:14px; line-height: 1.3; color: red; font-weight: 400; display: inline-block; width: 400px; text-align: justify;" localization="Attention_saving"></label>
+                                    <label style="font-size:14px; line-height: 0.9; color: red; font-weight: 400; display: inline-block; width: 400px; text-align: justify;" localization="Attention_saving"></label>
                                     <table style="margin: auto;">
-
                                         <tr>
                                             <td><button style="font-size:20px;height:30px; width: 112px; font-weight: 400;" type="button" id="saveForm" localization="Save"></button></td>
                                         </tr>
@@ -304,7 +326,7 @@
                                 </fieldset>
                             </td>
                             <td>
-                                <fieldset style="max-width: 387px; height: 394px; padding: 4px; margin-top: -13px; border-width: 4px; background-color: #37527721;">
+                                <fieldset style="max-width: 387px; height: 394px; padding: 4px; margin-top: -4px; border-width: 3px; background-color: #37527721;">
                                     <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Font_options"></legend>
                                     <table style="margin-top: -8px; margin-bottom: -20px;">
                                         <tr>
@@ -319,7 +341,7 @@
                                             <td><label style="font-weight: 600; color: green;" localization="YES"></label></td>
                                         </tr>
                                     </table>
-                                    <fieldset style="padding: 7px; margin-top: 15px; background-color: #37527721; display: grid; place-items: center; justify-content: space-between;">
+                                    <fieldset style="padding: 7px; margin-top: 15px; background-color: #37527721; border-width: 2.5px; display: grid; place-items: center; justify-content: space-between;">
                                         <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Font_weight_1"></legend>
                                         <table>
                                             <tr>
@@ -386,7 +408,7 @@
                                             </tr>
                                         </table>
                                     </fieldset>
-                                    <fieldset style="padding: 7px; margin-top: 2px; background-color: #37527721; display: grid; place-items: center; justify-content: space-between;">
+                                    <fieldset style="padding: 7px; margin-top: 2px; background-color: #37527721; border-width: 2.5px; display: grid; place-items: center; justify-content: space-between;">
                                         <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Font_weight_2"></legend>
                                         <table>
                                             <tr>
@@ -422,7 +444,7 @@
                                             </tr>
                                         </table>
                                     </fieldset>
-                                    <fieldset style="padding: 7px; margin-top: 2px; margin-bottom: 2px; background-color: #37527721; display: grid; place-items: center; justify-content: space-between;">
+                                    <fieldset style="padding: 7px; margin-top: 2px; margin-bottom: 2px; background-color: #37527721; border-width: 2.5px; display: grid; place-items: center; justify-content: space-between;">
                                         <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Font_family"></legend>
                                         <table>
                                             <tr>
@@ -460,7 +482,7 @@
                             </td>
                         </tr>
                     </table>
-                    <fieldset style="min-width: -webkit-fill-available; padding: 1px; margin-top: 18px; border-width: 4px; background-color: #37527721; display: grid; justify-content: center;">
+                    <fieldset style="min-width: -webkit-fill-available; padding: 1px; margin-top: 18px; border-width: 3px; background-color: #37527721; display: grid; justify-content: center;">
                         <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Interface_options"></legend>
                         <table style="">
                             <tr>
@@ -499,7 +521,7 @@
                             </tr>
                         </table>
                     </fieldset>
-                    <fieldset style="min-width: -webkit-fill-available; padding: 1px; border-width: 4px; background-color: #37527721; display: grid; place-items: center;">
+                    <fieldset style="min-width: -webkit-fill-available; padding: 1px; border-width: 3px; background-color: #37527721; display: grid; place-items: center;">
                         <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Export_import"></legend>
                         <table style="">
                             <tr>
@@ -513,7 +535,7 @@
                 </fieldset>
             </td>
             <td>
-                <fieldset style="max-width: 385px; height: 551px; padding: 4px; margin-top: -21px; border-width: 4px; background-color: #37527721; display: grid; place-items: center;">
+                <fieldset style="max-width: 385px; height: 547px; padding: 4px; margin-top: -21px; border-width: 4px; background-color: #37527721; display: grid; place-items: center;">
                     <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="List_domains"></legend>
                     <table style="">
                         <tr>

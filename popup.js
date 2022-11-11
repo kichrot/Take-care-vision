@@ -19,6 +19,7 @@ var page_X_shift;
 var page_Y_shift;
 var page_width;
 var page_css_on_off;
+var align_text_on_off;
 
 var title_coeff_h1_def;
 var title_coeff_h2_def;
@@ -34,7 +35,7 @@ var page_X_shift_def;
 var page_Y_shift_def;
 var page_width_def;
 var page_css_on_off_def;
-
+var align_text_on_off_def;
 
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
@@ -122,6 +123,12 @@ function filling_out_form() {
         document.getElementById('Page_zoom_css_checkbox').checked = false;
         display_no_yes_Page_zoom_css("none");
     }
+    if (align_text_on_off == 1) {
+        document.getElementById('align_text_checkbox').checked = true;
+    }
+    if (align_text_on_off == 0) {
+        document.getElementById('align_text_checkbox').checked = false;
+    }
 }
 
 function load_font_size() {
@@ -145,6 +152,7 @@ function load_font_size() {
             if (arr[14] !== '') page_Y_shift = Number(arr[14]);
             if (arr[15] !== '') page_width = Number(arr[15]);
             if (arr[16] !== '') page_css_on_off = Number(arr[16]);
+            if (arr[17] !== '') align_text_on_off = Number(arr[17]);
         } else {
             font_size = size_font_def;
         }
@@ -159,7 +167,7 @@ function clean_domain_list() {
         let arr = domain_list.split("|");
         for (let i = 0; i < arr.length; i += 1) {
             let arr_2 = arr[i].split(";");
-            if (arr_2[2] == "" && arr_2[3] == "" && arr_2[4] == "" && arr_2[5] == "" && arr_2[6] == "" && arr_2[7] == "" && arr_2[8] == "" && arr_2[9] == "" && arr_2[10] == "" && arr_2[11] == "" && arr_2[12] == "" && arr_2[13] == "" && arr_2[14] == "" && arr_2[15] == "" && arr_2[16] == "") {
+            if (arr_2[2] == "" && arr_2[3] == "" && arr_2[4] == "" && arr_2[5] == "" && arr_2[6] == "" && arr_2[7] == "" && arr_2[8] == "" && arr_2[9] == "" && arr_2[10] == "" && arr_2[11] == "" && arr_2[12] == "" && arr_2[13] == "" && arr_2[14] == "" && arr_2[15] == "" && arr_2[16] == "" && arr_2[17] == "") {
                 arr.splice(i, 1);
             }
         }
@@ -214,6 +222,8 @@ function loadData() {
             page_width_def = Number(arr[13]);
             page_css_on_off = Number(arr[14]);
             page_css_on_off_def = Number(arr[14]);
+            align_text_on_off = Number(arr[15]);
+            align_text_on_off_def = Number(arr[15]);
         }
         if (typeof domain_list !== 'undefined') {
             domain_list = domain_list.replace(/\s+/g, '');
@@ -242,6 +252,7 @@ function save_domain_list() {
     var page_Y_shift_save = page_Y_shift;
     var page_width_save = page_width;
     var page_css_on_off_save = page_css_on_off;
+    var align_text_on_off_save = align_text_on_off;
     if (font_size == size_font_def) font_size_save = "";
     if (title_coeff_h1 == title_coeff_h1_def) title_coeff_h1_save = "";
     if (title_coeff_h2 == title_coeff_h2_def) title_coeff_h2_save = "";
@@ -257,10 +268,11 @@ function save_domain_list() {
     if (page_Y_shift == page_Y_shift_def) page_Y_shift_save = "";
     if (page_width == page_width_def) page_width_save = "";
     if (page_css_on_off == page_css_on_off_def) page_css_on_off_save = "";
+    if (align_text_on_off == align_text_on_off_def) align_text_on_off_save = "";
     domain_list = domain_list + " ";
     if (domain_list == "undefined") domain_list = "";
     if (domain_list.includes(";" + domain_current + ";") == false) {
-        domain_list = domain_list + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";|";
+        domain_list = domain_list + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";" + String(align_text_on_off_save) + ";|";
     } else {
         let arr = domain_list.split("|");
         for (let i = 0; i < arr.length; i += 1) {
@@ -269,7 +281,7 @@ function save_domain_list() {
             }
         }
         let str = arr.join("|");
-        domain_list = str + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";|";
+        domain_list = str + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";" + String(align_text_on_off_save) + ";|";
     }
     domain_list = domain_list.replace(/\s+/g, '');
     clean_domain_list();
@@ -315,6 +327,7 @@ function doZoom_Texe_Default() {
     page_Y_shift = page_Y_shift_def;
     page_width = page_width_def;
     page_css_on_off = page_css_on_off_def;
+    align_text_on_off = align_text_on_off_def;
     filling_out_form();
     save_domain_list();
 }
@@ -527,6 +540,18 @@ function check_page_css() {
     }
 }
 
+function check_align_text() {
+    var checkbox = document.getElementById('align_text_checkbox');
+    if (checkbox.checked == true) {
+        align_text_on_off = 1;
+        save_domain_list();
+    } else {
+        align_text_on_off = 0;
+        save_domain_list();
+        chrome.tabs.reload();
+    }
+}
+
 function doZoomIn_page_css_zoom_001() {
     Monitoring_frequency_clicks('Zoom_increaseButton_css_001', function() {
         if (Number.isFinite(page_css_zoom)) {
@@ -659,6 +684,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('decreaseButton_width').onclick = doZoomOut_page_width;
     document.getElementById('button_default_text').onclick = doZoomTextDefault;
     document.getElementById('Page_zoom_css_checkbox').onclick = check_page_css;
+    document.getElementById('align_text_checkbox').onclick = check_align_text;
 });
 
 chrome.tabs.onActivated.addListener((activeInfo) => {

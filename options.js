@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 var domain_list;
-var text_param_start = "1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;";
+var text_param_start = ";1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;0;";
 var text_param_def;
 var brauzer_font_size_def;
 var size_font_def;
@@ -19,6 +19,7 @@ var page_X_shift;
 var page_Y_shift;
 var page_width;
 var page_css_on_off;
+var align_text_on_off;
 var change_icons_on_off;
 var change_badge_on_off;
 var param_font_on_off;
@@ -45,6 +46,7 @@ var page_X_shift_def;
 var page_Y_shift_def;
 var page_width_def;
 var page_css_on_off_def;
+var align_text_on_off_def;
 
 // локализация
 var elements = document.querySelectorAll('[localization]');
@@ -119,7 +121,7 @@ function clean_domain_list() {
         let arr = domain_list.split("|");
         for (let i = 0; i < arr.length; i += 1) {
             let arr_2 = arr[i].split(";");
-            if (Number(arr_2[2]) == size_font_def && Number(arr_2[3]) == title_coeff_h1_def && Number(arr_2[4]) == title_coeff_h2_def && Number(arr_2[5]) == title_coeff_h3_def && Number(arr_2[6]) == title_coeff_h4_def && Number(arr_2[7]) == title_coeff_h5_def && Number(arr_2[8]) == title_coeff_h6_def && Number(arr_2[9]) == line_height_def && Number(arr_2[10]) == line_height_on_off_def && Number(arr_2[11]) == text_param_on_off_def && Number(arr_2[12]) == page_css_zoom_def && Number(arr_2[13]) == page_X_shift_def && Number(arr_2[14]) == page_Y_shift_def && Number(arr_2[15]) == page_width_def && Number(arr_2[16]) == page_css_on_off_def) {
+            if (Number(arr_2[2]) == size_font_def && Number(arr_2[3]) == title_coeff_h1_def && Number(arr_2[4]) == title_coeff_h2_def && Number(arr_2[5]) == title_coeff_h3_def && Number(arr_2[6]) == title_coeff_h4_def && Number(arr_2[7]) == title_coeff_h5_def && Number(arr_2[8]) == title_coeff_h6_def && Number(arr_2[9]) == line_height_def && Number(arr_2[10]) == line_height_on_off_def && Number(arr_2[11]) == text_param_on_off_def && Number(arr_2[12]) == page_css_zoom_def && Number(arr_2[13]) == page_X_shift_def && Number(arr_2[14]) == page_Y_shift_def && Number(arr_2[15]) == page_width_def && Number(arr_2[16]) == page_css_on_off_def && Number(arr_2[17]) == align_text_on_off_def) {
                 arr.splice(i, 1);
             }
         }
@@ -151,6 +153,7 @@ function load_data() {
             page_Y_shift = Number(arr[12]);
             page_width = Number(arr[13]);
             page_css_on_off = Number(arr[14]);
+            align_text_on_off = Number(arr[15]);
         } else {
             text_param_def = String(fsd) + ";" + text_param_start;
             chrome.storage.local.set({ "def_text_param": text_param_def });
@@ -178,6 +181,8 @@ function load_data() {
         if (line_height_on_off == 0) document.getElementById('line_height_checkbox').checked = false;
         if (text_param_on_off == 1) document.getElementById('blacklist_checkbox').checked = true;
         if (text_param_on_off == 0) document.getElementById('blacklist_checkbox').checked = false;
+        if (align_text_on_off == 1) document.getElementById('align_text_checkbox').checked = true;
+        if (align_text_on_off == 0) document.getElementById('align_text_checkbox').checked = false;
         var objSel = document.getElementById("List_domain_no_default");
         objSel.options.length = 0;
         filling_domain_list();
@@ -217,7 +222,7 @@ function SaveParamText() {
         title_coeff_h5 = Number(document.getElementById("def_h5").textContent);
         title_coeff_h6 = Number(document.getElementById("def_h6").textContent);
         line_height = Number(document.getElementById("line_height").textContent);
-        var tpd = size_font_def + ";" + title_coeff_h1 + ";" + title_coeff_h2 + ";" + title_coeff_h3 + ";" + title_coeff_h4 + ";" + title_coeff_h5 + ";" + title_coeff_h6 + ";" + line_height + ";" + line_height_on_off + ";" + text_param_on_off + ";" + page_css_zoom + ";" + page_X_shift + ";" + page_Y_shift + ";" + page_width + ";" + page_css_on_off + ";";
+        var tpd = size_font_def + ";" + title_coeff_h1 + ";" + title_coeff_h2 + ";" + title_coeff_h3 + ";" + title_coeff_h4 + ";" + title_coeff_h5 + ";" + title_coeff_h6 + ";" + line_height + ";" + line_height_on_off + ";" + text_param_on_off + ";" + page_css_zoom + ";" + page_X_shift + ";" + page_Y_shift + ";" + page_width + ";" + page_css_on_off + ";" + align_text_on_off + ";";
         chrome.storage.local.set({ "def_text_param": tpd });
         if (tpd !== text_param_def) {
             domain_list = "";
@@ -325,6 +330,15 @@ function checkLineHeight() {
     }
 }
 
+function checkChange_align_text() {
+    var checkbox = document.getElementById('align_text_checkbox');
+    if (checkbox.checked == true) {
+        align_text_on_off = 1;
+    } else {
+        align_text_on_off = 0;
+    }
+}
+
 function checkBlackList() {
     var checkbox = document.getElementById('blacklist_checkbox');
     if (checkbox.checked == true) {
@@ -392,6 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('increaseButton_font_contour').onclick = doZoomIn_font_contour_width;
     document.getElementById('decreaseButton_font_contour').onclick = doZoomOut_font_contour_width;
     document.getElementById('saveFont').onclick = SaveParamFont;
+    document.getElementById('align_text_checkbox').onclick = checkChange_align_text;
 });
 
 // чтение данных из файла в хранилище расширения

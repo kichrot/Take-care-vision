@@ -6,7 +6,7 @@
    "YES": {"message": "ДА"},
    "Default_options": {"message": "Параметры по умолчанию:"},
    "Default_text_options": {"message": "Параметры текста:"},
-   "Attention_saving": {"message": "Внимание! При сохранении, измененных настроек расширения по умолчанию, ранее сделанные настройки для отдельных доменов будут сброшены, на новые настройки по умолчанию."},
+   "Attention_saving": {"message": "Внимание! При сохранении настройки для отдельных доменов будут удалены."},
    "Reset_to_start_default": {"message": "Сброс всех настроек"},
    "Save": {"message": "Сохранить"},
    "In_browser": {"message": "В браузере:"},
@@ -20,7 +20,7 @@
    "P_width": {"message": "Ширина стр-цы:"},
    "X_shift": {"message": "X сдвиг:"},
    "Y_shift": {"message": "Y сдвиг:"},
-   "Text_options": {"message": "Параметры текста:"},
+   "Text_options": {"message": "Размеры текста:"},
    "Font_size": {"message": "Размер шрифта:"},
    "Headers_size_coefficient": {"message": "Коэффициенты размера заголовков:"},
    "Line_height": {"message": "Высота строки:"},
@@ -46,6 +46,7 @@
    "Font_shadow_lightens": {"message": "Яркость тени:"},
    "Font_weight_2": {"message": "Контур шрифта:"},
    "Font_stroke_width": {"message": "Толщина контура:"},
-   "Font_family": {"message": "Единый шрифт на всех страницах:"},
-   "Selected_font": {"message": "Выбранный шрифт:"}
+   "Font_family": {"message": "Шрифт на всех страницах:"},
+   "Selected_font": {"message": "Выбранный шрифт:"},
+   "Align_text": {"message": "Выравнивание текста по ширине:"}
 }

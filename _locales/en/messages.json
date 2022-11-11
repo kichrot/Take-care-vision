@@ -6,7 +6,7 @@
    "YES": {"message": "YES"},
    "Default_options": {"message": "Default options:"},
    "Default_text_options": {"message": "Text options:"},
-   "Attention_saving": {"message": "Attention! When saving the changed default extension settings, previously made settings for individual domains will be reset to new default settings."},
+   "Attention_saving": {"message": "Attention! When saving settings for individual domains will be deleted."},
    "Reset_to_start_default": {"message": "Reset all settings"},
    "Save": {"message": "Save"},
    "In_browser": {"message": "In browser:"},
@@ -20,7 +20,7 @@
    "P_width": {"message": "Page width:"},
    "X_shift": {"message": "X shift:"},
    "Y_shift": {"message": "Y shift:"},
-   "Text_options": {"message": "Text options:"},
+   "Text_options": {"message": "Text dimensions:"},
    "Font_size": {"message": "Font size:"},
    "Headers_size_coefficient": {"message": "Headers size coefficient:"},
    "Line_height": {"message": "Line height:"},
@@ -46,6 +46,7 @@
    "Font_shadow_lightens": {"message": "Shadow brightness:"},
    "Font_weight_2": {"message": "Font outline:"},
    "Font_stroke_width": {"message": "Contour thickness:"},
-   "Font_family": {"message": "Single font on all pages:"},
-   "Selected_font": {"message": "Selected font:"}
+   "Font_family": {"message": "Font on all pages:"},
+   "Selected_font": {"message": "Selected font:"},
+   "Align_text": {"message": "Aligning text in width:"}
 }
