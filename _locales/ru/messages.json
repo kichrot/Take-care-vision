@@ -49,5 +49,6 @@
    "Font_family": {"message": "Шрифт на всех страницах:"},
    "Selected_font": {"message": "Выбранный шрифт:"},
    "Align_text": {"message": "Выравнивание текста по ширине:"},
-   "Scale_settings": {"message": "Масштаб страницы настроек:"}
+   "Scale_settings": {"message": "Масштаб страницы настроек:"},
+   "Domain_filter": {"message": "Фильтр:"}
 }

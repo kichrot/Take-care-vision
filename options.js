@@ -133,8 +133,21 @@ function clean_domain_list() {
 
 function Scale_page_settings() {
     var css = document.createElement('style');
-    css.innerHTML += [ `body {transform-origin: 0px 0px; transform: scale(${String(scale_settings)}%);`].join("\n");
+    css.innerHTML += [`body {transform-origin: 0px 0px; transform: scale(${String(scale_settings)}%);`].join("\n");
     document.documentElement.appendChild(css);
+}
+
+function filter_domain() {
+    var keyword = document.getElementById("domain_filter_input").value;
+    var select = document.getElementById("List_domain_no_default");
+    for (var i = 0; i < select.length; i++) {
+        var d = select.options[i].value;
+        if (!d.match(keyword)) {
+            select.options[i].style.display = 'none';
+        } else {
+            select.options[i].style.display = 'block';
+        }
+    }
 }
 
 function load_data() {
@@ -145,7 +158,7 @@ function load_data() {
             domain_list = result.list_domain;
             text_param_def = result.def_text_param;
             let arr = text_param_def.split(";");
-            if (arr[0] == "") {size_font_def = fsd;} else {size_font_def = Number(arr[0]);}
+            if (arr[0] == "") { size_font_def = fsd; } else { size_font_def = Number(arr[0]); }
             title_coeff_h1 = Number(arr[1]);
             title_coeff_h2 = Number(arr[2]);
             title_coeff_h3 = Number(arr[3]);
@@ -170,11 +183,11 @@ function load_data() {
         }
         let arr = result.interface_param.split(";");
         change_icons_on_off = Number(arr[0]);
-        if (Number(arr[0])== 1) document.getElementById('change_icons_checkbox').checked = true;
-        if (Number(arr[0])== 0) document.getElementById('change_icons_checkbox').checked = false;
+        if (Number(arr[0]) == 1) document.getElementById('change_icons_checkbox').checked = true;
+        if (Number(arr[0]) == 0) document.getElementById('change_icons_checkbox').checked = false;
         change_badge_on_off = Number(arr[1]);
-        if (Number(arr[1])== 1) document.getElementById('change_badge_checkbox').checked = true;
-        if (Number(arr[1])== 0) document.getElementById('change_badge_checkbox').checked = false;
+        if (Number(arr[1]) == 1) document.getElementById('change_badge_checkbox').checked = true;
+        if (Number(arr[1]) == 0) document.getElementById('change_badge_checkbox').checked = false;
         scale_settings = Number(arr[2]);
         display_options("scale_settings", scale_settings);
         Scale_page_settings();
@@ -198,11 +211,11 @@ function load_data() {
         filling_domain_list();
         arr = result.font_param.split(";");
         param_font_on_off = Number(arr[0]);
-        if (Number(arr[0])== 1) document.getElementById('Font_options_checkbox').checked = true;
-        if (Number(arr[0])== 0) document.getElementById('Font_options_checkbox').checked = false;
+        if (Number(arr[0]) == 1) document.getElementById('Font_options_checkbox').checked = true;
+        if (Number(arr[0]) == 0) document.getElementById('Font_options_checkbox').checked = false;
         shadow_font_on_off = Number(arr[1]);
-        if (Number(arr[1])== 1) document.getElementById('Font_shadow_checkbox').checked = true;
-        if (Number(arr[1])== 0) document.getElementById('Font_shadow_checkbox').checked = false;
+        if (Number(arr[1]) == 1) document.getElementById('Font_shadow_checkbox').checked = true;
+        if (Number(arr[1]) == 0) document.getElementById('Font_shadow_checkbox').checked = false;
         shadow_font_width = Number(arr[2]);
         display_options("font_shadow_width", shadow_font_width);
         shadow_font_blur = Number(arr[3]);
@@ -210,14 +223,14 @@ function load_data() {
         shadow_font_lightens = Number(arr[4]);
         display_options("font_shadow_lightens", shadow_font_lightens);
         contour_font_on_off = Number(arr[5]);
-        if (Number(arr[5])== 1) document.getElementById('Font_contour_checkbox').checked = true;
-        if (Number(arr[5])== 0) document.getElementById('Font_contour_checkbox').checked = false;
+        if (Number(arr[5]) == 1) document.getElementById('Font_contour_checkbox').checked = true;
+        if (Number(arr[5]) == 0) document.getElementById('Font_contour_checkbox').checked = false;
         contour_font_width = Number(arr[6]);
         display_options("font_contour_width", contour_font_width);
         selected_font_on_off = Number(arr[7]);
-        if (Number(arr[7])== 1) document.getElementById('Font_family_checkbox').checked = true;
-        if (Number(arr[7])== 0) document.getElementById('Font_family_checkbox').checked = false;
-        selected_font = arr[8];    
+        if (Number(arr[7]) == 1) document.getElementById('Font_family_checkbox').checked = true;
+        if (Number(arr[7]) == 0) document.getElementById('Font_family_checkbox').checked = false;
+        selected_font = arr[8];
         document.getElementById('font_family_input').value = selected_font;
     });
 }
@@ -242,14 +255,14 @@ function SaveParamText() {
 }
 
 function SaveParamFont() {
-    if (document.getElementById("Font_options_checkbox").checked == true) {param_font_on_off = "1"} else {param_font_on_off = "0"}
-    if (document.getElementById("Font_shadow_checkbox").checked == true) {shadow_font_on_off = "1"} else {shadow_font_on_off = "0"}
+    if (document.getElementById("Font_options_checkbox").checked == true) { param_font_on_off = "1" } else { param_font_on_off = "0" }
+    if (document.getElementById("Font_shadow_checkbox").checked == true) { shadow_font_on_off = "1" } else { shadow_font_on_off = "0" }
     shadow_font_width = document.getElementById("font_shadow_width").textContent;
     shadow_font_blur = document.getElementById("font_shadow_blur").textContent;
     shadow_font_lightens = document.getElementById("font_shadow_lightens").textContent;
-    if (document.getElementById("Font_contour_checkbox").checked == true) {contour_font_on_off = "1"} else {contour_font_on_off = "0"}
+    if (document.getElementById("Font_contour_checkbox").checked == true) { contour_font_on_off = "1" } else { contour_font_on_off = "0" }
     contour_font_width = document.getElementById("font_contour_width").textContent;
-    if (document.getElementById("Font_family_checkbox").checked == true) {selected_font_on_off = "1"} else {selected_font_on_off = "0"}
+    if (document.getElementById("Font_family_checkbox").checked == true) { selected_font_on_off = "1" } else { selected_font_on_off = "0" }
     selected_font = document.getElementById("font_family_input").value;
     var spf = param_font_on_off + ";" + shadow_font_on_off + ";" + shadow_font_width + ";" + shadow_font_blur + ";" + shadow_font_lightens + ";" + contour_font_on_off + ";" + contour_font_width + ";" + selected_font_on_off + ";" + selected_font + ";";
     chrome.storage.local.set({ "font_param": spf });
@@ -262,8 +275,8 @@ function StartDefaultData() {
         text_param_def = String(fsd) + ";" + text_param_start;
         chrome.storage.local.set({ "def_text_param": text_param_def });
         chrome.storage.local.set({ "list_domain": "" });
-        chrome.storage.local.set({ "interface_param": "1;0;"});
-        chrome.storage.local.set({ "font_param": "0;0;0;0;0;0;0;0;;"});
+        chrome.storage.local.set({ "interface_param": "1;0;" });
+        chrome.storage.local.set({ "font_param": "0;0;0;0;0;0;0;0;;" });
         setTimeout(load_data, 300);
     }
 }
@@ -275,7 +288,7 @@ function doZoom_size(dif, Id, discharge) {
 
 function doZoom_size_font_param(dif, Id, discharge) {
     var l = Number(document.getElementById(Id).textContent) + dif;
-    if ( l < 0) l = 0;
+    if (l < 0) l = 0;
     document.getElementById(Id).textContent = String(l.toFixed(discharge));
 }
 
@@ -332,18 +345,18 @@ function doZoomIn_font_contour_width() { doZoom_size_font_param(0.1, 'font_conto
 function doZoomOut_font_contour_width() { doZoom_size_font_param(-0.1, 'font_contour_width', 1); }
 
 function doZoomIn_scale_settings() {
-    doZoom_size(1, 'scale_settings', 0); 
+    doZoom_size(1, 'scale_settings', 0);
     scale_settings = Number(document.getElementById("scale_settings").textContent);
     var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
-    chrome.storage.local.set({"interface_param": ip});
+    chrome.storage.local.set({ "interface_param": ip });
     Scale_page_settings();
 }
 
-function doZoomOut_scale_settings() { 
-    doZoom_size(-1, 'scale_settings', 0); 
+function doZoomOut_scale_settings() {
+    doZoom_size(-1, 'scale_settings', 0);
     scale_settings = Number(document.getElementById("scale_settings").textContent);
     var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
-    chrome.storage.local.set({"interface_param": ip});
+    chrome.storage.local.set({ "interface_param": ip });
     Scale_page_settings();
 }
 
@@ -382,7 +395,7 @@ function checkChange_icons() {
         change_icons_on_off = 0;
     }
     var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
-    chrome.storage.local.set({"interface_param": ip});
+    chrome.storage.local.set({ "interface_param": ip });
 }
 
 function checkChange_badge() {
@@ -393,7 +406,7 @@ function checkChange_badge() {
         change_badge_on_off = 0;
     }
     var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
-    chrome.storage.local.set({"interface_param": ip});
+    chrome.storage.local.set({ "interface_param": ip });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -435,6 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('align_text_checkbox').onclick = checkChange_align_text;
     document.getElementById('increaseButton__scale_settings').onclick = doZoomIn_scale_settings;
     document.getElementById('decreaseButton_scale_settings').onclick = doZoomOut_scale_settings;
+    document.getElementById('domain_filter_input').oninput = filter_domain;
 });
 
 // чтение данных из файла в хранилище расширения

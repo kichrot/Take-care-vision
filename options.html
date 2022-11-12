@@ -553,25 +553,32 @@
             <td>
                 <fieldset style="max-width: 385px; height: 547px; padding: 4px; margin-top: -21px; border-width: 4px; background-color: #37527721; display: grid; place-items: center;">
                     <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="List_domains"></legend>
-                    <table style="">
+                    <table style="margin-left: -105px;">
                         <tr>
-                            <td><select style="width: 225px; height: 510px;" select size="2" id="List_domain_no_default"></select></td>
-                            <td>
-                                <table>
-                                    <tr>
-                                        <td><button style="font-size:20px;height:30px; width: 95px; font-weight: 400;" type="button" id="Open_domain" localization="Open_domain"></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td><button style="font-size:20px;height:30px; width: 95px; font-weight: 400;" type="button" id="Delete_domain" localization="Delete_domain"></button>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
+                            <td><label localization="Domain_filter"></label></td>
+                            <td><input style="margin-left: 2px; width: 162px; font-stretch: extra-condensed; border: none;" id="domain_filter_input" type="text"></input>
                         </tr>
                     </table>
+                    <table style="">
+                        <tr>
+                            <tr>
+                                <td><select style="width: 225px; height: 485px;" select size="2" id="List_domain_no_default"></select></td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td><button style="font-size:20px;height:30px; width: 95px; font-weight: 400;" type="button" id="Open_domain" localization="Open_domain"></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><button style="font-size:20px;height:30px; width: 95px; font-weight: 400;" type="button" id="Delete_domain" localization="Delete_domain"></button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                    </table>
                 </fieldset>
-            </td>
-        </tr>
+                </td>
+                </tr>
     </table>
 </body>
 <script src="options.js"></script>
