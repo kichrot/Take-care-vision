@@ -142,7 +142,7 @@ function filter_domain() {
     var select = document.getElementById("List_domain_no_default");
     for (var i = 0; i < select.length; i++) {
         var d = select.options[i].value;
-        if (!d.match(keyword)) {
+        if (!d.includes(keyword)) {
             select.options[i].style.display = 'none';
         } else {
             select.options[i].style.display = 'block';
