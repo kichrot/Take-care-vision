@@ -48,5 +48,6 @@
    "Font_stroke_width": {"message": "Contour thickness:"},
    "Font_family": {"message": "Font on all pages:"},
    "Selected_font": {"message": "Selected font:"},
-   "Align_text": {"message": "Aligning text in width:"}
+   "Align_text": {"message": "Aligning text in width:"},
+   "Scale_settings": {"message": "Scale of the settings page:"}
 }

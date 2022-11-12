@@ -48,5 +48,6 @@
    "Font_stroke_width": {"message": "Толщина контура:"},
    "Font_family": {"message": "Шрифт на всех страницах:"},
    "Selected_font": {"message": "Выбранный шрифт:"},
-   "Align_text": {"message": "Выравнивание текста по ширине:"}
+   "Align_text": {"message": "Выравнивание текста по ширине:"},
+   "Scale_settings": {"message": "Масштаб страницы настроек:"}
 }

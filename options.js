@@ -31,6 +31,7 @@ var contour_font_on_off;
 var contour_font_width;
 var selected_font_on_off;
 var selected_font;
+var scale_settings;
 
 var title_coeff_h1_def;
 var title_coeff_h2_def;
@@ -130,6 +131,12 @@ function clean_domain_list() {
     }
 }
 
+function Scale_page_settings() {
+    var css = document.createElement('style');
+    css.innerHTML += [ `body {transform-origin: 0px 0px; transform: scale(${String(scale_settings)}%);`].join("\n");
+    document.documentElement.appendChild(css);
+}
+
 function load_data() {
     chrome.storage.local.get(['list_domain', 'def_text_param', 'interface_param', 'font_param'], function(result) {
         var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
@@ -168,6 +175,9 @@ function load_data() {
         change_badge_on_off = Number(arr[1]);
         if (Number(arr[1])== 1) document.getElementById('change_badge_checkbox').checked = true;
         if (Number(arr[1])== 0) document.getElementById('change_badge_checkbox').checked = false;
+        scale_settings = Number(arr[2]);
+        display_options("scale_settings", scale_settings);
+        Scale_page_settings();
         display_options("default_browser_font_size", chrome.i18n.getMessage("In_browser") + " " + String(fsd) + "vw" + "(" + brauzer_font_size_def + "px" + ")");
         display_options("def_text_size", size_font_def);
         display_options("def_h1", title_coeff_h1);
@@ -321,6 +331,22 @@ function doZoomIn_font_contour_width() { doZoom_size_font_param(0.1, 'font_conto
 
 function doZoomOut_font_contour_width() { doZoom_size_font_param(-0.1, 'font_contour_width', 1); }
 
+function doZoomIn_scale_settings() {
+    doZoom_size(1, 'scale_settings', 0); 
+    scale_settings = Number(document.getElementById("scale_settings").textContent);
+    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
+    chrome.storage.local.set({"interface_param": ip});
+    Scale_page_settings();
+}
+
+function doZoomOut_scale_settings() { 
+    doZoom_size(-1, 'scale_settings', 0); 
+    scale_settings = Number(document.getElementById("scale_settings").textContent);
+    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
+    chrome.storage.local.set({"interface_param": ip});
+    Scale_page_settings();
+}
+
 function checkLineHeight() {
     var checkbox = document.getElementById('line_height_checkbox');
     if (checkbox.checked == true) {
@@ -355,7 +381,7 @@ function checkChange_icons() {
     } else {
         change_icons_on_off = 0;
     }
-    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";";
+    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
     chrome.storage.local.set({"interface_param": ip});
 }
 
@@ -366,7 +392,7 @@ function checkChange_badge() {
     } else {
         change_badge_on_off = 0;
     }
-    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";";
+    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
     chrome.storage.local.set({"interface_param": ip});
 }
 
@@ -407,6 +433,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('decreaseButton_font_contour').onclick = doZoomOut_font_contour_width;
     document.getElementById('saveFont').onclick = SaveParamFont;
     document.getElementById('align_text_checkbox').onclick = checkChange_align_text;
+    document.getElementById('increaseButton__scale_settings').onclick = doZoomIn_scale_settings;
+    document.getElementById('decreaseButton_scale_settings').onclick = doZoomOut_scale_settings;
 });
 
 // чтение данных из файла в хранилище расширения
@@ -441,6 +469,7 @@ document.getElementById('saveDataFile').addEventListener('click', async() => {
         await writableStream.close();
     } catch { return }
 });
+
 
 (function() {
     setTimeout(load_data, 300);
