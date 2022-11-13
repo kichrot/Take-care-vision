@@ -3,7 +3,7 @@
 chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.local.set({ "def_text_param": ";1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;0;"});
     chrome.storage.local.set({ "list_domain": ""});
-    chrome.storage.local.set({"interface_param": "1;0;100;"});
+    chrome.storage.local.set({"interface_param": "1;0;100;100;"});
     chrome.storage.local.set({"font_param": "0;0;0;0;0;0;0;0;;"});
 });
 

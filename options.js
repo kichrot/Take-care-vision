@@ -32,6 +32,7 @@ var contour_font_width;
 var selected_font_on_off;
 var selected_font;
 var scale_settings;
+var scale_popup;
 
 var title_coeff_h1_def;
 var title_coeff_h2_def;
@@ -191,6 +192,8 @@ function load_data() {
         scale_settings = Number(arr[2]);
         display_options("scale_settings", scale_settings);
         Scale_page_settings();
+        scale_popup = Number(arr[3]);
+        display_options("scale_popup", scale_popup);
         display_options("default_browser_font_size", chrome.i18n.getMessage("In_browser") + " " + String(fsd) + "vw" + "(" + brauzer_font_size_def + "px" + ")");
         display_options("def_text_size", size_font_def);
         display_options("def_h1", title_coeff_h1);
@@ -275,7 +278,7 @@ function StartDefaultData() {
         text_param_def = String(fsd) + ";" + text_param_start;
         chrome.storage.local.set({ "def_text_param": text_param_def });
         chrome.storage.local.set({ "list_domain": "" });
-        chrome.storage.local.set({ "interface_param": "1;0;100;" });
+        chrome.storage.local.set({ "interface_param": "1;0;100;100;" });
         chrome.storage.local.set({ "font_param": "0;0;0;0;0;0;0;0;;" });
         setTimeout(load_data, 300);
     }
@@ -344,20 +347,35 @@ function doZoomIn_font_contour_width() { doZoom_size_font_param(0.1, 'font_conto
 
 function doZoomOut_font_contour_width() { doZoom_size_font_param(-0.1, 'font_contour_width', 1); }
 
+function Save_interface_param() {
+    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";" + String(scale_popup) + ";";
+    chrome.storage.local.set({ "interface_param": ip });
+}
+
+function doZoomIn_scale_popup() {
+    doZoom_size(1, 'scale_popup', 0);
+    scale_popup = Number(document.getElementById("scale_popup").textContent);
+    Save_interface_param()
+}
+
+function doZoomOut_scale_popup() {
+    doZoom_size(-1, 'scale_popup', 0);
+    scale_popup = Number(document.getElementById("scale_popup").textContent);
+    Save_interface_param()
+}
+
 function doZoomIn_scale_settings() {
     doZoom_size(1, 'scale_settings', 0);
     scale_settings = Number(document.getElementById("scale_settings").textContent);
-    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
-    chrome.storage.local.set({ "interface_param": ip });
     Scale_page_settings();
+    Save_interface_param()
 }
 
 function doZoomOut_scale_settings() {
     doZoom_size(-1, 'scale_settings', 0);
     scale_settings = Number(document.getElementById("scale_settings").textContent);
-    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
-    chrome.storage.local.set({ "interface_param": ip });
     Scale_page_settings();
+    Save_interface_param()
 }
 
 function checkLineHeight() {
@@ -394,8 +412,7 @@ function checkChange_icons() {
     } else {
         change_icons_on_off = 0;
     }
-    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
-    chrome.storage.local.set({ "interface_param": ip });
+    Save_interface_param()
 }
 
 function checkChange_badge() {
@@ -405,8 +422,7 @@ function checkChange_badge() {
     } else {
         change_badge_on_off = 0;
     }
-    var ip = String(change_icons_on_off) + ";" + String(change_badge_on_off) + ";" + String(scale_settings) + ";";
-    chrome.storage.local.set({ "interface_param": ip });
+    Save_interface_param()
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -449,6 +465,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('increaseButton__scale_settings').onclick = doZoomIn_scale_settings;
     document.getElementById('decreaseButton_scale_settings').onclick = doZoomOut_scale_settings;
     document.getElementById('domain_filter_input').oninput = filter_domain;
+    document.getElementById('increaseButton__scale_popup').onclick = doZoomIn_scale_popup;
+    document.getElementById('decreaseButton_scale_popup').onclick = doZoomOut_scale_popup;
 });
 
 // чтение данных из файла в хранилище расширения

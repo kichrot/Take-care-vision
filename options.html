@@ -484,60 +484,99 @@
                             </td>
                         </tr>
                     </table>
-                    <fieldset style="min-width: -webkit-fill-available; padding: 1px; margin-top: 18px; border-width: 3px; background-color: #37527721; display: grid;">
+
+
+
+                    <fieldset style="min-width: -webkit-fill-available; padding: 1px; padding-bottom: 0px; margin-top: 18px; border-width: 3px; background-color: #37527721; display: grid;">
                         <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Interface_options"></legend>
                         <table style="margin-top: -12px; margin-bottom: -4px;">
                             <tr>
                                 <td>
-                                    <table style="width: 200px; padding-right: 16px;">
+                                    <table style="">
                                         <tr>
-                                            <td><label localization="Change_icons"></label></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><label style="font-weight: 600; color: red;" localization="NO"></label>
-                                            </td>
-                                            <td><label class="switch"><input type="checkbox"
+                                            <td>
+                                                <table style="">
+                                                    <tr>
+                                                        <td><label localization="Change_icons"></label></td>
+                                                        <td style="width: 50px;"></td>
+                                                        <td></td>
+                                                        <td><label style="font-weight: 600; color: red;" localization="NO"></label>
+                                                        </td>
+                                                        <td><label class="switch"><input type="checkbox"
                                                         id="change_icons_checkbox"><span
                                                         class="slider round"></span></label></td>
-                                            <td><label style="font-weight: 600; color: green;" localization="YES"></label>
+                                                        <td><label style="font-weight: 600; color: green;" localization="YES"></label>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>
-                                    <table style="width: 230px; margin-left: -14px; margin-right: 4px;">
-                                        <tr>
-                                            <td><label localization="Change_badge"></label></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><label style="font-weight: 600; color: red;" localization="NO"></label>
-                                            </td>
-                                            <td><label class="switch"><input type="checkbox"
+                                            <tr>
+
+                                            </tr>
+                                            <td>
+                                                <table style="">
+                                                    <tr>
+                                                        <td><label localization="Change_badge"></label></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td><label style="font-weight: 600; color: red;" localization="NO"></label>
+                                                        </td>
+                                                        <td><label class="switch"><input type="checkbox"
                                                         id="change_badge_checkbox"><span
                                                         class="slider round"></span></label></td>
-                                            <td><label style="font-weight: 600; color: green;" localization="YES"></label>
+                                                        <td><label style="font-weight: 600; color: green;" localization="YES"></label>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </td>
                                         </tr>
                                     </table>
                                 </td>
-                                <td><label localization="Scale_settings"></label></td>
                                 <td>
-                                    <table style="zoom: 70%;">
+                                    <table style="">
                                         <tr>
-                                            <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_scale_settings" title="-0.1">--</button></td>
+                                            <td><label localization="Scale_settings"></label></td>
                                             <td>
-                                                <div style="font-size:33px; width: 48px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 22px;" id="scale_settings"></div>
+                                                <table style="zoom: 70%;">
+                                                    <tr>
+                                                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_scale_settings" title="-0.1">--</button></td>
+                                                        <td>
+                                                            <div style="font-size:33px; width: 48px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 22px;" id="scale_settings"></div>
+                                                        </td>
+                                                        <td>
+                                                            <div style="font-size:33px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 22px;">%</div>
+                                                        </td>
+                                                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton__scale_settings" title="+0.1">+</button></td>
+                                                    </tr>
+                                                </table>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label localization="Scale_popup"></label></td>
                                             <td>
-                                                <div style="font-size:33px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 22px;">%</div>
+                                                <table style="zoom: 70%;">
+                                                    <tr>
+                                                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; letter-spacing: -5px; line-height: 0px;" type="button" id="decreaseButton_scale_popup" title="-0.1">--</button></td>
+                                                        <td>
+                                                            <div style="font-size:33px; width: 48px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 22px;" id="scale_popup"></div>
+                                                        </td>
+                                                        <td>
+                                                            <div style="font-size:33px; font-weight: 400; font-stretch: extra-condensed; text-align: center; color: blue; border: none; line-height: 22px;">%</div>
+                                                        </td>
+                                                        <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton__scale_popup" title="+0.1">+</button></td>
+                                                    </tr>
+                                                </table>
                                             </td>
-                                            <td><button style="font-size:30px;height:30px;width:45px; font-weight: 400; line-height: 0px;" type="button" id="increaseButton__scale_settings" title="+0.1">+</button></td>
                                         </tr>
                                     </table>
                                 </td>
                             </tr>
                         </table>
                     </fieldset>
+
+
+
+
                     <fieldset style="min-width: -webkit-fill-available; padding: 1px; border-width: 3px; background-color: #37527721; display: grid; place-items: center;">
                         <legend style="height: 20px; line-height: 16px; font-size: 16px; font-weight: 600;" localization="Export_import"></legend>
                         <table style="">

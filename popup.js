@@ -20,6 +20,7 @@ var page_Y_shift;
 var page_width;
 var page_css_on_off;
 var align_text_on_off;
+var scale_popup;
 
 var title_coeff_h1_def;
 var title_coeff_h2_def;
@@ -61,6 +62,12 @@ chrome.tabs.query({ lastFocusedWindow: true, active: true }, function(tabs) {
     }
     domain_current = url_domain(tabs[0].url);
 });
+
+function Scale_popup(scale) {
+    var css = document.createElement('style');
+    css.innerHTML += [`html {zoom: ${String(scale)}%;`].join("\n");
+    document.documentElement.appendChild(css);
+}
 
 function display_no_yes(display) {
     document.getElementById('fieldset_font_size').style.display = display;
@@ -177,14 +184,16 @@ function clean_domain_list() {
 }
 
 function loadData() {
-    chrome.storage.local.get(['list_domain', 'def_text_param'], function(result) {
+    chrome.storage.local.get(['list_domain', 'def_text_param', 'interface_param'], function(result) {
+        let arr = result.interface_param.split(";");
+        Scale_popup(Number(arr[3]));
         if (typeof result.def_text_param == 'undefined') {
             alert(chrome.i18n.getMessage("Attention_initialize_extension"));
             open(location, '_self').close();
             return;
         } else {
             domain_list = result.list_domain;
-            let arr = result.def_text_param.split(";");
+            arr = result.def_text_param.split(";");
             var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
             fsd = Number(fsd.toFixed(2));
             if (arr[0] == "") {
