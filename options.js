@@ -275,7 +275,7 @@ function StartDefaultData() {
         text_param_def = String(fsd) + ";" + text_param_start;
         chrome.storage.local.set({ "def_text_param": text_param_def });
         chrome.storage.local.set({ "list_domain": "" });
-        chrome.storage.local.set({ "interface_param": "1;0;" });
+        chrome.storage.local.set({ "interface_param": "1;0;100;" });
         chrome.storage.local.set({ "font_param": "0;0;0;0;0;0;0;0;;" });
         setTimeout(load_data, 300);
     }
