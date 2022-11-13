@@ -38,7 +38,7 @@
    "Open_domain": {"message": "Открыть"},
    "Interface_options": {"message": "Параметры интерфейса:"},
    "Change_icons": {"message": "Динамическая иконка:"},
-   "Change_badge": {"message": "Масштаб страницы на иконке:"},
+   "Change_badge": {"message": "Масштаб страницы \nна иконке:"},
    "Font_options": {"message": "Параметры шрифта:"},
    "Font_weight_1": {"message": "Тень шрифта:"},
    "Font_shadow_width": {"message": "Толщина тени:"},
@@ -49,6 +49,6 @@
    "Font_family": {"message": "Шрифт на всех страницах:"},
    "Selected_font": {"message": "Выбранный шрифт:"},
    "Align_text": {"message": "Выравнивание текста по ширине:"},
-   "Scale_settings": {"message": "Масштаб страницы настроек:"},
+   "Scale_settings": {"message": "Масштаб страницы \nнастроек:"},
    "Domain_filter": {"message": "Фильтр:"}
 }
