@@ -307,8 +307,8 @@ function domain() {
 }
 
 (function() {
-    const t0 = performance.now();
+    //const t0 = performance.now();
     domain();
-    const t1 = performance.now();
-    console.log(`zoom.js выполнялся ${t1 - t0} milliseconds.`);
+    //const t1 = performance.now();
+    //console.log(`zoom.js выполнялся ${t1 - t0} milliseconds.`);
 })();

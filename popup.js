@@ -176,6 +176,7 @@ function clean_domain_list() {
             let arr_2 = arr[i].split(";");
             if (arr_2[2] == "" && arr_2[3] == "" && arr_2[4] == "" && arr_2[5] == "" && arr_2[6] == "" && arr_2[7] == "" && arr_2[8] == "" && arr_2[9] == "" && arr_2[10] == "" && arr_2[11] == "" && arr_2[12] == "" && arr_2[13] == "" && arr_2[14] == "" && arr_2[15] == "" && arr_2[16] == "" && arr_2[17] == "") {
                 arr.splice(i, 1);
+                break;
             }
         }
         let str = arr.join("|");
@@ -287,6 +288,7 @@ function save_domain_list() {
         for (let i = 0; i < arr.length; i += 1) {
             if (arr[i].includes(";" + domain_current + ";")) {
                 arr.splice(i, 1);
+                break;
             }
         }
         let str = arr.join("|");
