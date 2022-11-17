@@ -42,9 +42,9 @@ var align_text_on_off_def;
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
 brauzer_font_size_def = Number(brauzer_font_size_def.replace("px", ""));
 
-var elements = document.querySelectorAll('[localization]');
+var elements = document.querySelectorAll('[data-i18n]');
 elements.forEach(function (el) {
-    el.innerText = chrome.i18n.getMessage(el.getAttribute('localization'))
+    el.innerText = chrome.i18n.getMessage(el.getAttribute('data-i18n'))
 })
 
 function openOptions() {

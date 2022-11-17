@@ -51,9 +51,9 @@ var page_css_on_off_def;
 var align_text_on_off_def;
 
 // локализация
-var elements = document.querySelectorAll('[localization]');
+var elements = document.querySelectorAll('[data-i18n]');
 elements.forEach(function(el) {
-    el.innerText = chrome.i18n.getMessage(el.getAttribute('localization'))
+    el.innerText = chrome.i18n.getMessage(el.getAttribute('data-i18n'))
 });
 document.getElementById("defaultButton").title = chrome.i18n.getMessage("Title_defaultButton");
 document.getElementById("saveForm").title = chrome.i18n.getMessage("Title_saveForm");
