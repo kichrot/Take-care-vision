@@ -189,7 +189,7 @@ function loadData() {
             text_param_def = result.def_text_param;
         } else {
             font_size_def = 1 / (screen.width / 100) * brauzer_font_size_def;
-            font_size_def = Number(font_size_def.toFixed(2))
+            font_size_def = Number(font_size_def.toFixed(2));
             text_param_def = String(font_size_def) + ";" + text_param_def;
             chrome.storage.local.set({ "def_text_param": text_param_def });
         }
