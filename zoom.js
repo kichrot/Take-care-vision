@@ -33,8 +33,7 @@ var selected_font;
 var align_text_on_off;
 
 /* определяем размер шрифта браузера по умолчанию */
-brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
-brauzer_font_size_def = Number(brauzer_font_size_def.replace("px", ""));
+brauzer_font_size_def = Number((window.getComputedStyle(document.documentElement).getPropertyValue('font-size')).replace("px", ""));
 
 /* функция применения параметров на странице */
 function textZoom() {
@@ -188,8 +187,7 @@ function loadData() {
         if (typeof result.def_text_param !== 'undefined') {
             text_param_def = result.def_text_param;
         } else {
-            font_size_def = 1 / (screen.width / 100) * brauzer_font_size_def;
-            font_size_def = Number(font_size_def.toFixed(2));
+            font_size_def = Number((1 / (screen.width / 100) * brauzer_font_size_def).toFixed(2));
             text_param_def = String(font_size_def) + ";" + text_param_def;
             chrome.storage.local.set({ "def_text_param": text_param_def });
         }
