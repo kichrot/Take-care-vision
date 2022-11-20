@@ -275,7 +275,8 @@ function StartDefaultData() {
     if (confirm(chrome.i18n.getMessage("Initial_settings_message"))) {
         var fsd = 1 / (screen.width / 100) * brauzer_font_size_def;
         fsd = Number(fsd.toFixed(2))
-        text_param_def = String(fsd) + ";" + text_param_start;
+        text_param_def = String(fsd) + text_param_start;
+        alert(text_param_def);
         chrome.storage.local.set({ "def_text_param": text_param_def });
         chrome.storage.local.set({ "list_domain": "" });
         chrome.storage.local.set({ "interface_param": "1;0;100;100;" });
