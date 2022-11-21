@@ -71,21 +71,3 @@ function doZoomDefault() {
     if (tabId == -1) return;
     chrome.tabs.setZoom(tabId, 0);
 }
-
-function doSetMode() {
-    if (tabId == -1) return;
-    var modeVal;
-    var modeRadios = document.getElementsByName('modeRadio');
-    for (var i = 0; i < modeRadios.length; i++) {
-        if (modeRadios[i].checked)
-            modeVal = modeRadios[i].value;
-    }
-    var scopeVal;
-    var scopeRadios = document.getElementsByName('scopeRadio');
-    for (var i = 0; i < scopeRadios.length; i++) {
-        if (scopeRadios[i].checked)
-            scopeVal = scopeRadios[i].value;
-    }
-    if (!modeVal || !scopeVal) { return; }
-    chrome.tabs.setZoomSettings(tabId, { mode: modeVal, scope: scopeVal });
-}
