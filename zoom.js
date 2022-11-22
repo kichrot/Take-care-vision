@@ -184,16 +184,16 @@ function textZoom() {
 
 function loadData() {
     chrome.storage.local.get(["list_domain", "def_text_param", 'font_param'], function(result) {
-        if (typeof result.def_text_param !== 'undefined') {
-            text_param_def = result.def_text_param;
+        text_param_def = result.def_text_param;
+        let arr = text_param_def.split(";");
+        if (arr[0] !== '') {
+            font_size_def = Number(arr[0]);
         } else {
             font_size_def = Number((1 / (screen.width / 100) * brauzer_font_size_def).toFixed(2));
-            text_param_def = String(font_size_def) + ";" + text_param_def;
+            text_param_def = String(font_size_def) + text_param_def;
             chrome.storage.local.set({ "def_text_param": text_param_def });
         }
-        let arr = text_param_def.split(";");
-        font_size_def = Number(arr[0]);
-        font_size = Number(arr[0]);
+        font_size = font_size_def;
         title_coeff_h1 = Number(arr[1]);
         title_coeff_h2 = Number(arr[2]);
         title_coeff_h3 = Number(arr[3]);
@@ -219,7 +219,7 @@ function loadData() {
         contour_font_width = Number(arr[6]);
         selected_font_on_off = Number(arr[7]);
         selected_font = arr[8];
-        if (typeof result.list_domain !== 'undefined') {
+        if (typeof result.list_domain !== '') {
             domain_list = (result.list_domain).replace(/\s+/g, '');
             let k = domain_list.indexOf(";" + doc_dom + ";");
             if (k != -1) {
