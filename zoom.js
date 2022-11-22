@@ -220,12 +220,10 @@ function loadData() {
         selected_font_on_off = Number(arr[7]);
         selected_font = arr[8];
         if (typeof result.list_domain !== 'undefined') {
-            domain_list = result.list_domain;
-            domain_list = domain_list.replace(/\s+/g, '');
+            domain_list = (result.list_domain).replace(/\s+/g, '');
             let k = domain_list.indexOf(";" + doc_dom + ";");
             if (k != -1) {
-                let sd = domain_list.slice(k, domain_list.indexOf("|", k));
-                let arr = sd.split(";");
+                let arr = (domain_list.slice(k, domain_list.indexOf("|", k))).split(";");
                 if (arr[2] !== '') font_size = Number(arr[2]);
                 if (arr[3] !== '') title_coeff_h1 = Number(arr[3]);
                 if (arr[4] !== '') title_coeff_h2 = Number(arr[4]);
