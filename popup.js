@@ -62,28 +62,6 @@ function changeZoomByFactorDelta(factorDelta) {
     });
 }
 
-function doZoomIn_1() {
-    changeZoomByFactorDelta(0.01);
-}
-
-function doZoomIn_10() {
-    changeZoomByFactorDelta(0.1);
-}
-
-function doZoomOut_1() {
-    changeZoomByFactorDelta(-0.01);
-}
-
-function doZoomOut_10() {
-    changeZoomByFactorDelta(-0.1);
-}
-
-function doZoomDefault() {
-    if (tabId == -1) return;
-    chrome.tabs.setZoom(tabId, 0);
-}
-
-
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
 brauzer_font_size_def = Number(brauzer_font_size_def.replace("px", ""));
@@ -397,6 +375,27 @@ function Monitoring_frequency_clicks(Id, func) {
     setTimeout(() => {
         but.disabled = false;
     }, 500);
+}
+
+function doZoomIn_1() {
+    changeZoomByFactorDelta(0.01);
+}
+
+function doZoomIn_10() {
+    changeZoomByFactorDelta(0.1);
+}
+
+function doZoomOut_1() {
+    changeZoomByFactorDelta(-0.01);
+}
+
+function doZoomOut_10() {
+    changeZoomByFactorDelta(-0.1);
+}
+
+function doZoomDefault() {
+    if (tabId == -1) return;
+    chrome.tabs.setZoom(tabId, 0);
 }
 
 function doZoom_size_font(Id, dif) {
