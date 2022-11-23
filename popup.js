@@ -1,5 +1,6 @@
 ﻿'use strict';
 
+var tabId = -1;
 var domain_list;
 var domain_current;
 var brauzer_font_size_def;
@@ -37,6 +38,51 @@ var page_Y_shift_def;
 var page_width_def;
 var page_css_on_off_def;
 var align_text_on_off_def;
+
+
+
+function displayZoomLevel(level) {
+    var percentZoom = parseFloat(level) * 100;
+    var zoom_percent_str = percentZoom.toFixed(0) + '%';
+    document.getElementById('Zoom_proc').textContent = zoom_percent_str;
+}
+
+function zoomChangeListener(zoomChangeInfo) {
+    displayZoomLevel(zoomChangeInfo.newZoomFactor);
+}
+
+chrome.tabs.onZoomChange.addListener(zoomChangeListener);
+
+function changeZoomByFactorDelta(factorDelta) {
+    if (tabId == -1)
+        return;
+    chrome.tabs.getZoom(tabId, function(zoomFactor) {
+        var newZoomFactor = factorDelta + zoomFactor;
+        chrome.tabs.setZoom(tabId, newZoomFactor);
+    });
+}
+
+function doZoomIn_1() {
+    changeZoomByFactorDelta(0.01);
+}
+
+function doZoomIn_10() {
+    changeZoomByFactorDelta(0.1);
+}
+
+function doZoomOut_1() {
+    changeZoomByFactorDelta(-0.01);
+}
+
+function doZoomOut_10() {
+    changeZoomByFactorDelta(-0.1);
+}
+
+function doZoomDefault() {
+    if (tabId == -1) return;
+    chrome.tabs.setZoom(tabId, 0);
+}
+
 
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
@@ -712,6 +758,21 @@ function doZoomOut_page_width() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    chrome.tabs.query({ active: true }, function(tabs) {
+        tabId = tabs[0].id;
+        chrome.tabs.getZoomSettings(tabId, function(zoomSettings) {
+            var percentDefaultZoom =
+                parseFloat(zoomSettings.defaultZoomFactor) * 100;
+            document.getElementById('defaultLabel').textContent =
+                chrome.i18n.getMessage("Default") + " " + percentDefaultZoom.toFixed(0) + '%';
+        });
+        chrome.tabs.getZoom(tabId, displayZoomLevel);
+    });
+    document.getElementById('Zoom_increaseButton_10').onclick = doZoomIn_10;
+    document.getElementById('Zoom_decreaseButton_10').onclick = doZoomOut_10;
+    document.getElementById('Zoom_increaseButton_1').onclick = doZoomIn_1;
+    document.getElementById('Zoom_decreaseButton_1').onclick = doZoomOut_1;
+    document.getElementById('Zoom_defaultButton').onclick = doZoomDefault;
     document.getElementById('increaseButton_001').onclick = doZoomIn_001;
     document.getElementById('decreaseButton_001').onclick = doZoomOut_001;
     document.getElementById('increaseButton_01').onclick = doZoomIn_01;
