@@ -1,10 +1,10 @@
 ﻿"use strict";
 
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.local.set({ "def_text_param": ";1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;0;"});
-    chrome.storage.local.set({ "list_domain": ""});
-    chrome.storage.local.set({"interface_param": "1;0;100;100;"});
-    chrome.storage.local.set({"font_param": "0;0;0;0;0;0;0;0;;"});
+    chrome.storage.local.set({ "def_text_param": ";1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;0;0;" });
+    chrome.storage.local.set({ "list_domain": "" });
+    chrome.storage.local.set({ "interface_param": "1;0;100;100;" });
+    chrome.storage.local.set({ "font_param": "0;0;0;0;0;0;0;0;;" });
 });
 
 function url_tab() {
@@ -19,7 +19,15 @@ function url_tab() {
                     return;
                 }
                 if (Number(arr[0]) == 1) {
-                    if (result.list_domain.includes(";" + cd + ";") == true) {
+                    var dom_list = (result.list_domain).replace(/\s+/g, '');
+                    if (dom_list.includes(";" + cd + ";") == true) {
+                        let k = dom_list.indexOf(";" + cd + ";");
+                        let arr2 = (dom_list.slice(k, dom_list.indexOf("|", k))).split(";");
+                        if (arr2[18] !== '' || typeof arr2[18] !== 'undefined') {
+                            chrome.tabs.setZoom(Number(arr2[18]));
+                        } else {
+                            chrome.tabs.setZoom(0);
+                        }
                         chrome.action.setIcon({ path: { "48": "/icons/icon_green.png" } });
                     } else {
                         chrome.action.setIcon({ path: { "48": "/icons/icon_blue.png" } });

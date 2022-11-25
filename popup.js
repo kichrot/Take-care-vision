@@ -22,6 +22,7 @@ var page_width;
 var page_css_on_off;
 var align_text_on_off;
 var scale_popup;
+var zoom_Factor = 0;
 
 var title_coeff_h1_def;
 var title_coeff_h2_def;
@@ -39,12 +40,8 @@ var page_width_def;
 var page_css_on_off_def;
 var align_text_on_off_def;
 
-
-
 function displayZoomLevel(level) {
-    var percentZoom = parseFloat(level) * 100;
-    var zoom_percent_str = percentZoom.toFixed(0) + '%';
-    document.getElementById('Zoom_proc').textContent = zoom_percent_str;
+    document.getElementById('Zoom_proc').textContent = (parseFloat(level) * 100).toFixed(0) + '%';
 }
 
 function zoomChangeListener(zoomChangeInfo) {
@@ -54,11 +51,11 @@ function zoomChangeListener(zoomChangeInfo) {
 chrome.tabs.onZoomChange.addListener(zoomChangeListener);
 
 function changeZoomByFactorDelta(factorDelta) {
-    if (tabId == -1)
-        return;
+    if (tabId == -1) return;
     chrome.tabs.getZoom(tabId, function(zoomFactor) {
-        var newZoomFactor = factorDelta + zoomFactor;
-        chrome.tabs.setZoom(tabId, newZoomFactor);
+        chrome.tabs.setZoom(tabId, factorDelta + zoomFactor);
+        zoom_Factor = (parseFloat(factorDelta + zoomFactor)).toFixed(2) ;
+        save_domain_list();
     });
 }
 
@@ -67,7 +64,7 @@ brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPro
 brauzer_font_size_def = Number(brauzer_font_size_def.replace("px", ""));
 
 var elements = document.querySelectorAll('[data-i18n]');
-elements.forEach(function (el) {
+elements.forEach(function(el) {
     el.innerText = chrome.i18n.getMessage(el.getAttribute('data-i18n'))
 })
 
@@ -84,7 +81,7 @@ function url_domain(data) {
 chrome.tabs.query({
     lastFocusedWindow: true,
     active: true
-}, function (tabs) {
+}, function(tabs) {
     if (tabs[0].url.includes("chrome://") || (tabs[0].url.includes("http://") == false && tabs[0].url.includes("https://") == false)) {
         window.close();
         return;
@@ -230,7 +227,7 @@ function clean_domain_list() {
 }
 
 function loadData() {
-    chrome.storage.local.get(['list_domain', 'def_text_param', 'interface_param'], function (result) {
+    chrome.storage.local.get(['list_domain', 'def_text_param', 'interface_param'], function(result) {
         let arr = result.interface_param.split(";");
         Scale_popup(Number(arr[3]));
         if (typeof result.def_text_param == 'undefined') {
@@ -293,6 +290,8 @@ function loadData() {
 }
 loadData();
 
+
+
 function save_domain_list() {
     var font_size_save = font_size;
     var title_coeff_h1_save = title_coeff_h1;
@@ -310,6 +309,10 @@ function save_domain_list() {
     var page_width_save = page_width;
     var page_css_on_off_save = page_css_on_off;
     var align_text_on_off_save = align_text_on_off;
+
+    function string_domain_list(dl) {
+        domain_list = dl + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";" + String(align_text_on_off_save)+ ";" + String(zoom_Factor) + ";|";
+    }
     if (font_size == size_font_def)
         font_size_save = "";
     if (title_coeff_h1 == title_coeff_h1_def)
@@ -346,7 +349,7 @@ function save_domain_list() {
     if (domain_list == "undefined")
         domain_list = "";
     if (domain_list.includes(";" + domain_current + ";") == false) {
-        domain_list = domain_list + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";" + String(align_text_on_off_save) + ";|";
+        string_domain_list(domain_list);
     } else {
         let arr = domain_list.split("|");
         for (let i = 0; i < arr.length; i += 1) {
@@ -355,8 +358,7 @@ function save_domain_list() {
                 break;
             }
         }
-        let str = arr.join("|");
-        domain_list = str + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";" + String(align_text_on_off_save) + ";|";
+        string_domain_list(arr.join("|"));
     }
     domain_list = domain_list.replace(/\s+/g, '');
     clean_domain_list();
@@ -396,10 +398,14 @@ function doZoomOut_10() {
 function doZoomDefault() {
     if (tabId == -1) return;
     chrome.tabs.setZoom(tabId, 0);
+    chrome.tabs.getZoom(tabId, function(zoomFactor) {
+        zoom_Factor = (parseFloat(zoomFactor)).toFixed(2) ;
+        save_domain_list();
+    });
 }
 
 function doZoom_size_font(Id, dif) {
-    Monitoring_frequency_clicks(Id, function () {
+    Monitoring_frequency_clicks(Id, function() {
         if (Number.isFinite(font_size)) {
             font_size = font_size + dif;
             font_size = font_size.toFixed(2);
@@ -451,8 +457,6 @@ function doZoom_lh(Id, line_h, dif) {
 function doZoom_css(Id, p_css, dif) {
     if (Number.isFinite(p_css)) {
         var page_css_new = p_css + dif;
-        //page_css_new = Number(page_css_new.toFixed(2));
-        //document.getElementById(Id).textContent = String(page_css_new * 100).toFixed(0)) + "%";
         return page_css_new;
     }
 }
@@ -479,7 +483,7 @@ function doZoomTextDefault() {
 }
 
 function doZoomIn_h1() {
-    Monitoring_frequency_clicks("increaseButton_def_h1", function () {
+    Monitoring_frequency_clicks("increaseButton_def_h1", function() {
         if (Number.isFinite(title_coeff_h1)) {
             title_coeff_h1 = doZoom_h("def_h1", title_coeff_h1, 0.1);
             save_domain_list();
@@ -488,7 +492,7 @@ function doZoomIn_h1() {
 }
 
 function doZoomOut_h1() {
-    Monitoring_frequency_clicks("decreaseButton_def_h1", function () {
+    Monitoring_frequency_clicks("decreaseButton_def_h1", function() {
         if (Number.isFinite(title_coeff_h1)) {
             title_coeff_h1 = doZoom_h("def_h1", title_coeff_h1, -0.1);
             save_domain_list();
@@ -497,7 +501,7 @@ function doZoomOut_h1() {
 }
 
 function doZoomIn_h2() {
-    Monitoring_frequency_clicks("increaseButton_def_h2", function () {
+    Monitoring_frequency_clicks("increaseButton_def_h2", function() {
         if (Number.isFinite(title_coeff_h2)) {
             title_coeff_h2 = doZoom_h("def_h2", title_coeff_h2, 0.1);
             save_domain_list();
@@ -506,7 +510,7 @@ function doZoomIn_h2() {
 }
 
 function doZoomOut_h2() {
-    Monitoring_frequency_clicks("decreaseButton_def_h2", function () {
+    Monitoring_frequency_clicks("decreaseButton_def_h2", function() {
         if (Number.isFinite(title_coeff_h2)) {
             title_coeff_h2 = doZoom_h("def_h2", title_coeff_h2, -0.1);
             save_domain_list();
@@ -515,7 +519,7 @@ function doZoomOut_h2() {
 }
 
 function doZoomIn_h3() {
-    Monitoring_frequency_clicks("increaseButton_def_h3", function () {
+    Monitoring_frequency_clicks("increaseButton_def_h3", function() {
         if (Number.isFinite(title_coeff_h3)) {
             title_coeff_h3 = doZoom_h("def_h3", title_coeff_h3, 0.1);
             save_domain_list();
@@ -524,7 +528,7 @@ function doZoomIn_h3() {
 }
 
 function doZoomOut_h3() {
-    Monitoring_frequency_clicks("decreaseButton_def_h3", function () {
+    Monitoring_frequency_clicks("decreaseButton_def_h3", function() {
         if (Number.isFinite(title_coeff_h3)) {
             title_coeff_h3 = doZoom_h("def_h3", title_coeff_h3, -0.1);
             save_domain_list();
@@ -533,7 +537,7 @@ function doZoomOut_h3() {
 }
 
 function doZoomIn_h4() {
-    Monitoring_frequency_clicks("increaseButton_def_h4", function () {
+    Monitoring_frequency_clicks("increaseButton_def_h4", function() {
         if (Number.isFinite(title_coeff_h4)) {
             title_coeff_h4 = doZoom_h("def_h4", title_coeff_h4, 0.1);
             save_domain_list();
@@ -542,7 +546,7 @@ function doZoomIn_h4() {
 }
 
 function doZoomOut_h4() {
-    Monitoring_frequency_clicks("decreaseButton_def_h4", function () {
+    Monitoring_frequency_clicks("decreaseButton_def_h4", function() {
         if (Number.isFinite(title_coeff_h4)) {
             title_coeff_h4 = doZoom_h("def_h4", title_coeff_h4, -0.1);
             save_domain_list();
@@ -551,7 +555,7 @@ function doZoomOut_h4() {
 }
 
 function doZoomIn_h5() {
-    Monitoring_frequency_clicks("increaseButton_def_h5", function () {
+    Monitoring_frequency_clicks("increaseButton_def_h5", function() {
         if (Number.isFinite(title_coeff_h5)) {
             title_coeff_h5 = doZoom_h("def_h5", title_coeff_h5, 0.1);
             save_domain_list();
@@ -560,7 +564,7 @@ function doZoomIn_h5() {
 }
 
 function doZoomOut_h5() {
-    Monitoring_frequency_clicks("decreaseButton_def_h5", function () {
+    Monitoring_frequency_clicks("decreaseButton_def_h5", function() {
         if (Number.isFinite(title_coeff_h5)) {
             title_coeff_h5 = doZoom_h("def_h5", title_coeff_h5, -0.1);
             save_domain_list();
@@ -569,7 +573,7 @@ function doZoomOut_h5() {
 }
 
 function doZoomIn_h6() {
-    Monitoring_frequency_clicks("increaseButton_def_h6", function () {
+    Monitoring_frequency_clicks("increaseButton_def_h6", function() {
         if (Number.isFinite(title_coeff_h6)) {
             title_coeff_h6 = doZoom_h("def_h6", title_coeff_h6, 0.1);
             save_domain_list();
@@ -578,7 +582,7 @@ function doZoomIn_h6() {
 }
 
 function doZoomOut_h6() {
-    Monitoring_frequency_clicks("decreaseButton_def_h6", function () {
+    Monitoring_frequency_clicks("decreaseButton_def_h6", function() {
         if (Number.isFinite(title_coeff_h6)) {
             title_coeff_h6 = doZoom_h("def_h6", title_coeff_h6, -0.1);
             save_domain_list();
@@ -587,7 +591,7 @@ function doZoomOut_h6() {
 }
 
 function doZoomIn_line_height() {
-    Monitoring_frequency_clicks('increaseButton_line_height', function () {
+    Monitoring_frequency_clicks('increaseButton_line_height', function() {
         if (Number.isFinite(line_height)) {
             line_height = doZoom_lh("line_height", line_height, 0.1);
             save_domain_list();
@@ -596,7 +600,7 @@ function doZoomIn_line_height() {
 }
 
 function doZoomOut_line_height() {
-    Monitoring_frequency_clicks('decreaseButton_line_height', function () {
+    Monitoring_frequency_clicks('decreaseButton_line_height', function() {
         if (Number.isFinite(line_height)) {
             line_height = doZoom_lh("line_height", line_height, -0.1);
             save_domain_list();
@@ -659,7 +663,7 @@ function check_align_text() {
 }
 
 function doZoomIn_page_css_zoom_001() {
-    Monitoring_frequency_clicks('Zoom_increaseButton_css_001', function () {
+    Monitoring_frequency_clicks('Zoom_increaseButton_css_001', function() {
         if (Number.isFinite(page_css_zoom)) {
             page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, 0.001);
             page_css_zoom = Number(page_css_zoom.toFixed(3));
@@ -670,7 +674,7 @@ function doZoomIn_page_css_zoom_001() {
 }
 
 function doZoomOut_page_css_zoom_001() {
-    Monitoring_frequency_clicks('Zoom_decreaseButton_css_001', function () {
+    Monitoring_frequency_clicks('Zoom_decreaseButton_css_001', function() {
         if (Number.isFinite(page_css_zoom)) {
             page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, -0.001);
             page_css_zoom = Number(page_css_zoom.toFixed(3));
@@ -681,7 +685,7 @@ function doZoomOut_page_css_zoom_001() {
 }
 
 function doZoomIn_page_css_zoom_01() {
-    Monitoring_frequency_clicks('Zoom_increaseButton_css_01', function () {
+    Monitoring_frequency_clicks('Zoom_increaseButton_css_01', function() {
         if (Number.isFinite(page_css_zoom)) {
             page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, 0.01);
             page_css_zoom = Number(page_css_zoom.toFixed(3));
@@ -692,7 +696,7 @@ function doZoomIn_page_css_zoom_01() {
 }
 
 function doZoomOut_page_css_zoom_01() {
-    Monitoring_frequency_clicks('Zoom_decreaseButton_css_01', function () {
+    Monitoring_frequency_clicks('Zoom_decreaseButton_css_01', function() {
         if (Number.isFinite(page_css_zoom)) {
             page_css_zoom = doZoom_css("Zoom_css", page_css_zoom, -0.01);
             page_css_zoom = Number(page_css_zoom.toFixed(3));
@@ -703,7 +707,7 @@ function doZoomOut_page_css_zoom_01() {
 }
 
 function doZoomIn_page_X_shift() {
-    Monitoring_frequency_clicks('increaseButton_page_X_shift', function () {
+    Monitoring_frequency_clicks('increaseButton_page_X_shift', function() {
         if (Number.isFinite(page_X_shift)) {
             page_X_shift = doZoom_css("page_X_shift", page_X_shift, 1);
             save_domain_list();
@@ -712,7 +716,7 @@ function doZoomIn_page_X_shift() {
 }
 
 function doZoomOut_page_X_shift() {
-    Monitoring_frequency_clicks('decreaseButton_page_X_shift', function () {
+    Monitoring_frequency_clicks('decreaseButton_page_X_shift', function() {
         if (Number.isFinite(page_X_shift)) {
             page_X_shift = doZoom_css("page_X_shift", page_X_shift, -1);
             save_domain_list();
@@ -721,7 +725,7 @@ function doZoomOut_page_X_shift() {
 }
 
 function doZoomIn_page_Y_shift() {
-    Monitoring_frequency_clicks('increaseButton_page_Y_shift', function () {
+    Monitoring_frequency_clicks('increaseButton_page_Y_shift', function() {
         if (Number.isFinite(page_Y_shift)) {
             page_Y_shift = doZoom_css("page_Y_shift", page_Y_shift, 1);
             save_domain_list();
@@ -730,7 +734,7 @@ function doZoomIn_page_Y_shift() {
 }
 
 function doZoomOut_page_Y_shift() {
-    Monitoring_frequency_clicks('decreaseButton_page_Y_shift', function () {
+    Monitoring_frequency_clicks('decreaseButton_page_Y_shift', function() {
         if (Number.isFinite(page_Y_shift)) {
             page_Y_shift = doZoom_css("page_Y_shift", page_Y_shift, -1);
             save_domain_list();
@@ -739,7 +743,7 @@ function doZoomOut_page_Y_shift() {
 }
 
 function doZoomIn_page_width() {
-    Monitoring_frequency_clicks('increaseButton_width', function () {
+    Monitoring_frequency_clicks('increaseButton_width', function() {
         if (Number.isFinite(page_width)) {
             page_width = doZoom_css("page_width", page_width, 1);
             save_domain_list();
@@ -748,7 +752,7 @@ function doZoomIn_page_width() {
 }
 
 function doZoomOut_page_width() {
-    Monitoring_frequency_clicks('decreaseButton_width', function () {
+    Monitoring_frequency_clicks('decreaseButton_width', function() {
         if (Number.isFinite(page_width)) {
             page_width = doZoom_css("page_width", page_width, -1);
             save_domain_list();
@@ -756,7 +760,7 @@ function doZoomOut_page_width() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     chrome.tabs.query({ active: true }, function(tabs) {
         tabId = tabs[0].id;
         chrome.tabs.getZoomSettings(tabId, function(zoomSettings) {
@@ -812,12 +816,12 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
     setTimeout(() => window.close(), 300);
 });
 
-chrome.storage.onChanged.addListener(function (changes, areaName) {
+chrome.storage.onChanged.addListener(function(changes, areaName) {
     var my_tabid;
     chrome.tabs.query({
         currentWindow: true,
         active: true
-    }, function (tabs) {
+    }, function(tabs) {
         my_tabid = tabs[0].id;
         setTimeout(zoom_Action, 50);
     });

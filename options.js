@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 var domain_list;
-var text_param_start = ";1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;0;";
+var text_param_start = ";1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;0;0;";
 var text_param_def;
 var brauzer_font_size_def;
 var size_font_def;
@@ -467,6 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('domain_filter_input').oninput = filter_domain;
     document.getElementById('increaseButton__scale_popup').onclick = doZoomIn_scale_popup;
     document.getElementById('decreaseButton_scale_popup').onclick = doZoomOut_scale_popup;
+    document.getElementById('List_domain_no_default').ondblclick = OpenDomain;
 });
 
 // чтение данных из файла в хранилище расширения

@@ -20,7 +20,7 @@ var page_X_shift;
 var page_Y_shift;
 var page_width;
 var page_css_on_off;
-var text_param_def = ";1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;0;";
+var text_param_def = ";1.5;1.3;1.1;1;0.9;0.7;1.1;0;0;1;0;0;100;0;0;0;";
 var param_font_on_off;
 var shadow_font_on_off;
 var shadow_font_width;
