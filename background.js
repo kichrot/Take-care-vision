@@ -23,11 +23,13 @@ function url_tab() {
                     if (dom_list.includes(";" + cd + ";") == true) {
                         let k = dom_list.indexOf(";" + cd + ";");
                         let arr2 = (dom_list.slice(k, dom_list.indexOf("|", k))).split(";");
-                        if (arr2[18] !== '' || typeof arr2[18] !== 'undefined') {
-                            chrome.tabs.setZoom(Number(arr2[18]));
-                        } else {
-                            chrome.tabs.setZoom(0);
-                        }
+                        chrome.tabs.getZoom(function(zoomFactor) {
+                            if (arr2[18] !== '' || typeof arr2[18] !== 'undefined') {
+                                if (Number(arr2[18]) !== zoomFactor) {
+                                    chrome.tabs.setZoom(Number(arr2[18]));
+                                }
+                            }
+                        });
                         chrome.action.setIcon({ path: { "48": "/icons/icon_green.png" } });
                     } else {
                         chrome.action.setIcon({ path: { "48": "/icons/icon_blue.png" } });
