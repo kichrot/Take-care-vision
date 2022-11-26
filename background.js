@@ -24,10 +24,8 @@ function url_tab() {
                         let k = dom_list.indexOf(";" + cd + ";");
                         let arr2 = (dom_list.slice(k, dom_list.indexOf("|", k))).split(";");
                         chrome.tabs.getZoom(function(zoomFactor) {
-                            if (arr2[18] !== '' || typeof arr2[18] !== 'undefined') {
-                                if (Number(arr2[18]) !== zoomFactor) {
-                                    chrome.tabs.setZoom(Number(arr2[18]));
-                                }
+                            if (Number(arr2[18]) !== zoomFactor) {
+                                chrome.tabs.setZoom(Number(arr2[18]));
                             }
                         });
                         chrome.action.setIcon({ path: { "48": "/icons/icon_green.png" } });
