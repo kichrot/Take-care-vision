@@ -20,9 +20,9 @@ function url_tab() {
                 }
                 if (Number(arr[0]) == 1) {
                     var dom_list = (result.list_domain).replace(/\s+/g, '');
-                    if (dom_list.includes(";" + cd + ";") == true) {
-                        let k = dom_list.indexOf(";" + cd + ";");
-                        let arr2 = (dom_list.slice(k, dom_list.indexOf("|", k))).split(";");
+                    var k = dom_list.indexOf(";" + cd + ";");
+                    if (k !== -1) {
+                        var arr2 = (dom_list.slice(k, dom_list.indexOf("|", k))).split(";");
                         chrome.tabs.getZoom(function(zoomFactor) {
                             if (Number(arr2[18]) !== zoomFactor) {
                                 chrome.tabs.setZoom(Number(arr2[18]));
