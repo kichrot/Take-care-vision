@@ -380,27 +380,37 @@ function Monitoring_frequency_clicks(Id, func) {
 }
 
 function doZoomIn_1() {
-    changeZoomByFactorDelta(0.01);
+    Monitoring_frequency_clicks("Zoom_increaseButton_1", function() {
+        changeZoomByFactorDelta(0.01);
+    });
 }
 
 function doZoomIn_10() {
-    changeZoomByFactorDelta(0.1);
+    Monitoring_frequency_clicks("Zoom_increaseButton_10", function() {
+        changeZoomByFactorDelta(0.1);
+    });
 }
 
 function doZoomOut_1() {
-    changeZoomByFactorDelta(-0.01);
+    Monitoring_frequency_clicks("Zoom_decreaseButton_1", function() {
+        changeZoomByFactorDelta(-0.01);
+    });
 }
 
 function doZoomOut_10() {
-    changeZoomByFactorDelta(-0.1);
+    Monitoring_frequency_clicks("Zoom_decreaseButton_10", function() {
+        changeZoomByFactorDelta(-0.1);
+    });
 }
 
 function doZoomDefault() {
-    if (tabId == -1) return;
-    chrome.tabs.setZoom(tabId, 0);
-    chrome.tabs.getZoom(tabId, function(zoomFactor) {
-        zoom_Factor = (parseFloat(zoomFactor)).toFixed(2) ;
-        save_domain_list();
+    Monitoring_frequency_clicks("Zoom_defaultButton", function() {
+        if (tabId == -1) return;
+        chrome.tabs.setZoom(tabId, 0);
+        chrome.tabs.getZoom(tabId, function(zoomFactor) {
+            zoom_Factor = (parseFloat(zoomFactor)).toFixed(2) ;
+            save_domain_list();
+        });
     });
 }
 
