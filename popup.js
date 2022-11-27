@@ -55,9 +55,11 @@ chrome.tabs.onZoomChange.addListener(zoomChangeListener);
 function changeZoomByFactorDelta(factorDelta) {
     if (tabId == -1) return;
     chrome.tabs.getZoom(tabId, function(zoomFactor) {
-        chrome.tabs.setZoom(tabId, factorDelta + zoomFactor);
-        zoom_Factor = (parseFloat(factorDelta + zoomFactor)).toFixed(2) ;
-        save_domain_list();
+        zoom_Factor = (parseFloat(factorDelta + zoomFactor)).toFixed(2);
+        if (factorDelta !== 0) {
+            chrome.tabs.setZoom(tabId, factorDelta + zoomFactor);
+            save_domain_list();
+        }
     });
 }
 
@@ -315,7 +317,7 @@ function save_domain_list() {
     var align_text_on_off_save = align_text_on_off;
 
     function string_domain_list(dl) {
-        domain_list = dl + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";" + String(align_text_on_off_save)+ ";" + String(zoom_Factor) + ";|";
+        domain_list = dl + ";" + domain_current + ";" + String(font_size_save) + ";" + String(title_coeff_h1_save) + ";" + String(title_coeff_h2_save) + ";" + String(title_coeff_h3_save) + ";" + String(title_coeff_h4_save) + ";" + String(title_coeff_h5_save) + ";" + String(title_coeff_h6_save) + ";" + String(line_height_save) + ";" + String(line_height_on_off_save) + ";" + String(text_param_on_off_save) + ";" + String(page_css_zoom_save) + ";" + String(page_X_shift_save) + ";" + String(page_Y_shift_save) + ";" + String(page_width_save) + ";" + String(page_css_on_off_save) + ";" + String(align_text_on_off_save) + ";" + String(zoom_Factor) + ";|";
     }
     if (font_size == size_font_def)
         font_size_save = "";
@@ -412,7 +414,7 @@ function doZoomDefault() {
         if (tabId == -1) return;
         chrome.tabs.setZoom(tabId, 0);
         chrome.tabs.getZoom(tabId, function(zoomFactor) {
-            zoom_Factor = (parseFloat(zoomFactor)).toFixed(2) ;
+            zoom_Factor = (parseFloat(zoomFactor)).toFixed(2);
             save_domain_list();
         });
     });
