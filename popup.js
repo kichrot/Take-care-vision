@@ -22,7 +22,7 @@ var page_width;
 var page_css_on_off;
 var align_text_on_off;
 var scale_popup;
-var zoom_Factor = 0;
+var zoom_Factor;
 
 var title_coeff_h1_def;
 var title_coeff_h2_def;
@@ -39,6 +39,8 @@ var page_Y_shift_def;
 var page_width_def;
 var page_css_on_off_def;
 var align_text_on_off_def;
+
+
 
 function displayZoomLevel(level) {
     document.getElementById('Zoom_proc').textContent = (parseFloat(level) * 100).toFixed(0) + '%';
@@ -58,6 +60,8 @@ function changeZoomByFactorDelta(factorDelta) {
         save_domain_list();
     });
 }
+
+changeZoomByFactorDelta(0);
 
 /* определяем размер шрифта браузера по умолчанию */
 brauzer_font_size_def = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
