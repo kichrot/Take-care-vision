@@ -2,6 +2,7 @@
 
 /* Объявляем глобальные переменные */
 var doc_dom;
+var isFramed = false;
 var domain_list;
 var font_size_def;
 var brauzer_font_size_def;
@@ -145,7 +146,7 @@ function textZoom() {
         document.documentElement.appendChild(css);
     }
 
-    if (page_css_on_off == 1) {
+    if (page_css_on_off == 1 && isFramed == false) {
         css.innerHTML += [
             `body {`,
             `transform-origin: 0px 0px !important;`,
@@ -263,7 +264,7 @@ function ReloadAllFrame() {
 }
 
 function domain() {
-    var isFramed = false;
+
     try {
         isFramed = window != window.top || document != top.document || self.location != top.location;
     } catch (e) {
@@ -278,6 +279,7 @@ function domain() {
         loadData();
     } else {
         /* страница загружена в основном окне */
+        isFramed = false;
         if (window.top.location.href.includes("chrome://") || (window.top.location.href.includes("http://") == false && window.top.location.href.includes("https://") == false)) {
             return;
         }
