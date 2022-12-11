@@ -264,7 +264,6 @@ function ReloadAllFrame() {
 }
 
 function domain() {
-
     try {
         isFramed = window != window.top || document != top.document || self.location != top.location;
     } catch (e) {
@@ -279,7 +278,6 @@ function domain() {
         loadData();
     } else {
         /* страница загружена в основном окне */
-        isFramed = false;
         if (window.top.location.href.includes("chrome://") || (window.top.location.href.includes("http://") == false && window.top.location.href.includes("https://") == false)) {
             return;
         }
