@@ -144,8 +144,8 @@ function filling_out_form() {
         display_no_yes("none");
     }
     document.getElementById('Zoom_css').textContent = (page_css_zoom * 100).toFixed(1) + "%";
-    document.getElementById('page_X_shift').textContent = String(page_X_shift.toFixed(1));
-    document.getElementById('page_Y_shift').textContent = String(page_Y_shift.toFixed(1));
+    document.getElementById('page_X_shift').textContent = String(page_X_shift);
+    document.getElementById('page_Y_shift').textContent = String(page_Y_shift);
     document.getElementById('page_width').textContent = String(page_width);
     if (page_css_on_off == 1) {
         document.getElementById('Page_zoom_css_checkbox').checked = true;
