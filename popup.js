@@ -123,14 +123,14 @@ function filling_out_form() {
     document.getElementById('current_domain').textContent = domain_current;
     document.getElementById('default_Font_size').textContent = chrome.i18n.getMessage("Default") + " " + size_font_def + 'vw';
     document.getElementById('defaultLabel_css').textContent = chrome.i18n.getMessage("Default") + " " + "100%";
-    document.getElementById('text_size').textContent = String(font_size) + 'vw';
-    document.getElementById('def_h1').textContent = String(title_coeff_h1);
-    document.getElementById('def_h2').textContent = String(title_coeff_h2);
-    document.getElementById('def_h3').textContent = String(title_coeff_h3);
-    document.getElementById('def_h4').textContent = String(title_coeff_h4);
-    document.getElementById('def_h5').textContent = String(title_coeff_h5);
-    document.getElementById('def_h6').textContent = String(title_coeff_h6);
-    document.getElementById('line_height').textContent = String(line_height);
+    document.getElementById('text_size').textContent = String(font_size.toFixed(2)) + 'vw';
+    document.getElementById('def_h1').textContent = String(title_coeff_h1.toFixed(1));
+    document.getElementById('def_h2').textContent = String(title_coeff_h2.toFixed(1));
+    document.getElementById('def_h3').textContent = String(title_coeff_h3.toFixed(1));
+    document.getElementById('def_h4').textContent = String(title_coeff_h4.toFixed(1));
+    document.getElementById('def_h5').textContent = String(title_coeff_h5.toFixed(1));
+    document.getElementById('def_h6').textContent = String(title_coeff_h6.toFixed(1));
+    document.getElementById('line_height').textContent = String(line_height.toFixed(1));
     if (line_height_on_off == 1) {
         document.getElementById('line_height_checkbox').checked = true;
         display_no_yes_table_line_height("block");
@@ -148,8 +148,8 @@ function filling_out_form() {
         display_no_yes("none");
     }
     document.getElementById('Zoom_css').textContent = (page_css_zoom * 100).toFixed(1) + "%";
-    document.getElementById('page_X_shift').textContent = String(page_X_shift);
-    document.getElementById('page_Y_shift').textContent = String(page_Y_shift);
+    document.getElementById('page_X_shift').textContent = String(page_X_shift.toFixed(1));
+    document.getElementById('page_Y_shift').textContent = String(page_Y_shift.toFixed(1));
     document.getElementById('page_width').textContent = String(page_width);
     if (page_css_on_off == 1) {
         document.getElementById('Page_zoom_css_checkbox').checked = true;
