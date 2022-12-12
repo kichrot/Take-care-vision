@@ -114,10 +114,6 @@ function display_no_yes_table_line_height(display) {
     document.getElementById('table_line_height').style.display = display;
 }
 
-function display_options(id, level) {
-    document.getElementById(id).value = level;
-}
-
 function filling_out_form() {
     document.getElementById('Option_text').title = chrome.i18n.getMessage("Title_Setings");
     document.getElementById('current_domain').textContent = domain_current;
