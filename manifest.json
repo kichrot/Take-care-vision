@@ -4,7 +4,7 @@
     "name": "__MSG_Take_care_vision_title__",
     "default_locale": "en",
     "description": "__MSG_Take_care_vision_description__",
-    "version": "0.2",
+    "version": "0.3",
     "options_page": "options.html",
     "homepage_url": "https://github.com/kichrot/Take-care-vision",
     "permissions": [
@@ -36,6 +36,7 @@
             "zoom.js"
         ],
         "match_about_blank": true,
+        "exclude_globs": ["chrome://*","http://localhost:*/*"],
         "matches": [
             "http://*/*",
             "https://*/*",
