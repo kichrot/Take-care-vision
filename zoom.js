@@ -154,6 +154,9 @@ function textZoom() {
             `/*transform: scale(${page_css_zoom}) translateX(${page_X_shift * 2}px) translateY(${page_Y_shift* 2}px) !important;*/`,
             `width: ${page_width}% !important;`,
             `max-width: ${page_width}% !important;`,
+            `min-width: ${page_width}% !important;`,
+            `margin-left: auto;`,
+            `margin-right: auto;`,
             `}`,
 
             `html {`,
