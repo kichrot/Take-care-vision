@@ -153,6 +153,7 @@ function textZoom() {
             `transform: matrix(${page_css_zoom}, 0, 0, ${page_css_zoom}, ${page_X_shift * 2}, ${page_Y_shift* 2}) !important;`,
             `/*transform: scale(${page_css_zoom}) translateX(${page_X_shift * 2}px) translateY(${page_Y_shift* 2}px) !important;*/`,
             `width: ${page_width}% !important;`,
+            `max-width: ${page_width}% !important;`,
             `}`,
 
             `html {`,
